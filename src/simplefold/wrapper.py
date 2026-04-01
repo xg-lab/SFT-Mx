@@ -21,10 +21,11 @@ from utils.fasta_utils import process_fastas, download_fasta_utilities
 from boltz_data_pipeline.feature.featurizer import BoltzFeaturizer
 from boltz_data_pipeline.tokenize.boltz_protein import BoltzTokenizer
 
-try: 
+try:
     import mlx.core as mx
     from mlx.utils import tree_unflatten, tree_flatten
     from model.mlx.sampler import EMSampler as EMSamplerMLX
+    from model.mlx.teacache import TeaCacheSampler, TeaCacheConfig
     from model.mlx.esm_network import ESM2 as ESM2MLX
     from utils.mlx_utils import map_torch_to_mlx, map_plddt_torch_to_mlx
     MLX_AVAILABLE = True
@@ -206,16 +207,36 @@ class InferenceWrapper:
         tau,
         device,
         backend,
+        teacache: bool = False,
+        teacache_threshold: float = 0.15,
+        artifacts_dir: str = None,
     ):
+        """
+        Initialize inference wrapper.
+
+        Args:
+            teacache: Enable TeaCache acceleration (MLX only). Provides ~10x speedup
+                      with minimal quality loss.
+            teacache_threshold: Cache threshold (0.1=quality, 0.2=speed). Default 0.15.
+            artifacts_dir: Path to existing artifacts directory containing ccd.pkl and
+                           cache/boltz1_conf.ckpt. If provided, symlinks these into the
+                           local cache to avoid redundant downloads.
+        """
         self.num_steps = num_steps
         self.nsample_per_protein = nsample_per_protein
         self.tau = tau
         self.device = device
         self.backend = backend
+        self.teacache = teacache
+        self.teacache_threshold = teacache_threshold
 
         if self.backend == "mlx" and not MLX_AVAILABLE:
             self.backend = "torch"
             print("MLX not installed, switch to torch backend.")
+
+        if self.teacache and self.backend != "mlx":
+            print("Warning: TeaCache only available with MLX backend. Disabling.")
+            self.teacache = False
 
         # create output directory
         output_dir = Path(output_dir)
@@ -232,6 +253,18 @@ class InferenceWrapper:
         self.output_dir = output_dir
         self.cache = cache
         self.prediction_dir = prediction_dir
+
+        # Symlink heavy cache files from artifacts to avoid redundant downloads
+        if artifacts_dir is not None:
+            artifacts_dir = Path(artifacts_dir)
+            artifacts_cache = artifacts_dir / "cache"
+            for fname in ["ccd.pkl", "boltz1_conf.ckpt"]:
+                src = artifacts_cache / fname
+                if not src.exists():
+                    src = artifacts_dir / fname  # Also check artifacts root
+                dst = cache / fname
+                if src.exists() and not dst.exists():
+                    os.symlink(src, dst)
 
         self.initialize_esm_model()
         self.initialize_others()
@@ -278,17 +311,32 @@ class InferenceWrapper:
         self.flow = LinearPath()
 
         if self.backend == "torch":
-            sampler_cls = EMSampler
+            self.sampler = EMSampler(
+                num_timesteps=self.num_steps,
+                t_start=1e-4,
+                tau=self.tau,
+                log_timesteps=True,
+                w_cutoff=0.99,
+            )
         elif self.backend == "mlx":
-            sampler_cls = EMSamplerMLX
-
-        self.sampler = sampler_cls(
-            num_timesteps=self.num_steps,
-            t_start=1e-4,
-            tau=self.tau,
-            log_timesteps=True,
-            w_cutoff=0.99,
-        )
+            if self.teacache:
+                # Use TeaCache-accelerated sampler
+                config = TeaCacheConfig(threshold=self.teacache_threshold)
+                self.sampler = TeaCacheSampler(
+                    num_timesteps=self.num_steps,
+                    t_start=1e-4,
+                    tau=self.tau,
+                    config=config,
+                )
+                print(f"TeaCache enabled (threshold={self.teacache_threshold})")
+            else:
+                self.sampler = EMSamplerMLX(
+                    num_timesteps=self.num_steps,
+                    t_start=1e-4,
+                    tau=self.tau,
+                    log_timesteps=True,
+                    w_cutoff=0.99,
+                )
 
     def process_input(self, aa_seq):
         # process fasta files to input format

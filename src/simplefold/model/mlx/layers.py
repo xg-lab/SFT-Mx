@@ -145,13 +145,42 @@ class SwiGLUFeedForward(nn.Module):
         super().__init__()
         hidden_dim = int(2 * hidden_dim / 3)
         hidden_dim = multiple_of * ((hidden_dim + multiple_of - 1) // multiple_of)
+        self._hidden_dim = hidden_dim
 
+        # Keep w1, w2, w3 for checkpoint compatibility
         self.w1 = nn.Linear(dim, hidden_dim, bias=False)
         self.w2 = nn.Linear(hidden_dim, dim, bias=True)
         self.w3 = nn.Linear(dim, hidden_dim, bias=False)
 
+        # Fused weight cache (built lazily for speedup, only works with non-quantized weights)
+        self._w13_fused = None
+
+    def _can_use_fused(self):
+        """Check if fused path is available (requires non-quantized Linear layers)."""
+        return isinstance(self.w1, nn.Linear) and isinstance(self.w3, nn.Linear)
+
+    def _build_fused_weights(self):
+        """Fuse w1 and w3 weights into single matrix for faster matmul."""
+        # MLX Linear.weight is (out_features, in_features)
+        # For x @ W, we need W as (in_features, out_features)
+        # So transpose and concatenate: (dim, hidden_dim*2)
+        self._w13_fused = mx.concatenate([self.w1.weight.T, self.w3.weight.T], axis=1)
+
     def __call__(self, x):
-        return self.w2(nn.silu(self.w1(x)) * self.w3(x))
+        # Use fused path only if layers aren't quantized
+        if self._can_use_fused():
+            if self._w13_fused is None:
+                self._build_fused_weights()
+            # Single fused matmul instead of two separate ones
+            h13 = x @ self._w13_fused  # (B, N, hidden_dim*2)
+            h1 = h13[..., :self._hidden_dim]
+            h3 = h13[..., self._hidden_dim:]
+        else:
+            # Fallback for quantized weights - use module calls directly
+            h1 = self.w1(x)
+            h3 = self.w3(x)
+
+        return self.w2(nn.silu(h1) * h3)
 
 
 #################################################################################

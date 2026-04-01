@@ -3,13 +3,14 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "simplefold"
+name = "simplefold-turbo"
 version = "0.1.0"
-description = "Folding proteins with SimpleFold."
+description = "Folding proteins faster with SimpleFold."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [
+    { name = "Geoffrey Taghon", email = "gtaghon1@jh.edu" },
     { name = "Yuyang Wang", email = "yuyangw@apple.com" },
     { name = "Miguel Angel Bautista Martin", email = "mbautistamartin@apple.com" }
 ]
@@ -39,11 +40,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/apple/ml-simplefold"
+Homepage = "https://github.com/usnistgov/simplefold-turbo"
 
-# Optional: create a CLI command `simplefold` that calls simplefold/cli.py:main()
+# Optional: create a CLI command `sft` that calls simplefold/cli.py:main()
 [project.scripts]
-simplefold = "simplefold.cli:main"
+sft = "simplefold.cli:main"
 
 # Tell hatchling where your packages live when using src layout:
 [tool.hatch.build.targets.wheel]

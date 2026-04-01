@@ -1,0 +1,4732 @@
+[
+  {
+    "name": "5c5sB00",
+    "sequence": "PGHFGVCVDSLTSDKASVPIVLEKLLEHVEMHGLYTEGLYRKSGAANRTRELRQALQTDPAAVKLENFPIHAITGVLKQWLRELPEPLMTFAQYGDFLRAVELPEKQEQLAAIYAVLEHLPEANHNSLERLIFHLVKVALLEDVNRMSPGALAIIFAPCLLRCPDLTSMKDVLKITTCVEMLIKEQMRKYKVKMEEISQLEA",
+    "num_residues": 202,
+    "num_atoms": 1600,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 82.64727722772277,
+        "std_settling_step": 25.00679298824238,
+        "mean_settling_pct": 82.64727722772277,
+        "count": 808,
+        "mean_late_stage_ratio": 0.7560641358966332,
+        "mean_final_velocity": 1.4272006153875942
+      },
+      "sidechain": {
+        "mean_settling_step": 81.77645305514157,
+        "std_settling_step": 25.114238780134674,
+        "mean_settling_pct": 81.77645305514157,
+        "count": 671,
+        "mean_late_stage_ratio": 0.7147565096599388,
+        "mean_final_velocity": 1.4441682152483395
+      },
+      "terminal": {
+        "mean_settling_step": 82.29752066115702,
+        "std_settling_step": 29.782862848838317,
+        "mean_settling_pct": 82.29752066115702,
+        "count": 121,
+        "mean_late_stage_ratio": 0.9100425026436135,
+        "mean_final_velocity": 1.5289915164640127
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 82.34818481848185,
+          "mean_settling_pct": 82.34818481848185,
+          "count": 606
+        },
+        "1": {
+          "mean_settling_step": 82.97474747474747,
+          "mean_settling_pct": 82.97474747474747,
+          "count": 396
+        },
+        "2": {
+          "mean_settling_step": 82.05714285714286,
+          "mean_settling_pct": 82.05714285714286,
+          "count": 210
+        },
+        "3": {
+          "mean_settling_step": 79.9950248756219,
+          "mean_settling_pct": 79.9950248756219,
+          "count": 201
+        },
+        "4": {
+          "mean_settling_step": 82.816,
+          "mean_settling_pct": 82.816,
+          "count": 125
+        },
+        "5": {
+          "mean_settling_step": 82.02777777777777,
+          "mean_settling_pct": 82.02777777777777,
+          "count": 36
+        },
+        "6": {
+          "mean_settling_step": 85.84615384615384,
+          "mean_settling_pct": 85.84615384615384,
+          "count": 26
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 83.0,
+          "mean_settling_pct": 83.0,
+          "count": 202
+        },
+        "CA": {
+          "mean_settling_step": 81.75742574257426,
+          "mean_settling_pct": 81.75742574257426,
+          "count": 202
+        },
+        "CB": {
+          "mean_settling_step": 82.38144329896907,
+          "mean_settling_pct": 82.38144329896907,
+          "count": 194
+        },
+        "CD": {
+          "mean_settling_step": 85.54838709677419,
+          "mean_settling_pct": 85.54838709677419,
+          "count": 62
+        },
+        "CD1": {
+          "mean_settling_step": 75.67307692307692,
+          "mean_settling_pct": 75.67307692307692,
+          "count": 52
+        },
+        "CD2": {
+          "mean_settling_step": 78.18367346938776,
+          "mean_settling_pct": 78.18367346938776,
+          "count": 49
+        },
+        "CE": {
+          "mean_settling_step": 77.2,
+          "mean_settling_pct": 77.2,
+          "count": 20
+        },
+        "CE1": {
+          "mean_settling_step": 88.83333333333333,
+          "mean_settling_pct": 88.83333333333333,
+          "count": 18
+        },
+        "CE2": {
+          "mean_settling_step": 75.41666666666667,
+          "mean_settling_pct": 75.41666666666667,
+          "count": 12
+        },
+        "CE3": {
+          "mean_settling_step": 54.0,
+          "mean_settling_pct": 54.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 82.51538461538462,
+          "mean_settling_pct": 82.51538461538462,
+          "count": 130
+        },
+        "CG1": {
+          "mean_settling_step": 81.4,
+          "mean_settling_pct": 81.4,
+          "count": 25
+        },
+        "CG2": {
+          "mean_settling_step": 76.11764705882354,
+          "mean_settling_pct": 76.11764705882354,
+          "count": 34
+        },
+        "CH2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 86.19047619047619,
+          "mean_settling_pct": 86.19047619047619,
+          "count": 21
+        },
+        "CZ2": {
+          "mean_settling_step": 62.0,
+          "mean_settling_pct": 62.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 78.0,
+          "mean_settling_pct": 78.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 82.2871287128713,
+          "mean_settling_pct": 82.2871287128713,
+          "count": 202
+        },
+        "ND1": {
+          "mean_settling_step": 71.85714285714286,
+          "mean_settling_pct": 71.85714285714286,
+          "count": 7
+        },
+        "ND2": {
+          "mean_settling_step": 81.8,
+          "mean_settling_pct": 81.8,
+          "count": 5
+        },
+        "NE": {
+          "mean_settling_step": 86.5,
+          "mean_settling_pct": 86.5,
+          "count": 10
+        },
+        "NE1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 88.73333333333333,
+          "mean_settling_pct": 88.73333333333333,
+          "count": 15
+        },
+        "NH1": {
+          "mean_settling_step": 80.1,
+          "mean_settling_pct": 80.1,
+          "count": 10
+        },
+        "NH2": {
+          "mean_settling_step": 88.3,
+          "mean_settling_pct": 88.3,
+          "count": 10
+        },
+        "NZ": {
+          "mean_settling_step": 77.15384615384616,
+          "mean_settling_pct": 77.15384615384616,
+          "count": 13
+        },
+        "O": {
+          "mean_settling_step": 83.54455445544555,
+          "mean_settling_pct": 83.54455445544555,
+          "count": 202
+        },
+        "OD1": {
+          "mean_settling_step": 70.41666666666667,
+          "mean_settling_pct": 70.41666666666667,
+          "count": 12
+        },
+        "OD2": {
+          "mean_settling_step": 84.57142857142857,
+          "mean_settling_pct": 84.57142857142857,
+          "count": 7
+        },
+        "OE1": {
+          "mean_settling_step": 79.60714285714286,
+          "mean_settling_pct": 79.60714285714286,
+          "count": 28
+        },
+        "OE2": {
+          "mean_settling_step": 86.3,
+          "mean_settling_pct": 86.3,
+          "count": 20
+        },
+        "OG": {
+          "mean_settling_step": 88.375,
+          "mean_settling_pct": 88.375,
+          "count": 8
+        },
+        "OG1": {
+          "mean_settling_step": 93.66666666666667,
+          "mean_settling_pct": 93.66666666666667,
+          "count": 9
+        },
+        "OH": {
+          "mean_settling_step": 89.8,
+          "mean_settling_pct": 89.8,
+          "count": 5
+        },
+        "SD": {
+          "mean_settling_step": 94.28571428571429,
+          "mean_settling_pct": 94.28571428571429,
+          "count": 7
+        },
+        "SG": {
+          "mean_settling_step": 83.0,
+          "mean_settling_pct": 83.0,
+          "count": 4
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 14.216401769016926,
+      "contrib_at_skip_end": 93.354019226631,
+      "contrib_in_skip_region": 79.13761745761407
+    }
+  },
+  {
+    "name": "2doqD00",
+    "sequence": "PLGSNEEANRFANQAKLRVQEAVFYIWSDKTLKYSQANDEAESFRNTWLLFRSFQQWITLTQTFKEQSRLADQAFLNKFRK",
+    "num_residues": 81,
+    "num_atoms": 688,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 78.48148148148148,
+        "std_settling_step": 20.17645070960974,
+        "mean_settling_pct": 78.48148148148148,
+        "count": 324,
+        "mean_late_stage_ratio": 0.6598038670536275,
+        "mean_final_velocity": 1.4677426923112369
+      },
+      "sidechain": {
+        "mean_settling_step": 80.29900332225914,
+        "std_settling_step": 18.129937952718542,
+        "mean_settling_pct": 80.29900332225914,
+        "count": 301,
+        "mean_late_stage_ratio": 0.6232929233028697,
+        "mean_final_velocity": 1.4092987972339523
+      },
+      "terminal": {
+        "mean_settling_step": 83.96825396825396,
+        "std_settling_step": 17.343374613468942,
+        "mean_settling_pct": 83.96825396825396,
+        "count": 63,
+        "mean_late_stage_ratio": 0.6503447491201119,
+        "mean_final_velocity": 1.4989448908775571
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 78.41975308641975,
+          "mean_settling_pct": 78.41975308641975,
+          "count": 243
+        },
+        "1": {
+          "mean_settling_step": 79.75776397515529,
+          "mean_settling_pct": 79.75776397515529,
+          "count": 161
+        },
+        "2": {
+          "mean_settling_step": 81.01234567901234,
+          "mean_settling_pct": 81.01234567901234,
+          "count": 81
+        },
+        "3": {
+          "mean_settling_step": 80.15730337078652,
+          "mean_settling_pct": 80.15730337078652,
+          "count": 89
+        },
+        "4": {
+          "mean_settling_step": 82.21739130434783,
+          "mean_settling_pct": 82.21739130434783,
+          "count": 69
+        },
+        "5": {
+          "mean_settling_step": 81.17857142857143,
+          "mean_settling_pct": 81.17857142857143,
+          "count": 28
+        },
+        "6": {
+          "mean_settling_step": 79.3529411764706,
+          "mean_settling_pct": 79.3529411764706,
+          "count": 17
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 76.72839506172839,
+          "mean_settling_pct": 76.72839506172839,
+          "count": 81
+        },
+        "CA": {
+          "mean_settling_step": 79.4074074074074,
+          "mean_settling_pct": 79.4074074074074,
+          "count": 81
+        },
+        "CB": {
+          "mean_settling_step": 80.8625,
+          "mean_settling_pct": 80.8625,
+          "count": 80
+        },
+        "CD": {
+          "mean_settling_step": 78.48148148148148,
+          "mean_settling_pct": 78.48148148148148,
+          "count": 27
+        },
+        "CD1": {
+          "mean_settling_step": 73.17391304347827,
+          "mean_settling_pct": 73.17391304347827,
+          "count": 23
+        },
+        "CD2": {
+          "mean_settling_step": 82.76190476190476,
+          "mean_settling_pct": 82.76190476190476,
+          "count": 21
+        },
+        "CE": {
+          "mean_settling_step": 77.83333333333333,
+          "mean_settling_pct": 77.83333333333333,
+          "count": 6
+        },
+        "CE1": {
+          "mean_settling_step": 80.3,
+          "mean_settling_pct": 80.3,
+          "count": 10
+        },
+        "CE2": {
+          "mean_settling_step": 86.92307692307692,
+          "mean_settling_pct": 86.92307692307692,
+          "count": 13
+        },
+        "CE3": {
+          "mean_settling_step": 66.66666666666667,
+          "mean_settling_pct": 66.66666666666667,
+          "count": 3
+        },
+        "CG": {
+          "mean_settling_step": 82.87719298245614,
+          "mean_settling_pct": 82.87719298245614,
+          "count": 57
+        },
+        "CG1": {
+          "mean_settling_step": 79.0,
+          "mean_settling_pct": 79.0,
+          "count": 4
+        },
+        "CG2": {
+          "mean_settling_step": 74.88888888888889,
+          "mean_settling_pct": 74.88888888888889,
+          "count": 9
+        },
+        "CH2": {
+          "mean_settling_step": 68.66666666666667,
+          "mean_settling_pct": 68.66666666666667,
+          "count": 3
+        },
+        "CZ": {
+          "mean_settling_step": 79.9375,
+          "mean_settling_pct": 79.9375,
+          "count": 16
+        },
+        "CZ2": {
+          "mean_settling_step": 77.33333333333333,
+          "mean_settling_pct": 77.33333333333333,
+          "count": 3
+        },
+        "CZ3": {
+          "mean_settling_step": 89.33333333333333,
+          "mean_settling_pct": 89.33333333333333,
+          "count": 3
+        },
+        "N": {
+          "mean_settling_step": 79.12345679012346,
+          "mean_settling_pct": 79.12345679012346,
+          "count": 81
+        },
+        "ND2": {
+          "mean_settling_step": 83.83333333333333,
+          "mean_settling_pct": 83.83333333333333,
+          "count": 6
+        },
+        "NE": {
+          "mean_settling_step": 81.5,
+          "mean_settling_pct": 81.5,
+          "count": 6
+        },
+        "NE1": {
+          "mean_settling_step": 76.0,
+          "mean_settling_pct": 76.0,
+          "count": 3
+        },
+        "NE2": {
+          "mean_settling_step": 89.125,
+          "mean_settling_pct": 89.125,
+          "count": 8
+        },
+        "NH1": {
+          "mean_settling_step": 89.66666666666667,
+          "mean_settling_pct": 89.66666666666667,
+          "count": 6
+        },
+        "NH2": {
+          "mean_settling_step": 82.5,
+          "mean_settling_pct": 82.5,
+          "count": 6
+        },
+        "NZ": {
+          "mean_settling_step": 82.33333333333333,
+          "mean_settling_pct": 82.33333333333333,
+          "count": 6
+        },
+        "O": {
+          "mean_settling_step": 78.66666666666667,
+          "mean_settling_pct": 78.66666666666667,
+          "count": 81
+        },
+        "OD1": {
+          "mean_settling_step": 95.11111111111111,
+          "mean_settling_pct": 95.11111111111111,
+          "count": 9
+        },
+        "OD2": {
+          "mean_settling_step": 78.33333333333333,
+          "mean_settling_pct": 78.33333333333333,
+          "count": 3
+        },
+        "OE1": {
+          "mean_settling_step": 81.21428571428571,
+          "mean_settling_pct": 81.21428571428571,
+          "count": 14
+        },
+        "OE2": {
+          "mean_settling_step": 84.33333333333333,
+          "mean_settling_pct": 84.33333333333333,
+          "count": 6
+        },
+        "OG": {
+          "mean_settling_step": 84.5,
+          "mean_settling_pct": 84.5,
+          "count": 6
+        },
+        "OG1": {
+          "mean_settling_step": 68.2,
+          "mean_settling_pct": 68.2,
+          "count": 5
+        },
+        "OH": {
+          "mean_settling_step": 55.0,
+          "mean_settling_pct": 55.00000000000001,
+          "count": 2
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.032752133471188,
+      "contrib_at_skip_end": 94.2867263736315,
+      "contrib_in_skip_region": 79.2539742401603
+    }
+  },
+  {
+    "name": "1uunA02",
+    "sequence": "WSLGVGINFSYTTPNILIDDGDITRPPFGLNSVITPNLFPGVSISADLGNGP",
+    "num_residues": 52,
+    "num_atoms": 384,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 74.1201923076923,
+        "std_settling_step": 19.010876845231422,
+        "mean_settling_pct": 74.1201923076923,
+        "count": 208,
+        "mean_late_stage_ratio": 0.590360244974226,
+        "mean_final_velocity": 1.2104504632118802
+      },
+      "sidechain": {
+        "mean_settling_step": 78.11320754716981,
+        "std_settling_step": 19.2771840671997,
+        "mean_settling_pct": 78.11320754716981,
+        "count": 159,
+        "mean_late_stage_ratio": 0.6095784110722453,
+        "mean_final_velocity": 1.1922215856846023
+      },
+      "terminal": {
+        "mean_settling_step": 80.6470588235294,
+        "std_settling_step": 25.40250375911465,
+        "mean_settling_pct": 80.6470588235294,
+        "count": 17,
+        "mean_late_stage_ratio": 0.7881999994520293,
+        "mean_final_velocity": 1.176566621836494
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 73.58333333333333,
+          "mean_settling_pct": 73.58333333333333,
+          "count": 156
+        },
+        "1": {
+          "mean_settling_step": 77.55670103092784,
+          "mean_settling_pct": 77.55670103092784,
+          "count": 97
+        },
+        "2": {
+          "mean_settling_step": 77.73684210526316,
+          "mean_settling_pct": 77.73684210526316,
+          "count": 57
+        },
+        "3": {
+          "mean_settling_step": 77.92156862745098,
+          "mean_settling_pct": 77.92156862745098,
+          "count": 51
+        },
+        "4": {
+          "mean_settling_step": 79.91666666666667,
+          "mean_settling_pct": 79.91666666666667,
+          "count": 12
+        },
+        "5": {
+          "mean_settling_step": 79.28571428571429,
+          "mean_settling_pct": 79.28571428571429,
+          "count": 7
+        },
+        "6": {
+          "mean_settling_step": 71.75,
+          "mean_settling_pct": 71.75,
+          "count": 4
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 73.5,
+          "mean_settling_pct": 73.5,
+          "count": 52
+        },
+        "CA": {
+          "mean_settling_step": 72.86538461538461,
+          "mean_settling_pct": 72.86538461538461,
+          "count": 52
+        },
+        "CB": {
+          "mean_settling_step": 79.66666666666667,
+          "mean_settling_pct": 79.66666666666667,
+          "count": 45
+        },
+        "CD": {
+          "mean_settling_step": 84.57142857142857,
+          "mean_settling_pct": 84.57142857142857,
+          "count": 7
+        },
+        "CD1": {
+          "mean_settling_step": 70.125,
+          "mean_settling_pct": 70.125,
+          "count": 16
+        },
+        "CD2": {
+          "mean_settling_step": 76.5,
+          "mean_settling_pct": 76.5,
+          "count": 10
+        },
+        "CE1": {
+          "mean_settling_step": 88.75,
+          "mean_settling_pct": 88.75,
+          "count": 4
+        },
+        "CE2": {
+          "mean_settling_step": 72.4,
+          "mean_settling_pct": 72.4,
+          "count": 5
+        },
+        "CE3": {
+          "mean_settling_step": 77.0,
+          "mean_settling_pct": 77.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 84.11538461538461,
+          "mean_settling_pct": 84.11538461538461,
+          "count": 26
+        },
+        "CG1": {
+          "mean_settling_step": 67.33333333333333,
+          "mean_settling_pct": 67.33333333333333,
+          "count": 9
+        },
+        "CG2": {
+          "mean_settling_step": 71.23076923076923,
+          "mean_settling_pct": 71.23076923076923,
+          "count": 13
+        },
+        "CH2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 78.8,
+          "mean_settling_pct": 78.8,
+          "count": 5
+        },
+        "CZ2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 62.0,
+          "mean_settling_pct": 62.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 74.38461538461539,
+          "mean_settling_pct": 74.38461538461539,
+          "count": 52
+        },
+        "ND2": {
+          "mean_settling_step": 82.2,
+          "mean_settling_pct": 82.2,
+          "count": 5
+        },
+        "NE": {
+          "mean_settling_step": 66.0,
+          "mean_settling_pct": 66.0,
+          "count": 1
+        },
+        "NE1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "NH1": {
+          "mean_settling_step": 0.0,
+          "mean_settling_pct": 0.0,
+          "count": 1
+        },
+        "NH2": {
+          "mean_settling_step": 89.0,
+          "mean_settling_pct": 89.0,
+          "count": 1
+        },
+        "O": {
+          "mean_settling_step": 75.73076923076923,
+          "mean_settling_pct": 75.73076923076923,
+          "count": 52
+        },
+        "OD1": {
+          "mean_settling_step": 86.0,
+          "mean_settling_pct": 86.0,
+          "count": 9
+        },
+        "OD2": {
+          "mean_settling_step": 77.5,
+          "mean_settling_pct": 77.5,
+          "count": 4
+        },
+        "OG": {
+          "mean_settling_step": 77.2,
+          "mean_settling_pct": 77.2,
+          "count": 5
+        },
+        "OG1": {
+          "mean_settling_step": 81.5,
+          "mean_settling_pct": 81.5,
+          "count": 4
+        },
+        "OH": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 16.077110160426535,
+      "contrib_at_skip_end": 93.90642053367074,
+      "contrib_in_skip_region": 77.8293103732442
+    }
+  },
+  {
+    "name": "3f3fD01",
+    "sequence": "SGAILVPMTVNDQPIEKNGDKMPLKFKLGPLSYQNMAFITAKDKYKLYPVR",
+    "num_residues": 51,
+    "num_atoms": 404,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 73.61764705882354,
+        "std_settling_step": 18.830536379668555,
+        "mean_settling_pct": 73.61764705882354,
+        "count": 204,
+        "mean_late_stage_ratio": 0.5950771055273624,
+        "mean_final_velocity": 1.1345575219568085
+      },
+      "sidechain": {
+        "mean_settling_step": 73.16763005780346,
+        "std_settling_step": 22.79084832154661,
+        "mean_settling_pct": 73.16763005780346,
+        "count": 173,
+        "mean_late_stage_ratio": 0.6503370002158254,
+        "mean_final_velocity": 1.1323122342542418
+      },
+      "terminal": {
+        "mean_settling_step": 79.44444444444444,
+        "std_settling_step": 19.393265981574604,
+        "mean_settling_pct": 79.44444444444444,
+        "count": 27,
+        "mean_late_stage_ratio": 0.6934811869371686,
+        "mean_final_velocity": 1.2212244779975325
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 73.2156862745098,
+          "mean_settling_pct": 73.2156862745098,
+          "count": 153
+        },
+        "1": {
+          "mean_settling_step": 73.97979797979798,
+          "mean_settling_pct": 73.97979797979798,
+          "count": 99
+        },
+        "2": {
+          "mean_settling_step": 70.37735849056604,
+          "mean_settling_pct": 70.37735849056604,
+          "count": 53
+        },
+        "3": {
+          "mean_settling_step": 73.22222222222223,
+          "mean_settling_pct": 73.22222222222223,
+          "count": 54
+        },
+        "4": {
+          "mean_settling_step": 79.88888888888889,
+          "mean_settling_pct": 79.88888888888889,
+          "count": 27
+        },
+        "5": {
+          "mean_settling_step": 79.0,
+          "mean_settling_pct": 79.0,
+          "count": 13
+        },
+        "6": {
+          "mean_settling_step": 85.4,
+          "mean_settling_pct": 85.4,
+          "count": 5
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 72.62745098039215,
+          "mean_settling_pct": 72.62745098039215,
+          "count": 51
+        },
+        "CA": {
+          "mean_settling_step": 73.23529411764706,
+          "mean_settling_pct": 73.23529411764706,
+          "count": 51
+        },
+        "CB": {
+          "mean_settling_step": 73.08333333333333,
+          "mean_settling_pct": 73.08333333333333,
+          "count": 48
+        },
+        "CD": {
+          "mean_settling_step": 70.5,
+          "mean_settling_pct": 70.5,
+          "count": 16
+        },
+        "CD1": {
+          "mean_settling_step": 73.76923076923077,
+          "mean_settling_pct": 73.76923076923077,
+          "count": 13
+        },
+        "CD2": {
+          "mean_settling_step": 70.8,
+          "mean_settling_pct": 70.8,
+          "count": 10
+        },
+        "CE": {
+          "mean_settling_step": 83.4,
+          "mean_settling_pct": 83.4,
+          "count": 10
+        },
+        "CE1": {
+          "mean_settling_step": 72.0,
+          "mean_settling_pct": 72.0,
+          "count": 5
+        },
+        "CE2": {
+          "mean_settling_step": 73.8,
+          "mean_settling_pct": 73.8,
+          "count": 5
+        },
+        "CG": {
+          "mean_settling_step": 68.74285714285715,
+          "mean_settling_pct": 68.74285714285715,
+          "count": 35
+        },
+        "CG1": {
+          "mean_settling_step": 64.83333333333333,
+          "mean_settling_pct": 64.83333333333333,
+          "count": 6
+        },
+        "CG2": {
+          "mean_settling_step": 77.625,
+          "mean_settling_pct": 77.625,
+          "count": 8
+        },
+        "CZ": {
+          "mean_settling_step": 83.33333333333333,
+          "mean_settling_pct": 83.33333333333333,
+          "count": 6
+        },
+        "N": {
+          "mean_settling_step": 73.7843137254902,
+          "mean_settling_pct": 73.7843137254902,
+          "count": 51
+        },
+        "ND2": {
+          "mean_settling_step": 79.66666666666667,
+          "mean_settling_pct": 79.66666666666667,
+          "count": 3
+        },
+        "NE": {
+          "mean_settling_step": 88.0,
+          "mean_settling_pct": 88.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 76.5,
+          "mean_settling_pct": 76.5,
+          "count": 2
+        },
+        "NH1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "NH2": {
+          "mean_settling_step": 53.0,
+          "mean_settling_pct": 53.0,
+          "count": 1
+        },
+        "NZ": {
+          "mean_settling_step": 75.28571428571429,
+          "mean_settling_pct": 75.28571428571429,
+          "count": 7
+        },
+        "O": {
+          "mean_settling_step": 74.82352941176471,
+          "mean_settling_pct": 74.82352941176471,
+          "count": 51
+        },
+        "OD1": {
+          "mean_settling_step": 74.33333333333333,
+          "mean_settling_pct": 74.33333333333333,
+          "count": 6
+        },
+        "OD2": {
+          "mean_settling_step": 79.66666666666667,
+          "mean_settling_pct": 79.66666666666667,
+          "count": 3
+        },
+        "OE1": {
+          "mean_settling_step": 84.66666666666667,
+          "mean_settling_pct": 84.66666666666667,
+          "count": 3
+        },
+        "OE2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "OG": {
+          "mean_settling_step": 80.5,
+          "mean_settling_pct": 80.5,
+          "count": 2
+        },
+        "OG1": {
+          "mean_settling_step": 76.5,
+          "mean_settling_pct": 76.5,
+          "count": 2
+        },
+        "OH": {
+          "mean_settling_step": 91.66666666666667,
+          "mean_settling_pct": 91.66666666666667,
+          "count": 3
+        },
+        "SD": {
+          "mean_settling_step": 78.33333333333333,
+          "mean_settling_pct": 78.33333333333333,
+          "count": 3
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.828165285921663,
+      "contrib_at_skip_end": 93.97553929269213,
+      "contrib_in_skip_region": 78.14737400677046
+    }
+  },
+  {
+    "name": "3fvcA02",
+    "sequence": "ELSSHGDLFRFSSDIQCPSFKSLGTLNNPATVQIQFAYDSLRRQINRMLGDLARAWCLEQKRQNMVLRELTKINPTTVMSSIYGKAVAAKRLGDVISVSQ",
+    "num_residues": 100,
+    "num_atoms": 786,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 75.545,
+        "std_settling_step": 20.185464448458944,
+        "mean_settling_pct": 75.545,
+        "count": 400,
+        "mean_late_stage_ratio": 0.6592302925823765,
+        "mean_final_velocity": 1.273736171927303
+      },
+      "sidechain": {
+        "mean_settling_step": 74.35889570552148,
+        "std_settling_step": 20.190428486327754,
+        "mean_settling_pct": 74.35889570552148,
+        "count": 326,
+        "mean_late_stage_ratio": 0.6694735231968921,
+        "mean_final_velocity": 1.2446708944311902
+      },
+      "terminal": {
+        "mean_settling_step": 70.31666666666666,
+        "std_settling_step": 22.177685231381165,
+        "mean_settling_pct": 70.31666666666666,
+        "count": 60,
+        "mean_late_stage_ratio": 0.7964413366962303,
+        "mean_final_velocity": 1.3242649472008148
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 76.35333333333334,
+          "mean_settling_pct": 76.35333333333334,
+          "count": 300
+        },
+        "1": {
+          "mean_settling_step": 73.07692307692308,
+          "mean_settling_pct": 73.07692307692308,
+          "count": 195
+        },
+        "2": {
+          "mean_settling_step": 75.94285714285714,
+          "mean_settling_pct": 75.94285714285714,
+          "count": 105
+        },
+        "3": {
+          "mean_settling_step": 73.53763440860214,
+          "mean_settling_pct": 73.53763440860214,
+          "count": 93
+        },
+        "4": {
+          "mean_settling_step": 73.69811320754717,
+          "mean_settling_pct": 73.69811320754717,
+          "count": 53
+        },
+        "5": {
+          "mean_settling_step": 69.47619047619048,
+          "mean_settling_pct": 69.47619047619048,
+          "count": 21
+        },
+        "6": {
+          "mean_settling_step": 70.73684210526316,
+          "mean_settling_pct": 70.73684210526316,
+          "count": 19
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 77.59,
+          "mean_settling_pct": 77.59,
+          "count": 100
+        },
+        "CA": {
+          "mean_settling_step": 74.72,
+          "mean_settling_pct": 74.72,
+          "count": 100
+        },
+        "CB": {
+          "mean_settling_step": 73.03157894736842,
+          "mean_settling_pct": 73.03157894736842,
+          "count": 95
+        },
+        "CD": {
+          "mean_settling_step": 73.61538461538461,
+          "mean_settling_pct": 73.61538461538461,
+          "count": 26
+        },
+        "CD1": {
+          "mean_settling_step": 72.04166666666667,
+          "mean_settling_pct": 72.04166666666667,
+          "count": 24
+        },
+        "CD2": {
+          "mean_settling_step": 74.10526315789474,
+          "mean_settling_pct": 74.10526315789474,
+          "count": 19
+        },
+        "CE": {
+          "mean_settling_step": 79.375,
+          "mean_settling_pct": 79.375,
+          "count": 8
+        },
+        "CE1": {
+          "mean_settling_step": 81.14285714285714,
+          "mean_settling_pct": 81.14285714285714,
+          "count": 7
+        },
+        "CE2": {
+          "mean_settling_step": 72.14285714285714,
+          "mean_settling_pct": 72.14285714285714,
+          "count": 7
+        },
+        "CE3": {
+          "mean_settling_step": 81.0,
+          "mean_settling_pct": 81.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 77.36206896551724,
+          "mean_settling_pct": 77.36206896551724,
+          "count": 58
+        },
+        "CG1": {
+          "mean_settling_step": 67.58333333333333,
+          "mean_settling_pct": 67.58333333333333,
+          "count": 12
+        },
+        "CG2": {
+          "mean_settling_step": 75.41176470588235,
+          "mean_settling_pct": 75.41176470588235,
+          "count": 17
+        },
+        "CH2": {
+          "mean_settling_step": 78.0,
+          "mean_settling_pct": 78.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 68.5,
+          "mean_settling_pct": 68.5,
+          "count": 14
+        },
+        "CZ2": {
+          "mean_settling_step": 49.0,
+          "mean_settling_pct": 49.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 76.75,
+          "mean_settling_pct": 76.75,
+          "count": 100
+        },
+        "ND1": {
+          "mean_settling_step": 83.0,
+          "mean_settling_pct": 83.0,
+          "count": 1
+        },
+        "ND2": {
+          "mean_settling_step": 75.2,
+          "mean_settling_pct": 75.2,
+          "count": 5
+        },
+        "NE": {
+          "mean_settling_step": 74.375,
+          "mean_settling_pct": 74.375,
+          "count": 8
+        },
+        "NE1": {
+          "mean_settling_step": 62.0,
+          "mean_settling_pct": 62.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 73.25,
+          "mean_settling_pct": 73.25,
+          "count": 8
+        },
+        "NH1": {
+          "mean_settling_step": 66.625,
+          "mean_settling_pct": 66.625,
+          "count": 8
+        },
+        "NH2": {
+          "mean_settling_step": 74.5,
+          "mean_settling_pct": 74.5,
+          "count": 8
+        },
+        "NZ": {
+          "mean_settling_step": 70.4,
+          "mean_settling_pct": 70.4,
+          "count": 5
+        },
+        "O": {
+          "mean_settling_step": 73.12,
+          "mean_settling_pct": 73.12,
+          "count": 100
+        },
+        "OD1": {
+          "mean_settling_step": 73.3,
+          "mean_settling_pct": 73.3,
+          "count": 10
+        },
+        "OD2": {
+          "mean_settling_step": 66.0,
+          "mean_settling_pct": 66.0,
+          "count": 5
+        },
+        "OE1": {
+          "mean_settling_step": 72.0,
+          "mean_settling_pct": 72.0,
+          "count": 10
+        },
+        "OE2": {
+          "mean_settling_step": 51.333333333333336,
+          "mean_settling_pct": 51.33333333333333,
+          "count": 3
+        },
+        "OG": {
+          "mean_settling_step": 79.81818181818181,
+          "mean_settling_pct": 79.81818181818181,
+          "count": 11
+        },
+        "OG1": {
+          "mean_settling_step": 78.8,
+          "mean_settling_pct": 78.8,
+          "count": 5
+        },
+        "OH": {
+          "mean_settling_step": 68.5,
+          "mean_settling_pct": 68.5,
+          "count": 2
+        },
+        "SD": {
+          "mean_settling_step": 88.66666666666667,
+          "mean_settling_pct": 88.66666666666667,
+          "count": 3
+        },
+        "SG": {
+          "mean_settling_step": 61.0,
+          "mean_settling_pct": 61.0,
+          "count": 2
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.443621456283566,
+      "contrib_at_skip_end": 93.61959099598852,
+      "contrib_in_skip_region": 78.17596953970495
+    }
+  },
+  {
+    "name": "2jn0A00",
+    "sequence": "DYVMATKDGRMILTDGKPEIDDDTGLVSYHDQQGNAMQINRDDVSQIIER",
+    "num_residues": 50,
+    "num_atoms": 394,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 76.435,
+        "std_settling_step": 19.738433955103936,
+        "mean_settling_pct": 76.435,
+        "count": 200,
+        "mean_late_stage_ratio": 0.5876871369715496,
+        "mean_final_velocity": 1.1894852254539727
+      },
+      "sidechain": {
+        "mean_settling_step": 75.7748344370861,
+        "std_settling_step": 20.191524084133388,
+        "mean_settling_pct": 75.7748344370861,
+        "count": 151,
+        "mean_late_stage_ratio": 0.6006684720108019,
+        "mean_final_velocity": 1.207219223214301
+      },
+      "terminal": {
+        "mean_settling_step": 78.23255813953489,
+        "std_settling_step": 24.407239880252767,
+        "mean_settling_pct": 78.23255813953489,
+        "count": 43,
+        "mean_late_stage_ratio": 0.8530839163676485,
+        "mean_final_velocity": 1.1128407318231672
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 76.94666666666667,
+          "mean_settling_pct": 76.94666666666667,
+          "count": 150
+        },
+        "1": {
+          "mean_settling_step": 76.92708333333333,
+          "mean_settling_pct": 76.92708333333333,
+          "count": 96
+        },
+        "2": {
+          "mean_settling_step": 73.03636363636363,
+          "mean_settling_pct": 73.03636363636363,
+          "count": 55
+        },
+        "3": {
+          "mean_settling_step": 76.1923076923077,
+          "mean_settling_pct": 76.1923076923077,
+          "count": 52
+        },
+        "4": {
+          "mean_settling_step": 76.8076923076923,
+          "mean_settling_pct": 76.8076923076923,
+          "count": 26
+        },
+        "5": {
+          "mean_settling_step": 77.28571428571429,
+          "mean_settling_pct": 77.28571428571429,
+          "count": 7
+        },
+        "6": {
+          "mean_settling_step": 81.125,
+          "mean_settling_pct": 81.125,
+          "count": 8
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 78.26,
+          "mean_settling_pct": 78.26,
+          "count": 50
+        },
+        "CA": {
+          "mean_settling_step": 80.2,
+          "mean_settling_pct": 80.2,
+          "count": 50
+        },
+        "CB": {
+          "mean_settling_step": 79.1304347826087,
+          "mean_settling_pct": 79.1304347826087,
+          "count": 46
+        },
+        "CD": {
+          "mean_settling_step": 77.58333333333333,
+          "mean_settling_pct": 77.58333333333333,
+          "count": 12
+        },
+        "CD1": {
+          "mean_settling_step": 78.11111111111111,
+          "mean_settling_pct": 78.11111111111111,
+          "count": 9
+        },
+        "CD2": {
+          "mean_settling_step": 55.4,
+          "mean_settling_pct": 55.39999999999999,
+          "count": 5
+        },
+        "CE": {
+          "mean_settling_step": 70.0,
+          "mean_settling_pct": 70.0,
+          "count": 5
+        },
+        "CE1": {
+          "mean_settling_step": 89.66666666666667,
+          "mean_settling_pct": 89.66666666666667,
+          "count": 3
+        },
+        "CE2": {
+          "mean_settling_step": 93.0,
+          "mean_settling_pct": 93.0,
+          "count": 2
+        },
+        "CG": {
+          "mean_settling_step": 73.87096774193549,
+          "mean_settling_pct": 73.87096774193549,
+          "count": 31
+        },
+        "CG1": {
+          "mean_settling_step": 67.5,
+          "mean_settling_pct": 67.5,
+          "count": 8
+        },
+        "CG2": {
+          "mean_settling_step": 79.45454545454545,
+          "mean_settling_pct": 79.45454545454545,
+          "count": 11
+        },
+        "CZ": {
+          "mean_settling_step": 68.6,
+          "mean_settling_pct": 68.6,
+          "count": 5
+        },
+        "N": {
+          "mean_settling_step": 72.38,
+          "mean_settling_pct": 72.38,
+          "count": 50
+        },
+        "ND1": {
+          "mean_settling_step": 74.0,
+          "mean_settling_pct": 74.0,
+          "count": 1
+        },
+        "ND2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "NE": {
+          "mean_settling_step": 86.33333333333333,
+          "mean_settling_pct": 86.33333333333333,
+          "count": 3
+        },
+        "NE2": {
+          "mean_settling_step": 80.0,
+          "mean_settling_pct": 80.0,
+          "count": 5
+        },
+        "NH1": {
+          "mean_settling_step": 80.33333333333333,
+          "mean_settling_pct": 80.33333333333333,
+          "count": 3
+        },
+        "NH2": {
+          "mean_settling_step": 72.66666666666667,
+          "mean_settling_pct": 72.66666666666667,
+          "count": 3
+        },
+        "NZ": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "O": {
+          "mean_settling_step": 74.9,
+          "mean_settling_pct": 74.9,
+          "count": 50
+        },
+        "OD1": {
+          "mean_settling_step": 88.45454545454545,
+          "mean_settling_pct": 88.45454545454545,
+          "count": 11
+        },
+        "OD2": {
+          "mean_settling_step": 67.88888888888889,
+          "mean_settling_pct": 67.88888888888889,
+          "count": 9
+        },
+        "OE1": {
+          "mean_settling_step": 75.0,
+          "mean_settling_pct": 75.0,
+          "count": 6
+        },
+        "OE2": {
+          "mean_settling_step": 41.5,
+          "mean_settling_pct": 41.5,
+          "count": 2
+        },
+        "OG": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "OG1": {
+          "mean_settling_step": 38.333333333333336,
+          "mean_settling_pct": 38.333333333333336,
+          "count": 3
+        },
+        "OH": {
+          "mean_settling_step": 95.0,
+          "mean_settling_pct": 95.0,
+          "count": 2
+        },
+        "SD": {
+          "mean_settling_step": 65.0,
+          "mean_settling_pct": 65.0,
+          "count": 3
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.670716945991146,
+      "contrib_at_skip_end": 94.10807172162613,
+      "contrib_in_skip_region": 78.43735477563499
+    }
+  },
+  {
+    "name": "2efkA01",
+    "sequence": "GQFEVLERHTQWGLDLLDRYVKFVKERTEVEQAYAKQLRSLVKKYLPKESKFSQQQSFVQILQEVNDFAGQRELVAENLSVRVCLELTKYSQEKQERKHFQEGRRAQQQLENGFKQLENSKRKFERDCREAEKAAQTAERLDQDINATKADVEKAKQQAHLRSHAEESKNEYAAQLQRFNRDQAHFYFSQPQIFDKLQDDERRATRLGAGYGLLSEAELEVVPIIAKCLEGKVAANAVDPKNDSHVLIELHKSGFA",
+    "num_residues": 256,
+    "num_atoms": 2098,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 92.9091796875,
+        "std_settling_step": 16.76178904482864,
+        "mean_settling_pct": 92.9091796875,
+        "count": 1024,
+        "mean_late_stage_ratio": 0.9278812581165853,
+        "mean_final_velocity": 2.477859404476476
+      },
+      "sidechain": {
+        "mean_settling_step": 92.84253819036428,
+        "std_settling_step": 16.323582391397103,
+        "mean_settling_pct": 92.84253819036428,
+        "count": 851,
+        "mean_late_stage_ratio": 0.9150712884018126,
+        "mean_final_velocity": 2.4375668872852585
+      },
+      "terminal": {
+        "mean_settling_step": 93.00448430493273,
+        "std_settling_step": 17.010811059308534,
+        "mean_settling_pct": 93.00448430493273,
+        "count": 223,
+        "mean_late_stage_ratio": 0.9133447527872642,
+        "mean_final_velocity": 2.3710151493816634
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 93.03515625,
+          "mean_settling_pct": 93.03515625,
+          "count": 768
+        },
+        "1": {
+          "mean_settling_step": 93.2390438247012,
+          "mean_settling_pct": 93.2390438247012,
+          "count": 502
+        },
+        "2": {
+          "mean_settling_step": 93.80321285140562,
+          "mean_settling_pct": 93.80321285140562,
+          "count": 249
+        },
+        "3": {
+          "mean_settling_step": 91.73643410852713,
+          "mean_settling_pct": 91.73643410852713,
+          "count": 258
+        },
+        "4": {
+          "mean_settling_step": 92.41232227488152,
+          "mean_settling_pct": 92.41232227488152,
+          "count": 211
+        },
+        "5": {
+          "mean_settling_step": 91.4375,
+          "mean_settling_pct": 91.4375,
+          "count": 64
+        },
+        "6": {
+          "mean_settling_step": 92.5,
+          "mean_settling_pct": 92.5,
+          "count": 46
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 93.7578125,
+          "mean_settling_pct": 93.7578125,
+          "count": 256
+        },
+        "CA": {
+          "mean_settling_step": 92.91796875,
+          "mean_settling_pct": 92.91796875,
+          "count": 256
+        },
+        "CB": {
+          "mean_settling_step": 93.97560975609755,
+          "mean_settling_pct": 93.97560975609755,
+          "count": 246
+        },
+        "CD": {
+          "mean_settling_step": 92.41176470588235,
+          "mean_settling_pct": 92.41176470588235,
+          "count": 102
+        },
+        "CD1": {
+          "mean_settling_step": 91.84615384615384,
+          "mean_settling_pct": 91.84615384615384,
+          "count": 52
+        },
+        "CD2": {
+          "mean_settling_step": 89.13207547169812,
+          "mean_settling_pct": 89.13207547169812,
+          "count": 53
+        },
+        "CE": {
+          "mean_settling_step": 96.3913043478261,
+          "mean_settling_pct": 96.3913043478261,
+          "count": 23
+        },
+        "CE1": {
+          "mean_settling_step": 89.4074074074074,
+          "mean_settling_pct": 89.4074074074074,
+          "count": 27
+        },
+        "CE2": {
+          "mean_settling_step": 89.33333333333333,
+          "mean_settling_pct": 89.33333333333333,
+          "count": 21
+        },
+        "CE3": {
+          "mean_settling_step": 66.0,
+          "mean_settling_pct": 66.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 93.36158192090396,
+          "mean_settling_pct": 93.36158192090396,
+          "count": 177
+        },
+        "CG1": {
+          "mean_settling_step": 98.81818181818181,
+          "mean_settling_pct": 98.81818181818181,
+          "count": 22
+        },
+        "CG2": {
+          "mean_settling_step": 93.17857142857143,
+          "mean_settling_pct": 93.17857142857143,
+          "count": 28
+        },
+        "CH2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 90.6923076923077,
+          "mean_settling_pct": 90.6923076923077,
+          "count": 39
+        },
+        "CZ2": {
+          "mean_settling_step": 52.0,
+          "mean_settling_pct": 52.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 92.4296875,
+          "mean_settling_pct": 92.4296875,
+          "count": 256
+        },
+        "ND1": {
+          "mean_settling_step": 92.71428571428571,
+          "mean_settling_pct": 92.71428571428571,
+          "count": 7
+        },
+        "ND2": {
+          "mean_settling_step": 98.88888888888889,
+          "mean_settling_pct": 98.88888888888889,
+          "count": 9
+        },
+        "NE": {
+          "mean_settling_step": 89.94736842105263,
+          "mean_settling_pct": 89.94736842105263,
+          "count": 19
+        },
+        "NE1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 84.88235294117646,
+          "mean_settling_pct": 84.88235294117646,
+          "count": 34
+        },
+        "NH1": {
+          "mean_settling_step": 94.63157894736842,
+          "mean_settling_pct": 94.63157894736842,
+          "count": 19
+        },
+        "NH2": {
+          "mean_settling_step": 87.73684210526316,
+          "mean_settling_pct": 87.73684210526316,
+          "count": 19
+        },
+        "NZ": {
+          "mean_settling_step": 94.08695652173913,
+          "mean_settling_pct": 94.08695652173913,
+          "count": 23
+        },
+        "O": {
+          "mean_settling_step": 92.53125,
+          "mean_settling_pct": 92.53125,
+          "count": 256
+        },
+        "OD1": {
+          "mean_settling_step": 92.22727272727273,
+          "mean_settling_pct": 92.22727272727273,
+          "count": 22
+        },
+        "OD2": {
+          "mean_settling_step": 90.3076923076923,
+          "mean_settling_pct": 90.3076923076923,
+          "count": 13
+        },
+        "OE1": {
+          "mean_settling_step": 96.71428571428571,
+          "mean_settling_pct": 96.71428571428571,
+          "count": 56
+        },
+        "OE2": {
+          "mean_settling_step": 97.10344827586206,
+          "mean_settling_pct": 97.10344827586206,
+          "count": 29
+        },
+        "OG": {
+          "mean_settling_step": 94.0,
+          "mean_settling_pct": 94.0,
+          "count": 13
+        },
+        "OG1": {
+          "mean_settling_step": 88.33333333333333,
+          "mean_settling_pct": 88.33333333333333,
+          "count": 6
+        },
+        "OH": {
+          "mean_settling_step": 98.71428571428571,
+          "mean_settling_pct": 98.71428571428571,
+          "count": 7
+        },
+        "SG": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 3
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 12.140745506027873,
+      "contrib_at_skip_end": 92.37731706117532,
+      "contrib_in_skip_region": 80.23657155514745
+    }
+  },
+  {
+    "name": "4uf1A00",
+    "sequence": "AAIEFDEIVKKLLNIYINDICTTGEKRLLNNYEKSILDRIYKSCEYIKKNYELDFNSMYNQININNITTSDIKSKIIEALLIDSRPSVKLATLSFISLIAEKWGEKNRAKIMEILSNEIVEKISNNGKDFIDFID",
+    "num_residues": 135,
+    "num_atoms": 1100,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 83.35925925925926,
+        "std_settling_step": 22.044832421416594,
+        "mean_settling_pct": 83.35925925925926,
+        "count": 540,
+        "mean_late_stage_ratio": 0.7617715335334261,
+        "mean_final_velocity": 1.3496770029266676
+      },
+      "sidechain": {
+        "mean_settling_step": 86.31991525423729,
+        "std_settling_step": 18.83855881690271,
+        "mean_settling_pct": 86.31991525423729,
+        "count": 472,
+        "mean_late_stage_ratio": 0.7350437105419139,
+        "mean_final_velocity": 1.3312154433737367
+      },
+      "terminal": {
+        "mean_settling_step": 83.79545454545455,
+        "std_settling_step": 27.49510662699369,
+        "mean_settling_pct": 83.79545454545455,
+        "count": 88,
+        "mean_late_stage_ratio": 0.9551571238874138,
+        "mean_final_velocity": 1.2996809035539627
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 83.10123456790123,
+          "mean_settling_pct": 83.10123456790123,
+          "count": 405
+        },
+        "1": {
+          "mean_settling_step": 85.7378277153558,
+          "mean_settling_pct": 85.7378277153558,
+          "count": 267
+        },
+        "2": {
+          "mean_settling_step": 86.09554140127389,
+          "mean_settling_pct": 86.09554140127389,
+          "count": 157
+        },
+        "3": {
+          "mean_settling_step": 84.0657894736842,
+          "mean_settling_pct": 84.0657894736842,
+          "count": 152
+        },
+        "4": {
+          "mean_settling_step": 85.91666666666667,
+          "mean_settling_pct": 85.91666666666667,
+          "count": 72
+        },
+        "5": {
+          "mean_settling_step": 89.875,
+          "mean_settling_pct": 89.875,
+          "count": 32
+        },
+        "6": {
+          "mean_settling_step": 81.73333333333333,
+          "mean_settling_pct": 81.73333333333333,
+          "count": 15
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 84.54074074074074,
+          "mean_settling_pct": 84.54074074074074,
+          "count": 135
+        },
+        "CA": {
+          "mean_settling_step": 81.18518518518519,
+          "mean_settling_pct": 81.18518518518519,
+          "count": 135
+        },
+        "CB": {
+          "mean_settling_step": 87.37878787878788,
+          "mean_settling_pct": 87.37878787878788,
+          "count": 132
+        },
+        "CD": {
+          "mean_settling_step": 85.39393939393939,
+          "mean_settling_pct": 85.39393939393939,
+          "count": 33
+        },
+        "CD1": {
+          "mean_settling_step": 83.38297872340425,
+          "mean_settling_pct": 83.38297872340425,
+          "count": 47
+        },
+        "CD2": {
+          "mean_settling_step": 77.625,
+          "mean_settling_pct": 77.625,
+          "count": 24
+        },
+        "CE": {
+          "mean_settling_step": 89.94117647058823,
+          "mean_settling_pct": 89.94117647058823,
+          "count": 17
+        },
+        "CE1": {
+          "mean_settling_step": 80.0,
+          "mean_settling_pct": 80.0,
+          "count": 11
+        },
+        "CE2": {
+          "mean_settling_step": 92.25,
+          "mean_settling_pct": 92.25,
+          "count": 12
+        },
+        "CE3": {
+          "mean_settling_step": 96.0,
+          "mean_settling_pct": 96.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 87.73170731707317,
+          "mean_settling_pct": 87.73170731707317,
+          "count": 82
+        },
+        "CG1": {
+          "mean_settling_step": 84.53846153846153,
+          "mean_settling_pct": 84.53846153846153,
+          "count": 26
+        },
+        "CG2": {
+          "mean_settling_step": 80.06451612903226,
+          "mean_settling_pct": 80.06451612903226,
+          "count": 31
+        },
+        "CH2": {
+          "mean_settling_step": 30.0,
+          "mean_settling_pct": 30.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 92.06666666666666,
+          "mean_settling_pct": 92.06666666666666,
+          "count": 15
+        },
+        "CZ2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 93.0,
+          "mean_settling_pct": 93.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 83.57777777777778,
+          "mean_settling_pct": 83.57777777777778,
+          "count": 135
+        },
+        "ND2": {
+          "mean_settling_step": 95.21428571428571,
+          "mean_settling_pct": 95.21428571428571,
+          "count": 14
+        },
+        "NE": {
+          "mean_settling_step": 81.5,
+          "mean_settling_pct": 81.5,
+          "count": 4
+        },
+        "NE1": {
+          "mean_settling_step": 50.0,
+          "mean_settling_pct": 50.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "NH1": {
+          "mean_settling_step": 95.0,
+          "mean_settling_pct": 95.0,
+          "count": 4
+        },
+        "NH2": {
+          "mean_settling_step": 81.75,
+          "mean_settling_pct": 81.75,
+          "count": 4
+        },
+        "NZ": {
+          "mean_settling_step": 86.86666666666666,
+          "mean_settling_pct": 86.86666666666666,
+          "count": 15
+        },
+        "O": {
+          "mean_settling_step": 84.13333333333334,
+          "mean_settling_pct": 84.13333333333334,
+          "count": 135
+        },
+        "OD1": {
+          "mean_settling_step": 77.47826086956522,
+          "mean_settling_pct": 77.47826086956522,
+          "count": 23
+        },
+        "OD2": {
+          "mean_settling_step": 96.11111111111111,
+          "mean_settling_pct": 96.11111111111111,
+          "count": 9
+        },
+        "OE1": {
+          "mean_settling_step": 87.0,
+          "mean_settling_pct": 87.0,
+          "count": 13
+        },
+        "OE2": {
+          "mean_settling_step": 80.66666666666667,
+          "mean_settling_pct": 80.66666666666667,
+          "count": 12
+        },
+        "OG": {
+          "mean_settling_step": 92.0909090909091,
+          "mean_settling_pct": 92.0909090909091,
+          "count": 11
+        },
+        "OG1": {
+          "mean_settling_step": 88.2,
+          "mean_settling_pct": 88.2,
+          "count": 5
+        },
+        "OH": {
+          "mean_settling_step": 81.5,
+          "mean_settling_pct": 81.5,
+          "count": 6
+        },
+        "SD": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "SG": {
+          "mean_settling_step": 94.5,
+          "mean_settling_pct": 94.5,
+          "count": 2
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 14.556439738015825,
+      "contrib_at_skip_end": 93.42680475069275,
+      "contrib_in_skip_region": 78.87036501267693
+    }
+  },
+  {
+    "name": "1q0vA00",
+    "sequence": "MDRDYSTPEDEEELIRKAIELSLKESRNSASSEPIVPVVESKNEVKRQEIEEEEDPDLKAAIQESLREAEEAKLRSERQKA",
+    "num_residues": 81,
+    "num_atoms": 654,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 77.98456790123457,
+        "std_settling_step": 22.462102709822695,
+        "mean_settling_pct": 77.98456790123457,
+        "count": 324,
+        "mean_late_stage_ratio": 0.7323536146886426,
+        "mean_final_velocity": 1.3149614787580055
+      },
+      "sidechain": {
+        "mean_settling_step": 79.78174603174604,
+        "std_settling_step": 21.87890518717672,
+        "mean_settling_pct": 79.78174603174604,
+        "count": 252,
+        "mean_late_stage_ratio": 0.7040231906056873,
+        "mean_final_velocity": 1.2566836679147348
+      },
+      "terminal": {
+        "mean_settling_step": 84.32051282051282,
+        "std_settling_step": 21.83063807384874,
+        "mean_settling_pct": 84.32051282051282,
+        "count": 78,
+        "mean_late_stage_ratio": 0.7023460291683089,
+        "mean_final_velocity": 1.2615499339806728
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 77.95473251028807,
+          "mean_settling_pct": 77.95473251028807,
+          "count": 243
+        },
+        "1": {
+          "mean_settling_step": 77.68518518518519,
+          "mean_settling_pct": 77.68518518518519,
+          "count": 162
+        },
+        "2": {
+          "mean_settling_step": 81.13095238095238,
+          "mean_settling_pct": 81.13095238095238,
+          "count": 84
+        },
+        "3": {
+          "mean_settling_step": 80.0945945945946,
+          "mean_settling_pct": 80.0945945945946,
+          "count": 74
+        },
+        "4": {
+          "mean_settling_step": 87.21311475409836,
+          "mean_settling_pct": 87.21311475409836,
+          "count": 61
+        },
+        "5": {
+          "mean_settling_step": 75.06666666666666,
+          "mean_settling_pct": 75.06666666666666,
+          "count": 15
+        },
+        "6": {
+          "mean_settling_step": 82.2,
+          "mean_settling_pct": 82.2,
+          "count": 15
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 75.11111111111111,
+          "mean_settling_pct": 75.11111111111111,
+          "count": 81
+        },
+        "CA": {
+          "mean_settling_step": 79.5925925925926,
+          "mean_settling_pct": 79.5925925925926,
+          "count": 81
+        },
+        "CB": {
+          "mean_settling_step": 77.29629629629629,
+          "mean_settling_pct": 77.29629629629629,
+          "count": 81
+        },
+        "CD": {
+          "mean_settling_step": 83.25,
+          "mean_settling_pct": 83.25,
+          "count": 40
+        },
+        "CD1": {
+          "mean_settling_step": 70.66666666666667,
+          "mean_settling_pct": 70.66666666666667,
+          "count": 12
+        },
+        "CD2": {
+          "mean_settling_step": 75.14285714285714,
+          "mean_settling_pct": 75.14285714285714,
+          "count": 7
+        },
+        "CE": {
+          "mean_settling_step": 87.75,
+          "mean_settling_pct": 87.75,
+          "count": 8
+        },
+        "CE1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CE2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 83.61818181818182,
+          "mean_settling_pct": 83.61818181818182,
+          "count": 55
+        },
+        "CG1": {
+          "mean_settling_step": 71.22222222222223,
+          "mean_settling_pct": 71.22222222222223,
+          "count": 9
+        },
+        "CG2": {
+          "mean_settling_step": 75.5,
+          "mean_settling_pct": 75.5,
+          "count": 10
+        },
+        "CZ": {
+          "mean_settling_step": 80.75,
+          "mean_settling_pct": 80.75,
+          "count": 8
+        },
+        "N": {
+          "mean_settling_step": 79.1604938271605,
+          "mean_settling_pct": 79.1604938271605,
+          "count": 81
+        },
+        "ND2": {
+          "mean_settling_step": 73.5,
+          "mean_settling_pct": 73.5,
+          "count": 2
+        },
+        "NE": {
+          "mean_settling_step": 83.14285714285714,
+          "mean_settling_pct": 83.14285714285714,
+          "count": 7
+        },
+        "NE2": {
+          "mean_settling_step": 90.33333333333333,
+          "mean_settling_pct": 90.33333333333333,
+          "count": 3
+        },
+        "NH1": {
+          "mean_settling_step": 86.14285714285714,
+          "mean_settling_pct": 86.14285714285714,
+          "count": 7
+        },
+        "NH2": {
+          "mean_settling_step": 81.71428571428571,
+          "mean_settling_pct": 81.71428571428571,
+          "count": 7
+        },
+        "NZ": {
+          "mean_settling_step": 68.57142857142857,
+          "mean_settling_pct": 68.57142857142857,
+          "count": 7
+        },
+        "O": {
+          "mean_settling_step": 78.07407407407408,
+          "mean_settling_pct": 78.07407407407408,
+          "count": 81
+        },
+        "OD1": {
+          "mean_settling_step": 81.71428571428571,
+          "mean_settling_pct": 81.71428571428571,
+          "count": 7
+        },
+        "OD2": {
+          "mean_settling_step": 90.8,
+          "mean_settling_pct": 90.8,
+          "count": 5
+        },
+        "OE1": {
+          "mean_settling_step": 86.5909090909091,
+          "mean_settling_pct": 86.5909090909091,
+          "count": 22
+        },
+        "OE2": {
+          "mean_settling_step": 87.47368421052632,
+          "mean_settling_pct": 87.47368421052632,
+          "count": 19
+        },
+        "OG": {
+          "mean_settling_step": 80.11111111111111,
+          "mean_settling_pct": 80.11111111111111,
+          "count": 9
+        },
+        "OG1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "OH": {
+          "mean_settling_step": 58.0,
+          "mean_settling_pct": 57.99999999999999,
+          "count": 1
+        },
+        "SD": {
+          "mean_settling_step": 50.0,
+          "mean_settling_pct": 50.0,
+          "count": 1
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.030778543118844,
+      "contrib_at_skip_end": 93.71701505388212,
+      "contrib_in_skip_region": 78.68623651076328
+    }
+  },
+  {
+    "name": "1u3oA01",
+    "sequence": "SGGCELTVVLQDFSAAHSSELSIQVGQTVELLERPSERPGWCLVRTTERSPPQEGLVPSSTL",
+    "num_residues": 62,
+    "num_atoms": 466,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 76.81854838709677,
+        "std_settling_step": 21.68216476416877,
+        "mean_settling_pct": 76.81854838709677,
+        "count": 248,
+        "mean_late_stage_ratio": 0.6483914682759169,
+        "mean_final_velocity": 1.1584331778989685
+      },
+      "sidechain": {
+        "mean_settling_step": 75.53260869565217,
+        "std_settling_step": 21.778006000748096,
+        "mean_settling_pct": 75.53260869565217,
+        "count": 184,
+        "mean_late_stage_ratio": 0.599141957402348,
+        "mean_final_velocity": 1.1847765433561543
+      },
+      "terminal": {
+        "mean_settling_step": 76.76470588235294,
+        "std_settling_step": 28.44918981946732,
+        "mean_settling_pct": 76.76470588235294,
+        "count": 34,
+        "mean_late_stage_ratio": 0.8788116222913777,
+        "mean_final_velocity": 1.08041412339491
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 77.88172043010752,
+          "mean_settling_pct": 77.88172043010752,
+          "count": 186
+        },
+        "1": {
+          "mean_settling_step": 74.46218487394958,
+          "mean_settling_pct": 74.46218487394958,
+          "count": 119
+        },
+        "2": {
+          "mean_settling_step": 76.64179104477611,
+          "mean_settling_pct": 76.64179104477611,
+          "count": 67
+        },
+        "3": {
+          "mean_settling_step": 76.62222222222222,
+          "mean_settling_pct": 76.62222222222222,
+          "count": 45
+        },
+        "4": {
+          "mean_settling_step": 73.6969696969697,
+          "mean_settling_pct": 73.6969696969697,
+          "count": 33
+        },
+        "5": {
+          "mean_settling_step": 68.85714285714286,
+          "mean_settling_pct": 68.85714285714286,
+          "count": 7
+        },
+        "6": {
+          "mean_settling_step": 79.44444444444444,
+          "mean_settling_pct": 79.44444444444444,
+          "count": 9
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 76.01612903225806,
+          "mean_settling_pct": 76.01612903225806,
+          "count": 62
+        },
+        "CA": {
+          "mean_settling_step": 76.33870967741936,
+          "mean_settling_pct": 76.33870967741936,
+          "count": 62
+        },
+        "CB": {
+          "mean_settling_step": 75.36842105263158,
+          "mean_settling_pct": 75.36842105263158,
+          "count": 57
+        },
+        "CD": {
+          "mean_settling_step": 86.5,
+          "mean_settling_pct": 86.5,
+          "count": 20
+        },
+        "CD1": {
+          "mean_settling_step": 65.9090909090909,
+          "mean_settling_pct": 65.9090909090909,
+          "count": 11
+        },
+        "CD2": {
+          "mean_settling_step": 72.0,
+          "mean_settling_pct": 72.0,
+          "count": 11
+        },
+        "CE1": {
+          "mean_settling_step": 61.0,
+          "mean_settling_pct": 61.0,
+          "count": 2
+        },
+        "CE2": {
+          "mean_settling_step": 69.0,
+          "mean_settling_pct": 69.0,
+          "count": 2
+        },
+        "CE3": {
+          "mean_settling_step": 58.0,
+          "mean_settling_pct": 57.99999999999999,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 80.5,
+          "mean_settling_pct": 80.5,
+          "count": 32
+        },
+        "CG1": {
+          "mean_settling_step": 73.85714285714286,
+          "mean_settling_pct": 73.85714285714286,
+          "count": 7
+        },
+        "CG2": {
+          "mean_settling_step": 69.16666666666667,
+          "mean_settling_pct": 69.16666666666667,
+          "count": 12
+        },
+        "CH2": {
+          "mean_settling_step": 0.0,
+          "mean_settling_pct": 0.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 66.4,
+          "mean_settling_pct": 66.4,
+          "count": 5
+        },
+        "CZ2": {
+          "mean_settling_step": 63.0,
+          "mean_settling_pct": 63.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 87.0,
+          "mean_settling_pct": 87.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 81.29032258064517,
+          "mean_settling_pct": 81.29032258064517,
+          "count": 62
+        },
+        "ND1": {
+          "mean_settling_step": 42.0,
+          "mean_settling_pct": 42.0,
+          "count": 1
+        },
+        "NE": {
+          "mean_settling_step": 69.75,
+          "mean_settling_pct": 69.75,
+          "count": 4
+        },
+        "NE1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 90.0,
+          "mean_settling_pct": 90.0,
+          "count": 5
+        },
+        "NH1": {
+          "mean_settling_step": 79.75,
+          "mean_settling_pct": 79.75,
+          "count": 4
+        },
+        "NH2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 4
+        },
+        "O": {
+          "mean_settling_step": 73.62903225806451,
+          "mean_settling_pct": 73.62903225806451,
+          "count": 62
+        },
+        "OD1": {
+          "mean_settling_step": 98.0,
+          "mean_settling_pct": 98.0,
+          "count": 1
+        },
+        "OD2": {
+          "mean_settling_step": 61.0,
+          "mean_settling_pct": 61.0,
+          "count": 1
+        },
+        "OE1": {
+          "mean_settling_step": 73.45454545454545,
+          "mean_settling_pct": 73.45454545454545,
+          "count": 11
+        },
+        "OE2": {
+          "mean_settling_step": 68.28571428571429,
+          "mean_settling_pct": 68.28571428571429,
+          "count": 7
+        },
+        "OG": {
+          "mean_settling_step": 85.44444444444444,
+          "mean_settling_pct": 85.44444444444444,
+          "count": 9
+        },
+        "OG1": {
+          "mean_settling_step": 64.6,
+          "mean_settling_pct": 64.6,
+          "count": 5
+        },
+        "SG": {
+          "mean_settling_step": 60.0,
+          "mean_settling_pct": 60.0,
+          "count": 2
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.694010300548584,
+      "contrib_at_skip_end": 94.20432158234621,
+      "contrib_in_skip_region": 78.51031128179763
+    }
+  },
+  {
+    "name": "1yc9A02",
+    "sequence": "SFDLGLAASATESKVSERYQSATPPDGWNDYGTLTLNFQYDFDFWGPDVTLSAFIGYQAFGLDHLFDSGNDAGAIGPAIYLPL",
+    "num_residues": 83,
+    "num_atoms": 639,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 81.66566265060241,
+        "std_settling_step": 22.16788954705731,
+        "mean_settling_pct": 81.66566265060241,
+        "count": 332,
+        "mean_late_stage_ratio": 0.7863180168278017,
+        "mean_final_velocity": 1.4332048475113979
+      },
+      "sidechain": {
+        "mean_settling_step": 83.04150943396226,
+        "std_settling_step": 22.502037089857158,
+        "mean_settling_pct": 83.04150943396226,
+        "count": 265,
+        "mean_late_stage_ratio": 0.7806837227544441,
+        "mean_final_velocity": 1.4496807368296498
+      },
+      "terminal": {
+        "mean_settling_step": 86.76190476190476,
+        "std_settling_step": 18.189229575833007,
+        "mean_settling_pct": 86.76190476190476,
+        "count": 42,
+        "mean_late_stage_ratio": 0.8148695331791416,
+        "mean_final_velocity": 1.433151581457683
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 81.81526104417671,
+          "mean_settling_pct": 81.81526104417671,
+          "count": 249
+        },
+        "1": {
+          "mean_settling_step": 81.47770700636943,
+          "mean_settling_pct": 81.47770700636943,
+          "count": 157
+        },
+        "2": {
+          "mean_settling_step": 81.37333333333333,
+          "mean_settling_pct": 81.37333333333333,
+          "count": 75
+        },
+        "3": {
+          "mean_settling_step": 86.59770114942529,
+          "mean_settling_pct": 86.59770114942529,
+          "count": 87
+        },
+        "4": {
+          "mean_settling_step": 85.36363636363636,
+          "mean_settling_pct": 85.36363636363636,
+          "count": 44
+        },
+        "5": {
+          "mean_settling_step": 81.11111111111111,
+          "mean_settling_pct": 81.11111111111111,
+          "count": 18
+        },
+        "6": {
+          "mean_settling_step": 82.88888888888889,
+          "mean_settling_pct": 82.88888888888889,
+          "count": 9
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 82.95180722891567,
+          "mean_settling_pct": 82.95180722891567,
+          "count": 83
+        },
+        "CA": {
+          "mean_settling_step": 81.42168674698796,
+          "mean_settling_pct": 81.42168674698796,
+          "count": 83
+        },
+        "CB": {
+          "mean_settling_step": 81.77027027027027,
+          "mean_settling_pct": 81.77027027027027,
+          "count": 74
+        },
+        "CD": {
+          "mean_settling_step": 87.58333333333333,
+          "mean_settling_pct": 87.58333333333333,
+          "count": 12
+        },
+        "CD1": {
+          "mean_settling_step": 85.96153846153847,
+          "mean_settling_pct": 85.96153846153847,
+          "count": 26
+        },
+        "CD2": {
+          "mean_settling_step": 84.33333333333333,
+          "mean_settling_pct": 84.33333333333333,
+          "count": 24
+        },
+        "CE": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CE1": {
+          "mean_settling_step": 84.46153846153847,
+          "mean_settling_pct": 84.46153846153847,
+          "count": 13
+        },
+        "CE2": {
+          "mean_settling_step": 85.64285714285714,
+          "mean_settling_pct": 85.64285714285714,
+          "count": 14
+        },
+        "CE3": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "CG": {
+          "mean_settling_step": 84.08333333333333,
+          "mean_settling_pct": 84.08333333333333,
+          "count": 48
+        },
+        "CG1": {
+          "mean_settling_step": 68.2,
+          "mean_settling_pct": 68.2,
+          "count": 5
+        },
+        "CG2": {
+          "mean_settling_step": 70.5,
+          "mean_settling_pct": 70.5,
+          "count": 10
+        },
+        "CH2": {
+          "mean_settling_step": 75.5,
+          "mean_settling_pct": 75.5,
+          "count": 2
+        },
+        "CZ": {
+          "mean_settling_step": 79.84615384615384,
+          "mean_settling_pct": 79.84615384615384,
+          "count": 13
+        },
+        "CZ2": {
+          "mean_settling_step": 73.5,
+          "mean_settling_pct": 73.5,
+          "count": 2
+        },
+        "CZ3": {
+          "mean_settling_step": 88.0,
+          "mean_settling_pct": 88.0,
+          "count": 2
+        },
+        "N": {
+          "mean_settling_step": 81.07228915662651,
+          "mean_settling_pct": 81.07228915662651,
+          "count": 83
+        },
+        "ND1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "ND2": {
+          "mean_settling_step": 95.33333333333333,
+          "mean_settling_pct": 95.33333333333333,
+          "count": 3
+        },
+        "NE": {
+          "mean_settling_step": 78.0,
+          "mean_settling_pct": 78.0,
+          "count": 1
+        },
+        "NE1": {
+          "mean_settling_step": 62.0,
+          "mean_settling_pct": 62.0,
+          "count": 2
+        },
+        "NE2": {
+          "mean_settling_step": 88.5,
+          "mean_settling_pct": 88.5,
+          "count": 4
+        },
+        "NH1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "NH2": {
+          "mean_settling_step": 75.0,
+          "mean_settling_pct": 75.0,
+          "count": 1
+        },
+        "NZ": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "O": {
+          "mean_settling_step": 81.21686746987952,
+          "mean_settling_pct": 81.21686746987952,
+          "count": 83
+        },
+        "OD1": {
+          "mean_settling_step": 87.66666666666667,
+          "mean_settling_pct": 87.66666666666667,
+          "count": 12
+        },
+        "OD2": {
+          "mean_settling_step": 87.44444444444444,
+          "mean_settling_pct": 87.44444444444444,
+          "count": 9
+        },
+        "OE1": {
+          "mean_settling_step": 87.6,
+          "mean_settling_pct": 87.6,
+          "count": 5
+        },
+        "OE2": {
+          "mean_settling_step": 84.0,
+          "mean_settling_pct": 84.0,
+          "count": 2
+        },
+        "OG": {
+          "mean_settling_step": 86.85714285714286,
+          "mean_settling_pct": 86.85714285714286,
+          "count": 7
+        },
+        "OG1": {
+          "mean_settling_step": 82.6,
+          "mean_settling_pct": 82.6,
+          "count": 5
+        },
+        "OH": {
+          "mean_settling_step": 84.2,
+          "mean_settling_pct": 84.2,
+          "count": 5
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 14.406414593340305,
+      "contrib_at_skip_end": 92.99567400196392,
+      "contrib_in_skip_region": 78.58925940862362
+    }
+  },
+  {
+    "name": "3rsiB01",
+    "sequence": "ARELLVERDGPVVILTMNRPHRRNALSTNMVSQFAAAWDEIDHDDGIRAAILTGAGSAYCVGGD",
+    "num_residues": 64,
+    "num_atoms": 482,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 81.05859375,
+        "std_settling_step": 19.087393693809034,
+        "mean_settling_pct": 81.05859375,
+        "count": 256,
+        "mean_late_stage_ratio": 0.5927615150729789,
+        "mean_final_velocity": 1.1717391767160734
+      },
+      "sidechain": {
+        "mean_settling_step": 79.56684491978609,
+        "std_settling_step": 20.60267290152373,
+        "mean_settling_pct": 79.56684491978609,
+        "count": 187,
+        "mean_late_stage_ratio": 0.6350138448353446,
+        "mean_final_velocity": 1.2643441063835021
+      },
+      "terminal": {
+        "mean_settling_step": 86.05128205128206,
+        "std_settling_step": 19.8222210429178,
+        "mean_settling_pct": 86.05128205128206,
+        "count": 39,
+        "mean_late_stage_ratio": 0.7702416970517783,
+        "mean_final_velocity": 1.2332837077287526
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 80.25520833333333,
+          "mean_settling_pct": 80.25520833333333,
+          "count": 192
+        },
+        "1": {
+          "mean_settling_step": 81.22131147540983,
+          "mean_settling_pct": 81.22131147540983,
+          "count": 122
+        },
+        "2": {
+          "mean_settling_step": 80.22950819672131,
+          "mean_settling_pct": 80.22950819672131,
+          "count": 61
+        },
+        "3": {
+          "mean_settling_step": 79.80357142857143,
+          "mean_settling_pct": 79.80357142857143,
+          "count": 56
+        },
+        "4": {
+          "mean_settling_step": 82.5925925925926,
+          "mean_settling_pct": 82.5925925925926,
+          "count": 27
+        },
+        "5": {
+          "mean_settling_step": 78.8,
+          "mean_settling_pct": 78.8,
+          "count": 10
+        },
+        "6": {
+          "mean_settling_step": 91.92857142857143,
+          "mean_settling_pct": 91.92857142857143,
+          "count": 14
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 81.484375,
+          "mean_settling_pct": 81.484375,
+          "count": 64
+        },
+        "CA": {
+          "mean_settling_step": 80.046875,
+          "mean_settling_pct": 80.046875,
+          "count": 64
+        },
+        "CB": {
+          "mean_settling_step": 78.74137931034483,
+          "mean_settling_pct": 78.74137931034483,
+          "count": 58
+        },
+        "CD": {
+          "mean_settling_step": 84.0,
+          "mean_settling_pct": 84.0,
+          "count": 12
+        },
+        "CD1": {
+          "mean_settling_step": 72.66666666666667,
+          "mean_settling_pct": 72.66666666666667,
+          "count": 12
+        },
+        "CD2": {
+          "mean_settling_step": 80.5,
+          "mean_settling_pct": 80.5,
+          "count": 10
+        },
+        "CE": {
+          "mean_settling_step": 84.0,
+          "mean_settling_pct": 84.0,
+          "count": 2
+        },
+        "CE1": {
+          "mean_settling_step": 89.25,
+          "mean_settling_pct": 89.25,
+          "count": 4
+        },
+        "CE2": {
+          "mean_settling_step": 46.0,
+          "mean_settling_pct": 46.0,
+          "count": 3
+        },
+        "CE3": {
+          "mean_settling_step": 82.0,
+          "mean_settling_pct": 82.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 81.96969696969697,
+          "mean_settling_pct": 81.96969696969697,
+          "count": 33
+        },
+        "CG1": {
+          "mean_settling_step": 80.77777777777777,
+          "mean_settling_pct": 80.77777777777777,
+          "count": 9
+        },
+        "CG2": {
+          "mean_settling_step": 77.08333333333333,
+          "mean_settling_pct": 77.08333333333333,
+          "count": 12
+        },
+        "CH2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 73.75,
+          "mean_settling_pct": 73.75,
+          "count": 8
+        },
+        "CZ2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 79.234375,
+          "mean_settling_pct": 79.234375,
+          "count": 64
+        },
+        "ND1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "ND2": {
+          "mean_settling_step": 91.66666666666667,
+          "mean_settling_pct": 91.66666666666667,
+          "count": 3
+        },
+        "NE": {
+          "mean_settling_step": 96.5,
+          "mean_settling_pct": 96.5,
+          "count": 6
+        },
+        "NE1": {
+          "mean_settling_step": 47.0,
+          "mean_settling_pct": 47.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 96.33333333333333,
+          "mean_settling_pct": 96.33333333333333,
+          "count": 3
+        },
+        "NH1": {
+          "mean_settling_step": 82.66666666666667,
+          "mean_settling_pct": 82.66666666666667,
+          "count": 6
+        },
+        "NH2": {
+          "mean_settling_step": 98.83333333333333,
+          "mean_settling_pct": 98.83333333333333,
+          "count": 6
+        },
+        "O": {
+          "mean_settling_step": 83.46875,
+          "mean_settling_pct": 83.46875,
+          "count": 64
+        },
+        "OD1": {
+          "mean_settling_step": 74.88888888888889,
+          "mean_settling_pct": 74.88888888888889,
+          "count": 9
+        },
+        "OD2": {
+          "mean_settling_step": 89.33333333333333,
+          "mean_settling_pct": 89.33333333333333,
+          "count": 6
+        },
+        "OE1": {
+          "mean_settling_step": 75.0,
+          "mean_settling_pct": 75.0,
+          "count": 4
+        },
+        "OE2": {
+          "mean_settling_step": 90.0,
+          "mean_settling_pct": 90.0,
+          "count": 3
+        },
+        "OG": {
+          "mean_settling_step": 76.33333333333333,
+          "mean_settling_pct": 76.33333333333333,
+          "count": 3
+        },
+        "OG1": {
+          "mean_settling_step": 69.66666666666667,
+          "mean_settling_pct": 69.66666666666667,
+          "count": 3
+        },
+        "OH": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "SD": {
+          "mean_settling_step": 50.5,
+          "mean_settling_pct": 50.5,
+          "count": 2
+        },
+        "SG": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.38705010193269,
+      "contrib_at_skip_end": 93.96497357687626,
+      "contrib_in_skip_region": 78.57792347494357
+    }
+  },
+  {
+    "name": "1x6fA00",
+    "sequence": "GSSGSSGLKRDFIILGNGPRLQNSTYQCKHCDSKLQSTAELTSHLNIHNEEFQKRAKRQERRKQLLSKQKYADGAFADFKQESGPSSG",
+    "num_residues": 88,
+    "num_atoms": 690,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 89.42329545454545,
+        "std_settling_step": 17.60697248390734,
+        "mean_settling_pct": 89.42329545454545,
+        "count": 352,
+        "mean_late_stage_ratio": 0.7719427635133314,
+        "mean_final_velocity": 1.499961785802787
+      },
+      "sidechain": {
+        "mean_settling_step": 87.21897810218978,
+        "std_settling_step": 18.73722059036706,
+        "mean_settling_pct": 87.21897810218978,
+        "count": 274,
+        "mean_late_stage_ratio": 0.7886384694029248,
+        "mean_final_velocity": 1.441364903084553
+      },
+      "terminal": {
+        "mean_settling_step": 88.046875,
+        "std_settling_step": 17.726595209864048,
+        "mean_settling_pct": 88.046875,
+        "count": 64,
+        "mean_late_stage_ratio": 0.71946482826663,
+        "mean_final_velocity": 1.406816472299397
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 89.12121212121212,
+          "mean_settling_pct": 89.12121212121212,
+          "count": 264
+        },
+        "1": {
+          "mean_settling_step": 88.95238095238095,
+          "mean_settling_pct": 88.95238095238095,
+          "count": 168
+        },
+        "2": {
+          "mean_settling_step": 86.29629629629629,
+          "mean_settling_pct": 86.29629629629629,
+          "count": 81
+        },
+        "3": {
+          "mean_settling_step": 87.80722891566265,
+          "mean_settling_pct": 87.80722891566265,
+          "count": 83
+        },
+        "4": {
+          "mean_settling_step": 86.47457627118644,
+          "mean_settling_pct": 86.47457627118644,
+          "count": 59
+        },
+        "5": {
+          "mean_settling_step": 89.28571428571429,
+          "mean_settling_pct": 89.28571428571429,
+          "count": 21
+        },
+        "6": {
+          "mean_settling_step": 91.64285714285714,
+          "mean_settling_pct": 91.64285714285714,
+          "count": 14
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 88.125,
+          "mean_settling_pct": 88.125,
+          "count": 88
+        },
+        "CA": {
+          "mean_settling_step": 88.60227272727273,
+          "mean_settling_pct": 88.60227272727273,
+          "count": 88
+        },
+        "CB": {
+          "mean_settling_step": 87.4375,
+          "mean_settling_pct": 87.4375,
+          "count": 80
+        },
+        "CD": {
+          "mean_settling_step": 89.9,
+          "mean_settling_pct": 89.9,
+          "count": 30
+        },
+        "CD1": {
+          "mean_settling_step": 85.23529411764706,
+          "mean_settling_pct": 85.23529411764706,
+          "count": 17
+        },
+        "CD2": {
+          "mean_settling_step": 86.3529411764706,
+          "mean_settling_pct": 86.3529411764706,
+          "count": 17
+        },
+        "CE": {
+          "mean_settling_step": 86.77777777777777,
+          "mean_settling_pct": 86.77777777777777,
+          "count": 9
+        },
+        "CE1": {
+          "mean_settling_step": 87.0,
+          "mean_settling_pct": 87.0,
+          "count": 9
+        },
+        "CE2": {
+          "mean_settling_step": 87.33333333333333,
+          "mean_settling_pct": 87.33333333333333,
+          "count": 6
+        },
+        "CG": {
+          "mean_settling_step": 85.16363636363636,
+          "mean_settling_pct": 85.16363636363636,
+          "count": 55
+        },
+        "CG1": {
+          "mean_settling_step": 72.66666666666667,
+          "mean_settling_pct": 72.66666666666667,
+          "count": 3
+        },
+        "CG2": {
+          "mean_settling_step": 88.0,
+          "mean_settling_pct": 88.0,
+          "count": 6
+        },
+        "CZ": {
+          "mean_settling_step": 89.91666666666667,
+          "mean_settling_pct": 89.91666666666667,
+          "count": 12
+        },
+        "N": {
+          "mean_settling_step": 90.63636363636364,
+          "mean_settling_pct": 90.63636363636364,
+          "count": 88
+        },
+        "ND1": {
+          "mean_settling_step": 79.33333333333333,
+          "mean_settling_pct": 79.33333333333333,
+          "count": 3
+        },
+        "ND2": {
+          "mean_settling_step": 84.0,
+          "mean_settling_pct": 84.0,
+          "count": 4
+        },
+        "NE": {
+          "mean_settling_step": 93.0,
+          "mean_settling_pct": 93.0,
+          "count": 6
+        },
+        "NE2": {
+          "mean_settling_step": 82.0909090909091,
+          "mean_settling_pct": 82.0909090909091,
+          "count": 11
+        },
+        "NH1": {
+          "mean_settling_step": 93.66666666666667,
+          "mean_settling_pct": 93.66666666666667,
+          "count": 6
+        },
+        "NH2": {
+          "mean_settling_step": 87.16666666666667,
+          "mean_settling_pct": 87.16666666666667,
+          "count": 6
+        },
+        "NZ": {
+          "mean_settling_step": 88.44444444444444,
+          "mean_settling_pct": 88.44444444444444,
+          "count": 9
+        },
+        "O": {
+          "mean_settling_step": 90.32954545454545,
+          "mean_settling_pct": 90.32954545454545,
+          "count": 88
+        },
+        "OD1": {
+          "mean_settling_step": 88.0,
+          "mean_settling_pct": 88.0,
+          "count": 8
+        },
+        "OD2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 4
+        },
+        "OE1": {
+          "mean_settling_step": 84.38461538461539,
+          "mean_settling_pct": 84.38461538461539,
+          "count": 13
+        },
+        "OE2": {
+          "mean_settling_step": 91.2,
+          "mean_settling_pct": 91.2,
+          "count": 5
+        },
+        "OG": {
+          "mean_settling_step": 91.83333333333333,
+          "mean_settling_pct": 91.83333333333333,
+          "count": 12
+        },
+        "OG1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 3
+        },
+        "OH": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "SG": {
+          "mean_settling_step": 80.5,
+          "mean_settling_pct": 80.5,
+          "count": 2
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 14.010322269770375,
+      "contrib_at_skip_end": 93.40233518847324,
+      "contrib_in_skip_region": 79.39201291870287
+    }
+  },
+  {
+    "name": "1ibtC00",
+    "sequence": "SELDAKLNKLGVDRIAISPYKQWTRGYMEPGNIGNGYVTGLKVDAGVRDVLDGIVSYDRAETKNAYIGQINMTTAS",
+    "num_residues": 76,
+    "num_atoms": 581,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 72.8782894736842,
+        "std_settling_step": 18.82524347281973,
+        "mean_settling_pct": 72.8782894736842,
+        "count": 304,
+        "mean_late_stage_ratio": 0.6132787490566985,
+        "mean_final_velocity": 1.1902519533116567
+      },
+      "sidechain": {
+        "mean_settling_step": 73.76623376623377,
+        "std_settling_step": 18.86605516080759,
+        "mean_settling_pct": 73.76623376623377,
+        "count": 231,
+        "mean_late_stage_ratio": 0.6261041784015476,
+        "mean_final_velocity": 1.2194789056525086
+      },
+      "terminal": {
+        "mean_settling_step": 77.82608695652173,
+        "std_settling_step": 16.59662661877025,
+        "mean_settling_pct": 77.82608695652173,
+        "count": 46,
+        "mean_late_stage_ratio": 0.6766237513964707,
+        "mean_final_velocity": 1.1181737735219623
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 71.84649122807018,
+          "mean_settling_pct": 71.84649122807018,
+          "count": 228
+        },
+        "1": {
+          "mean_settling_step": 75.7972027972028,
+          "mean_settling_pct": 75.7972027972028,
+          "count": 143
+        },
+        "2": {
+          "mean_settling_step": 71.26923076923077,
+          "mean_settling_pct": 71.26923076923077,
+          "count": 78
+        },
+        "3": {
+          "mean_settling_step": 75.42647058823529,
+          "mean_settling_pct": 75.42647058823529,
+          "count": 68
+        },
+        "4": {
+          "mean_settling_step": 75.32352941176471,
+          "mean_settling_pct": 75.32352941176471,
+          "count": 34
+        },
+        "5": {
+          "mean_settling_step": 76.4375,
+          "mean_settling_pct": 76.4375,
+          "count": 16
+        },
+        "6": {
+          "mean_settling_step": 77.35714285714286,
+          "mean_settling_pct": 77.35714285714286,
+          "count": 14
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 70.85526315789474,
+          "mean_settling_pct": 70.85526315789474,
+          "count": 76
+        },
+        "CA": {
+          "mean_settling_step": 71.69736842105263,
+          "mean_settling_pct": 71.69736842105263,
+          "count": 76
+        },
+        "CB": {
+          "mean_settling_step": 75.59701492537313,
+          "mean_settling_pct": 75.59701492537313,
+          "count": 67
+        },
+        "CD": {
+          "mean_settling_step": 80.5,
+          "mean_settling_pct": 80.5,
+          "count": 16
+        },
+        "CD1": {
+          "mean_settling_step": 69.41176470588235,
+          "mean_settling_pct": 69.41176470588235,
+          "count": 17
+        },
+        "CD2": {
+          "mean_settling_step": 78.72727272727273,
+          "mean_settling_pct": 78.72727272727273,
+          "count": 11
+        },
+        "CE": {
+          "mean_settling_step": 68.28571428571429,
+          "mean_settling_pct": 68.28571428571429,
+          "count": 7
+        },
+        "CE1": {
+          "mean_settling_step": 93.4,
+          "mean_settling_pct": 93.4,
+          "count": 5
+        },
+        "CE2": {
+          "mean_settling_step": 73.33333333333333,
+          "mean_settling_pct": 73.33333333333333,
+          "count": 6
+        },
+        "CE3": {
+          "mean_settling_step": 84.0,
+          "mean_settling_pct": 84.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 73.775,
+          "mean_settling_pct": 73.775,
+          "count": 40
+        },
+        "CG1": {
+          "mean_settling_step": 69.83333333333333,
+          "mean_settling_pct": 69.83333333333333,
+          "count": 12
+        },
+        "CG2": {
+          "mean_settling_step": 71.88235294117646,
+          "mean_settling_pct": 71.88235294117646,
+          "count": 17
+        },
+        "CH2": {
+          "mean_settling_step": 69.0,
+          "mean_settling_pct": 69.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 75.0,
+          "mean_settling_pct": 75.0,
+          "count": 9
+        },
+        "CZ2": {
+          "mean_settling_step": 85.0,
+          "mean_settling_pct": 85.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 66.0,
+          "mean_settling_pct": 66.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 72.98684210526316,
+          "mean_settling_pct": 72.98684210526316,
+          "count": 76
+        },
+        "ND2": {
+          "mean_settling_step": 67.4,
+          "mean_settling_pct": 67.4,
+          "count": 5
+        },
+        "NE": {
+          "mean_settling_step": 70.5,
+          "mean_settling_pct": 70.5,
+          "count": 4
+        },
+        "NE1": {
+          "mean_settling_step": 54.0,
+          "mean_settling_pct": 54.0,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 84.5,
+          "mean_settling_pct": 84.5,
+          "count": 2
+        },
+        "NH1": {
+          "mean_settling_step": 80.5,
+          "mean_settling_pct": 80.5,
+          "count": 4
+        },
+        "NH2": {
+          "mean_settling_step": 90.0,
+          "mean_settling_pct": 90.0,
+          "count": 4
+        },
+        "NZ": {
+          "mean_settling_step": 79.4,
+          "mean_settling_pct": 79.4,
+          "count": 5
+        },
+        "O": {
+          "mean_settling_step": 75.97368421052632,
+          "mean_settling_pct": 75.97368421052632,
+          "count": 76
+        },
+        "OD1": {
+          "mean_settling_step": 85.54545454545455,
+          "mean_settling_pct": 85.54545454545455,
+          "count": 11
+        },
+        "OD2": {
+          "mean_settling_step": 67.16666666666667,
+          "mean_settling_pct": 67.16666666666667,
+          "count": 6
+        },
+        "OE1": {
+          "mean_settling_step": 68.8,
+          "mean_settling_pct": 68.8,
+          "count": 5
+        },
+        "OE2": {
+          "mean_settling_step": 81.0,
+          "mean_settling_pct": 81.0,
+          "count": 3
+        },
+        "OG": {
+          "mean_settling_step": 67.5,
+          "mean_settling_pct": 67.5,
+          "count": 4
+        },
+        "OG1": {
+          "mean_settling_step": 55.6,
+          "mean_settling_pct": 55.60000000000001,
+          "count": 5
+        },
+        "OH": {
+          "mean_settling_step": 66.4,
+          "mean_settling_pct": 66.4,
+          "count": 5
+        },
+        "SD": {
+          "mean_settling_step": 57.0,
+          "mean_settling_pct": 56.99999999999999,
+          "count": 2
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.908771190826803,
+      "contrib_at_skip_end": 93.55634072477345,
+      "contrib_in_skip_region": 77.64756953394665
+    }
+  },
+  {
+    "name": "1an2A00",
+    "sequence": "ADKRAHHNALERKRRDHIKDSFHSLRDSVPSLQGEKASRAQILDKATEYIQYMRRKNHTHQQDIDDLKRQNALLEQQVRALEKARS",
+    "num_residues": 86,
+    "num_atoms": 717,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 87.95930232558139,
+        "std_settling_step": 21.348944083179823,
+        "mean_settling_pct": 87.95930232558139,
+        "count": 344,
+        "mean_late_stage_ratio": 0.8955657812285234,
+        "mean_final_velocity": 1.8869258553482766
+      },
+      "sidechain": {
+        "mean_settling_step": 87.9103448275862,
+        "std_settling_step": 20.97894420320274,
+        "mean_settling_pct": 87.9103448275862,
+        "count": 290,
+        "mean_late_stage_ratio": 0.8844918682335039,
+        "mean_final_velocity": 1.7623385396497002
+      },
+      "terminal": {
+        "mean_settling_step": 91.59036144578313,
+        "std_settling_step": 15.86846242927641,
+        "mean_settling_pct": 91.59036144578313,
+        "count": 83,
+        "mean_late_stage_ratio": 0.863392327395855,
+        "mean_final_velocity": 1.7373617478163845
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 88.96899224806202,
+          "mean_settling_pct": 88.96899224806202,
+          "count": 258
+        },
+        "1": {
+          "mean_settling_step": 86.35672514619883,
+          "mean_settling_pct": 86.35672514619883,
+          "count": 171
+        },
+        "2": {
+          "mean_settling_step": 86.6547619047619,
+          "mean_settling_pct": 86.6547619047619,
+          "count": 84
+        },
+        "3": {
+          "mean_settling_step": 91.58510638297872,
+          "mean_settling_pct": 91.58510638297872,
+          "count": 94
+        },
+        "4": {
+          "mean_settling_step": 88.875,
+          "mean_settling_pct": 88.875,
+          "count": 64
+        },
+        "5": {
+          "mean_settling_step": 84.5,
+          "mean_settling_pct": 84.5,
+          "count": 22
+        },
+        "6": {
+          "mean_settling_step": 91.58333333333333,
+          "mean_settling_pct": 91.58333333333333,
+          "count": 24
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 89.04651162790698,
+          "mean_settling_pct": 89.04651162790698,
+          "count": 86
+        },
+        "CA": {
+          "mean_settling_step": 88.29069767441861,
+          "mean_settling_pct": 88.29069767441861,
+          "count": 86
+        },
+        "CB": {
+          "mean_settling_step": 87.8,
+          "mean_settling_pct": 87.8,
+          "count": 85
+        },
+        "CD": {
+          "mean_settling_step": 93.78787878787878,
+          "mean_settling_pct": 93.78787878787878,
+          "count": 33
+        },
+        "CD1": {
+          "mean_settling_step": 94.93333333333334,
+          "mean_settling_pct": 94.93333333333334,
+          "count": 15
+        },
+        "CD2": {
+          "mean_settling_step": 86.29411764705883,
+          "mean_settling_pct": 86.29411764705883,
+          "count": 17
+        },
+        "CE": {
+          "mean_settling_step": 89.66666666666667,
+          "mean_settling_pct": 89.66666666666667,
+          "count": 9
+        },
+        "CE1": {
+          "mean_settling_step": 80.44444444444444,
+          "mean_settling_pct": 80.44444444444444,
+          "count": 9
+        },
+        "CE2": {
+          "mean_settling_step": 79.66666666666667,
+          "mean_settling_pct": 79.66666666666667,
+          "count": 3
+        },
+        "CG": {
+          "mean_settling_step": 86.66129032258064,
+          "mean_settling_pct": 86.66129032258064,
+          "count": 62
+        },
+        "CG1": {
+          "mean_settling_step": 90.66666666666667,
+          "mean_settling_pct": 90.66666666666667,
+          "count": 6
+        },
+        "CG2": {
+          "mean_settling_step": 87.75,
+          "mean_settling_pct": 87.75,
+          "count": 8
+        },
+        "CZ": {
+          "mean_settling_step": 83.21428571428571,
+          "mean_settling_pct": 83.21428571428571,
+          "count": 14
+        },
+        "N": {
+          "mean_settling_step": 89.56976744186046,
+          "mean_settling_pct": 89.56976744186046,
+          "count": 86
+        },
+        "ND1": {
+          "mean_settling_step": 89.33333333333333,
+          "mean_settling_pct": 89.33333333333333,
+          "count": 6
+        },
+        "ND2": {
+          "mean_settling_step": 84.66666666666667,
+          "mean_settling_pct": 84.66666666666667,
+          "count": 3
+        },
+        "NE": {
+          "mean_settling_step": 87.54545454545455,
+          "mean_settling_pct": 87.54545454545455,
+          "count": 11
+        },
+        "NE2": {
+          "mean_settling_step": 96.0,
+          "mean_settling_pct": 96.0,
+          "count": 14
+        },
+        "NH1": {
+          "mean_settling_step": 95.0,
+          "mean_settling_pct": 95.0,
+          "count": 11
+        },
+        "NH2": {
+          "mean_settling_step": 88.45454545454545,
+          "mean_settling_pct": 88.45454545454545,
+          "count": 11
+        },
+        "NZ": {
+          "mean_settling_step": 86.75,
+          "mean_settling_pct": 86.75,
+          "count": 8
+        },
+        "O": {
+          "mean_settling_step": 84.93023255813954,
+          "mean_settling_pct": 84.93023255813954,
+          "count": 86
+        },
+        "OD1": {
+          "mean_settling_step": 89.9090909090909,
+          "mean_settling_pct": 89.9090909090909,
+          "count": 11
+        },
+        "OD2": {
+          "mean_settling_step": 95.75,
+          "mean_settling_pct": 95.75,
+          "count": 8
+        },
+        "OE1": {
+          "mean_settling_step": 87.07692307692308,
+          "mean_settling_pct": 87.07692307692308,
+          "count": 13
+        },
+        "OE2": {
+          "mean_settling_step": 95.8,
+          "mean_settling_pct": 95.8,
+          "count": 5
+        },
+        "OG": {
+          "mean_settling_step": 83.5,
+          "mean_settling_pct": 83.5,
+          "count": 6
+        },
+        "OG1": {
+          "mean_settling_step": 79.5,
+          "mean_settling_pct": 79.5,
+          "count": 2
+        },
+        "OH": {
+          "mean_settling_step": 90.0,
+          "mean_settling_pct": 90.0,
+          "count": 2
+        },
+        "SD": {
+          "mean_settling_step": 78.0,
+          "mean_settling_pct": 78.0,
+          "count": 1
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 13.056464871736939,
+      "contrib_at_skip_end": 92.75436185444813,
+      "contrib_in_skip_region": 79.6978969827112
+    }
+  },
+  {
+    "name": "1vq8B01",
+    "sequence": "PQPSRPRKGSLGFGPRKRSTSETPRFNSWPSDDGQPGVKGKGTQGPVKRWGVQKRKGKHARQGWRRRIGNLGPWNPSRVRSTVPQQGQT",
+    "num_residues": 89,
+    "num_atoms": 704,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 74.81179775280899,
+        "std_settling_step": 18.342894289762132,
+        "mean_settling_pct": 74.81179775280899,
+        "count": 356,
+        "mean_late_stage_ratio": 0.6026558365947723,
+        "mean_final_velocity": 1.2059257337300295
+      },
+      "sidechain": {
+        "mean_settling_step": 72.22535211267606,
+        "std_settling_step": 19.45648607092579,
+        "mean_settling_pct": 72.22535211267606,
+        "count": 284,
+        "mean_late_stage_ratio": 0.6585200576855853,
+        "mean_final_velocity": 1.2455306711121343
+      },
+      "terminal": {
+        "mean_settling_step": 75.703125,
+        "std_settling_step": 16.351299343916832,
+        "mean_settling_pct": 75.703125,
+        "count": 64,
+        "mean_late_stage_ratio": 0.6162630693871141,
+        "mean_final_velocity": 1.1927384468726814
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 75.54681647940075,
+          "mean_settling_pct": 75.54681647940075,
+          "count": 267
+        },
+        "1": {
+          "mean_settling_step": 72.03658536585365,
+          "mean_settling_pct": 72.03658536585365,
+          "count": 164
+        },
+        "2": {
+          "mean_settling_step": 71.31764705882352,
+          "mean_settling_pct": 71.31764705882352,
+          "count": 85
+        },
+        "3": {
+          "mean_settling_step": 73.51428571428572,
+          "mean_settling_pct": 73.51428571428572,
+          "count": 70
+        },
+        "4": {
+          "mean_settling_step": 75.05263157894737,
+          "mean_settling_pct": 75.05263157894737,
+          "count": 57
+        },
+        "5": {
+          "mean_settling_step": 77.54838709677419,
+          "mean_settling_pct": 77.54838709677419,
+          "count": 31
+        },
+        "6": {
+          "mean_settling_step": 70.5,
+          "mean_settling_pct": 70.5,
+          "count": 30
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 74.85393258426966,
+          "mean_settling_pct": 74.85393258426966,
+          "count": 89
+        },
+        "CA": {
+          "mean_settling_step": 77.10112359550561,
+          "mean_settling_pct": 77.10112359550561,
+          "count": 89
+        },
+        "CB": {
+          "mean_settling_step": 71.36,
+          "mean_settling_pct": 71.36,
+          "count": 75
+        },
+        "CD": {
+          "mean_settling_step": 72.85365853658537,
+          "mean_settling_pct": 72.85365853658537,
+          "count": 41
+        },
+        "CD1": {
+          "mean_settling_step": 74.0,
+          "mean_settling_pct": 74.0,
+          "count": 9
+        },
+        "CD2": {
+          "mean_settling_step": 74.22222222222223,
+          "mean_settling_pct": 74.22222222222223,
+          "count": 9
+        },
+        "CE": {
+          "mean_settling_step": 83.625,
+          "mean_settling_pct": 83.625,
+          "count": 8
+        },
+        "CE1": {
+          "mean_settling_step": 43.666666666666664,
+          "mean_settling_pct": 43.666666666666664,
+          "count": 3
+        },
+        "CE2": {
+          "mean_settling_step": 80.66666666666667,
+          "mean_settling_pct": 80.66666666666667,
+          "count": 6
+        },
+        "CE3": {
+          "mean_settling_step": 75.75,
+          "mean_settling_pct": 75.75,
+          "count": 4
+        },
+        "CG": {
+          "mean_settling_step": 70.69090909090909,
+          "mean_settling_pct": 70.69090909090909,
+          "count": 55
+        },
+        "CG1": {
+          "mean_settling_step": 65.5,
+          "mean_settling_pct": 65.5,
+          "count": 6
+        },
+        "CG2": {
+          "mean_settling_step": 74.36363636363636,
+          "mean_settling_pct": 74.36363636363636,
+          "count": 11
+        },
+        "CH2": {
+          "mean_settling_step": 71.5,
+          "mean_settling_pct": 71.5,
+          "count": 4
+        },
+        "CZ": {
+          "mean_settling_step": 75.8,
+          "mean_settling_pct": 75.8,
+          "count": 15
+        },
+        "CZ2": {
+          "mean_settling_step": 76.5,
+          "mean_settling_pct": 76.5,
+          "count": 4
+        },
+        "CZ3": {
+          "mean_settling_step": 68.75,
+          "mean_settling_pct": 68.75,
+          "count": 4
+        },
+        "N": {
+          "mean_settling_step": 74.68539325842697,
+          "mean_settling_pct": 74.68539325842697,
+          "count": 89
+        },
+        "ND1": {
+          "mean_settling_step": 54.0,
+          "mean_settling_pct": 54.0,
+          "count": 1
+        },
+        "ND2": {
+          "mean_settling_step": 74.0,
+          "mean_settling_pct": 74.0,
+          "count": 3
+        },
+        "NE": {
+          "mean_settling_step": 69.23076923076923,
+          "mean_settling_pct": 69.23076923076923,
+          "count": 13
+        },
+        "NE1": {
+          "mean_settling_step": 74.0,
+          "mean_settling_pct": 74.0,
+          "count": 4
+        },
+        "NE2": {
+          "mean_settling_step": 78.55555555555556,
+          "mean_settling_pct": 78.55555555555556,
+          "count": 9
+        },
+        "NH1": {
+          "mean_settling_step": 74.0,
+          "mean_settling_pct": 74.0,
+          "count": 13
+        },
+        "NH2": {
+          "mean_settling_step": 66.6923076923077,
+          "mean_settling_pct": 66.6923076923077,
+          "count": 13
+        },
+        "NZ": {
+          "mean_settling_step": 85.75,
+          "mean_settling_pct": 85.75,
+          "count": 8
+        },
+        "O": {
+          "mean_settling_step": 72.6067415730337,
+          "mean_settling_pct": 72.6067415730337,
+          "count": 89
+        },
+        "OD1": {
+          "mean_settling_step": 84.6,
+          "mean_settling_pct": 84.6,
+          "count": 5
+        },
+        "OD2": {
+          "mean_settling_step": 63.0,
+          "mean_settling_pct": 63.0,
+          "count": 2
+        },
+        "OE1": {
+          "mean_settling_step": 77.77777777777777,
+          "mean_settling_pct": 77.77777777777777,
+          "count": 9
+        },
+        "OE2": {
+          "mean_settling_step": 88.0,
+          "mean_settling_pct": 88.0,
+          "count": 1
+        },
+        "OG": {
+          "mean_settling_step": 68.75,
+          "mean_settling_pct": 68.75,
+          "count": 8
+        },
+        "OG1": {
+          "mean_settling_step": 82.6,
+          "mean_settling_pct": 82.6,
+          "count": 5
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.861943340741938,
+      "contrib_at_skip_end": 93.55509192996156,
+      "contrib_in_skip_region": 77.69314858921962
+    }
+  },
+  {
+    "name": "2odmA00",
+    "sequence": "ATKNAALKQLTKDADEILHLIKVQLDNLCPLYEEVLDTQFGLQKEVDFAVKLGLVDREDGKQILRLEKELSKLHEA",
+    "num_residues": 76,
+    "num_atoms": 607,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 81.63157894736842,
+        "std_settling_step": 20.29670838316242,
+        "mean_settling_pct": 81.63157894736842,
+        "count": 304,
+        "mean_late_stage_ratio": 0.6581271201314577,
+        "mean_final_velocity": 1.2741149190666252
+      },
+      "sidechain": {
+        "mean_settling_step": 80.31428571428572,
+        "std_settling_step": 21.39414377242291,
+        "mean_settling_pct": 80.31428571428572,
+        "count": 245,
+        "mean_late_stage_ratio": 0.6989291567130538,
+        "mean_final_velocity": 1.258923336316128
+      },
+      "terminal": {
+        "mean_settling_step": 84.24137931034483,
+        "std_settling_step": 21.69960300354124,
+        "mean_settling_pct": 84.24137931034483,
+        "count": 58,
+        "mean_late_stage_ratio": 0.7900238234343648,
+        "mean_final_velocity": 1.2791162847444928
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 81.82456140350877,
+          "mean_settling_pct": 81.82456140350877,
+          "count": 228
+        },
+        "1": {
+          "mean_settling_step": 81.02013422818791,
+          "mean_settling_pct": 81.02013422818791,
+          "count": 149
+        },
+        "2": {
+          "mean_settling_step": 79.75641025641026,
+          "mean_settling_pct": 79.75641025641026,
+          "count": 78
+        },
+        "3": {
+          "mean_settling_step": 79.74418604651163,
+          "mean_settling_pct": 79.74418604651163,
+          "count": 86
+        },
+        "4": {
+          "mean_settling_step": 80.57446808510639,
+          "mean_settling_pct": 80.57446808510639,
+          "count": 47
+        },
+        "5": {
+          "mean_settling_step": 95.5,
+          "mean_settling_pct": 95.5,
+          "count": 14
+        },
+        "6": {
+          "mean_settling_step": 89.6,
+          "mean_settling_pct": 89.6,
+          "count": 5
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 83.46052631578948,
+          "mean_settling_pct": 83.46052631578948,
+          "count": 76
+        },
+        "CA": {
+          "mean_settling_step": 80.82894736842105,
+          "mean_settling_pct": 80.82894736842105,
+          "count": 76
+        },
+        "CB": {
+          "mean_settling_step": 80.98630136986301,
+          "mean_settling_pct": 80.98630136986301,
+          "count": 73
+        },
+        "CD": {
+          "mean_settling_step": 82.36,
+          "mean_settling_pct": 82.36,
+          "count": 25
+        },
+        "CD1": {
+          "mean_settling_step": 76.04761904761905,
+          "mean_settling_pct": 76.04761904761905,
+          "count": 21
+        },
+        "CD2": {
+          "mean_settling_step": 72.95,
+          "mean_settling_pct": 72.95,
+          "count": 20
+        },
+        "CE": {
+          "mean_settling_step": 85.22222222222223,
+          "mean_settling_pct": 85.22222222222223,
+          "count": 9
+        },
+        "CE1": {
+          "mean_settling_step": 79.0,
+          "mean_settling_pct": 79.0,
+          "count": 5
+        },
+        "CE2": {
+          "mean_settling_step": 83.33333333333333,
+          "mean_settling_pct": 83.33333333333333,
+          "count": 3
+        },
+        "CG": {
+          "mean_settling_step": 80.03703703703704,
+          "mean_settling_pct": 80.03703703703704,
+          "count": 54
+        },
+        "CG1": {
+          "mean_settling_step": 80.5,
+          "mean_settling_pct": 80.5,
+          "count": 8
+        },
+        "CG2": {
+          "mean_settling_step": 77.81818181818181,
+          "mean_settling_pct": 77.81818181818181,
+          "count": 11
+        },
+        "CZ": {
+          "mean_settling_step": 90.6,
+          "mean_settling_pct": 90.6,
+          "count": 5
+        },
+        "N": {
+          "mean_settling_step": 81.1842105263158,
+          "mean_settling_pct": 81.1842105263158,
+          "count": 76
+        },
+        "ND1": {
+          "mean_settling_step": 84.0,
+          "mean_settling_pct": 84.0,
+          "count": 2
+        },
+        "ND2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "NE": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "NE2": {
+          "mean_settling_step": 75.0,
+          "mean_settling_pct": 75.0,
+          "count": 7
+        },
+        "NH1": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 2
+        },
+        "NH2": {
+          "mean_settling_step": 75.5,
+          "mean_settling_pct": 75.5,
+          "count": 2
+        },
+        "NZ": {
+          "mean_settling_step": 98.22222222222223,
+          "mean_settling_pct": 98.22222222222223,
+          "count": 9
+        },
+        "O": {
+          "mean_settling_step": 81.05263157894737,
+          "mean_settling_pct": 81.05263157894737,
+          "count": 76
+        },
+        "OD1": {
+          "mean_settling_step": 91.66666666666667,
+          "mean_settling_pct": 91.66666666666667,
+          "count": 9
+        },
+        "OD2": {
+          "mean_settling_step": 78.85714285714286,
+          "mean_settling_pct": 78.85714285714286,
+          "count": 7
+        },
+        "OE1": {
+          "mean_settling_step": 81.38461538461539,
+          "mean_settling_pct": 81.38461538461539,
+          "count": 13
+        },
+        "OE2": {
+          "mean_settling_step": 74.25,
+          "mean_settling_pct": 74.25,
+          "count": 8
+        },
+        "OG": {
+          "mean_settling_step": 58.0,
+          "mean_settling_pct": 57.99999999999999,
+          "count": 1
+        },
+        "OG1": {
+          "mean_settling_step": 80.66666666666667,
+          "mean_settling_pct": 80.66666666666667,
+          "count": 3
+        },
+        "OH": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "SG": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.059221946580267,
+      "contrib_at_skip_end": 93.7910311182037,
+      "contrib_in_skip_region": 78.73180917162344
+    }
+  },
+  {
+    "name": "2zpnC00",
+    "sequence": "TFKSEYPFEKRKAESERIADRFKNRIPVICEKAEKSDIPEIDKRKYLVPADLTVGQFVYVIRKRIMLPPEKAIFIFVNDTLPPTAALMSAIYQEHKDKDGFLYVTYSG",
+    "num_residues": 108,
+    "num_atoms": 887,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 85.24074074074075,
+        "std_settling_step": 19.489251724595185,
+        "mean_settling_pct": 85.24074074074075,
+        "count": 432,
+        "mean_late_stage_ratio": 0.693609313467534,
+        "mean_final_velocity": 1.2822239400336035
+      },
+      "sidechain": {
+        "mean_settling_step": 83.4375,
+        "std_settling_step": 20.677238139638796,
+        "mean_settling_pct": 83.4375,
+        "count": 384,
+        "mean_late_stage_ratio": 0.7444277402644041,
+        "mean_final_velocity": 1.2762498803980027
+      },
+      "terminal": {
+        "mean_settling_step": 90.36619718309859,
+        "std_settling_step": 18.630763168555628,
+        "mean_settling_pct": 90.36619718309859,
+        "count": 71,
+        "mean_late_stage_ratio": 0.7744310365529751,
+        "mean_final_velocity": 1.408299533414169
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 85.7253086419753,
+          "mean_settling_pct": 85.7253086419753,
+          "count": 324
+        },
+        "1": {
+          "mean_settling_step": 85.22535211267606,
+          "mean_settling_pct": 85.22535211267606,
+          "count": 213
+        },
+        "2": {
+          "mean_settling_step": 82.69747899159664,
+          "mean_settling_pct": 82.69747899159664,
+          "count": 119
+        },
+        "3": {
+          "mean_settling_step": 80.58333333333333,
+          "mean_settling_pct": 80.58333333333333,
+          "count": 108
+        },
+        "4": {
+          "mean_settling_step": 88.64788732394366,
+          "mean_settling_pct": 88.64788732394366,
+          "count": 71
+        },
+        "5": {
+          "mean_settling_step": 84.6875,
+          "mean_settling_pct": 84.6875,
+          "count": 32
+        },
+        "6": {
+          "mean_settling_step": 90.2,
+          "mean_settling_pct": 90.2,
+          "count": 20
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 85.56481481481481,
+          "mean_settling_pct": 85.56481481481481,
+          "count": 108
+        },
+        "CA": {
+          "mean_settling_step": 85.03703703703704,
+          "mean_settling_pct": 85.03703703703704,
+          "count": 108
+        },
+        "CB": {
+          "mean_settling_step": 86.70476190476191,
+          "mean_settling_pct": 86.70476190476191,
+          "count": 105
+        },
+        "CD": {
+          "mean_settling_step": 76.36842105263158,
+          "mean_settling_pct": 76.36842105263158,
+          "count": 38
+        },
+        "CD1": {
+          "mean_settling_step": 77.51724137931035,
+          "mean_settling_pct": 77.51724137931035,
+          "count": 29
+        },
+        "CD2": {
+          "mean_settling_step": 86.65,
+          "mean_settling_pct": 86.65,
+          "count": 20
+        },
+        "CE": {
+          "mean_settling_step": 81.28571428571429,
+          "mean_settling_pct": 81.28571428571429,
+          "count": 14
+        },
+        "CE1": {
+          "mean_settling_step": 95.42857142857143,
+          "mean_settling_pct": 95.42857142857143,
+          "count": 14
+        },
+        "CE2": {
+          "mean_settling_step": 81.15384615384616,
+          "mean_settling_pct": 81.15384615384616,
+          "count": 13
+        },
+        "CG": {
+          "mean_settling_step": 85.53623188405797,
+          "mean_settling_pct": 85.53623188405797,
+          "count": 69
+        },
+        "CG1": {
+          "mean_settling_step": 82.29411764705883,
+          "mean_settling_pct": 82.29411764705883,
+          "count": 17
+        },
+        "CG2": {
+          "mean_settling_step": 72.18181818181819,
+          "mean_settling_pct": 72.18181818181819,
+          "count": 22
+        },
+        "CZ": {
+          "mean_settling_step": 83.4,
+          "mean_settling_pct": 83.4,
+          "count": 20
+        },
+        "N": {
+          "mean_settling_step": 86.57407407407408,
+          "mean_settling_pct": 86.57407407407408,
+          "count": 108
+        },
+        "ND1": {
+          "mean_settling_step": 0.0,
+          "mean_settling_pct": 0.0,
+          "count": 1
+        },
+        "ND2": {
+          "mean_settling_step": 92.0,
+          "mean_settling_pct": 92.0,
+          "count": 2
+        },
+        "NE": {
+          "mean_settling_step": 97.14285714285714,
+          "mean_settling_pct": 97.14285714285714,
+          "count": 7
+        },
+        "NE2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 3
+        },
+        "NH1": {
+          "mean_settling_step": 87.71428571428571,
+          "mean_settling_pct": 87.71428571428571,
+          "count": 7
+        },
+        "NH2": {
+          "mean_settling_step": 96.28571428571429,
+          "mean_settling_pct": 96.28571428571429,
+          "count": 7
+        },
+        "NZ": {
+          "mean_settling_step": 86.83333333333333,
+          "mean_settling_pct": 86.83333333333333,
+          "count": 12
+        },
+        "O": {
+          "mean_settling_step": 83.78703703703704,
+          "mean_settling_pct": 83.78703703703704,
+          "count": 108
+        },
+        "OD1": {
+          "mean_settling_step": 90.77777777777777,
+          "mean_settling_pct": 90.77777777777777,
+          "count": 9
+        },
+        "OD2": {
+          "mean_settling_step": 95.42857142857143,
+          "mean_settling_pct": 95.42857142857143,
+          "count": 7
+        },
+        "OE1": {
+          "mean_settling_step": 95.54545454545455,
+          "mean_settling_pct": 95.54545454545455,
+          "count": 11
+        },
+        "OE2": {
+          "mean_settling_step": 81.88888888888889,
+          "mean_settling_pct": 81.88888888888889,
+          "count": 9
+        },
+        "OG": {
+          "mean_settling_step": 91.8,
+          "mean_settling_pct": 91.8,
+          "count": 5
+        },
+        "OG1": {
+          "mean_settling_step": 82.6,
+          "mean_settling_pct": 82.6,
+          "count": 5
+        },
+        "OH": {
+          "mean_settling_step": 86.0,
+          "mean_settling_pct": 86.0,
+          "count": 6
+        },
+        "SD": {
+          "mean_settling_step": 75.5,
+          "mean_settling_pct": 75.5,
+          "count": 2
+        },
+        "SG": {
+          "mean_settling_step": 80.0,
+          "mean_settling_pct": 80.0,
+          "count": 1
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 14.703277349051183,
+      "contrib_at_skip_end": 93.58934545734046,
+      "contrib_in_skip_region": 78.88606810828928
+    }
+  },
+  {
+    "name": "3fcgB00",
+    "sequence": "PYYQWNFAPVVRGIARTQARVEVLRDGYTVSNELVPSGPFELANLPELKVIIHESDGTKQVFTVPYDTPAV",
+    "num_residues": 71,
+    "num_atoms": 564,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 76.87323943661971,
+        "std_settling_step": 21.287389361875228,
+        "mean_settling_pct": 76.87323943661971,
+        "count": 284,
+        "mean_late_stage_ratio": 0.6393849841841899,
+        "mean_final_velocity": 1.233377315838572
+      },
+      "sidechain": {
+        "mean_settling_step": 81.61087866108787,
+        "std_settling_step": 18.53536839813908,
+        "mean_settling_pct": 81.61087866108787,
+        "count": 239,
+        "mean_late_stage_ratio": 0.6121368339355386,
+        "mean_final_velocity": 1.2707176406139111
+      },
+      "terminal": {
+        "mean_settling_step": 89.1219512195122,
+        "std_settling_step": 16.368016286903927,
+        "mean_settling_pct": 89.1219512195122,
+        "count": 41,
+        "mean_late_stage_ratio": 0.7279198645604528,
+        "mean_final_velocity": 1.2963631549259511
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 77.31924882629107,
+          "mean_settling_pct": 77.31924882629107,
+          "count": 213
+        },
+        "1": {
+          "mean_settling_step": 79.06521739130434,
+          "mean_settling_pct": 79.06521739130434,
+          "count": 138
+        },
+        "2": {
+          "mean_settling_step": 79.9375,
+          "mean_settling_pct": 79.9375,
+          "count": 80
+        },
+        "3": {
+          "mean_settling_step": 84.734375,
+          "mean_settling_pct": 84.734375,
+          "count": 64
+        },
+        "4": {
+          "mean_settling_step": 83.78048780487805,
+          "mean_settling_pct": 83.78048780487805,
+          "count": 41
+        },
+        "5": {
+          "mean_settling_step": 78.2,
+          "mean_settling_pct": 78.2,
+          "count": 15
+        },
+        "6": {
+          "mean_settling_step": 91.15384615384616,
+          "mean_settling_pct": 91.15384615384616,
+          "count": 13
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 78.73239436619718,
+          "mean_settling_pct": 78.73239436619718,
+          "count": 71
+        },
+        "CA": {
+          "mean_settling_step": 75.46478873239437,
+          "mean_settling_pct": 75.46478873239437,
+          "count": 71
+        },
+        "CB": {
+          "mean_settling_step": 82.80597014925372,
+          "mean_settling_pct": 82.80597014925372,
+          "count": 67
+        },
+        "CD": {
+          "mean_settling_step": 83.95238095238095,
+          "mean_settling_pct": 83.95238095238095,
+          "count": 21
+        },
+        "CD1": {
+          "mean_settling_step": 82.0,
+          "mean_settling_pct": 82.0,
+          "count": 16
+        },
+        "CD2": {
+          "mean_settling_step": 87.14285714285714,
+          "mean_settling_pct": 87.14285714285714,
+          "count": 14
+        },
+        "CE": {
+          "mean_settling_step": 89.0,
+          "mean_settling_pct": 89.0,
+          "count": 2
+        },
+        "CE1": {
+          "mean_settling_step": 88.75,
+          "mean_settling_pct": 88.75,
+          "count": 8
+        },
+        "CE2": {
+          "mean_settling_step": 77.625,
+          "mean_settling_pct": 77.625,
+          "count": 8
+        },
+        "CE3": {
+          "mean_settling_step": 70.0,
+          "mean_settling_pct": 70.0,
+          "count": 1
+        },
+        "CG": {
+          "mean_settling_step": 84.29268292682927,
+          "mean_settling_pct": 84.29268292682927,
+          "count": 41
+        },
+        "CG1": {
+          "mean_settling_step": 75.15384615384616,
+          "mean_settling_pct": 75.15384615384616,
+          "count": 13
+        },
+        "CG2": {
+          "mean_settling_step": 80.11111111111111,
+          "mean_settling_pct": 80.11111111111111,
+          "count": 18
+        },
+        "CH2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 1
+        },
+        "CZ": {
+          "mean_settling_step": 79.0909090909091,
+          "mean_settling_pct": 79.0909090909091,
+          "count": 11
+        },
+        "CZ2": {
+          "mean_settling_step": 93.0,
+          "mean_settling_pct": 93.0,
+          "count": 1
+        },
+        "CZ3": {
+          "mean_settling_step": 63.0,
+          "mean_settling_pct": 63.0,
+          "count": 1
+        },
+        "N": {
+          "mean_settling_step": 77.7605633802817,
+          "mean_settling_pct": 77.7605633802817,
+          "count": 71
+        },
+        "ND1": {
+          "mean_settling_step": 68.0,
+          "mean_settling_pct": 68.0,
+          "count": 1
+        },
+        "ND2": {
+          "mean_settling_step": 79.66666666666667,
+          "mean_settling_pct": 79.66666666666667,
+          "count": 3
+        },
+        "NE": {
+          "mean_settling_step": 75.0,
+          "mean_settling_pct": 75.0,
+          "count": 4
+        },
+        "NE1": {
+          "mean_settling_step": 55.0,
+          "mean_settling_pct": 55.00000000000001,
+          "count": 1
+        },
+        "NE2": {
+          "mean_settling_step": 86.75,
+          "mean_settling_pct": 86.75,
+          "count": 4
+        },
+        "NH1": {
+          "mean_settling_step": 91.0,
+          "mean_settling_pct": 91.0,
+          "count": 4
+        },
+        "NH2": {
+          "mean_settling_step": 91.25,
+          "mean_settling_pct": 91.25,
+          "count": 4
+        },
+        "NZ": {
+          "mean_settling_step": 73.5,
+          "mean_settling_pct": 73.5,
+          "count": 2
+        },
+        "O": {
+          "mean_settling_step": 75.53521126760563,
+          "mean_settling_pct": 75.53521126760563,
+          "count": 71
+        },
+        "OD1": {
+          "mean_settling_step": 87.33333333333333,
+          "mean_settling_pct": 87.33333333333333,
+          "count": 6
+        },
+        "OD2": {
+          "mean_settling_step": 99.0,
+          "mean_settling_pct": 99.0,
+          "count": 3
+        },
+        "OE1": {
+          "mean_settling_step": 96.75,
+          "mean_settling_pct": 96.75,
+          "count": 8
+        },
+        "OE2": {
+          "mean_settling_step": 76.0,
+          "mean_settling_pct": 76.0,
+          "count": 5
+        },
+        "OG": {
+          "mean_settling_step": 72.0,
+          "mean_settling_pct": 72.0,
+          "count": 3
+        },
+        "OG1": {
+          "mean_settling_step": 60.8,
+          "mean_settling_pct": 60.8,
+          "count": 5
+        },
+        "OH": {
+          "mean_settling_step": 89.25,
+          "mean_settling_pct": 89.25,
+          "count": 4
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 15.543605877113686,
+      "contrib_at_skip_end": 93.85756882803487,
+      "contrib_in_skip_region": 78.31396295092118
+    }
+  },
+  {
+    "name": "2pffB01",
+    "sequence": "MDAYSTRPLVNGAKNLVVSGPPQSLYGLNLTLRKAKAPSGLDQSRIPFSERKLKFSNRFLPVA",
+    "num_residues": 63,
+    "num_atoms": 487,
+    "statistics": {
+      "backbone": {
+        "mean_settling_step": 70.88095238095238,
+        "std_settling_step": 19.94898539125711,
+        "mean_settling_pct": 70.88095238095238,
+        "count": 252,
+        "mean_late_stage_ratio": 0.6409310269226572,
+        "mean_final_velocity": 1.2048380216435781
+      },
+      "sidechain": {
+        "mean_settling_step": 68.55392156862744,
+        "std_settling_step": 18.205580762387374,
+        "mean_settling_pct": 68.55392156862744,
+        "count": 204,
+        "mean_late_stage_ratio": 0.6043241796805489,
+        "mean_final_velocity": 1.1382219972563725
+      },
+      "terminal": {
+        "mean_settling_step": 71.7741935483871,
+        "std_settling_step": 18.57280300456584,
+        "mean_settling_pct": 71.7741935483871,
+        "count": 31,
+        "mean_late_stage_ratio": 0.6334837504793325,
+        "mean_final_velocity": 1.1061949686657997
+      },
+      "by_depth": {
+        "0": {
+          "mean_settling_step": 71.17989417989418,
+          "mean_settling_pct": 71.17989417989418,
+          "count": 189
+        },
+        "1": {
+          "mean_settling_step": 68.54918032786885,
+          "mean_settling_pct": 68.54918032786885,
+          "count": 122
+        },
+        "2": {
+          "mean_settling_step": 67.32786885245902,
+          "mean_settling_pct": 67.32786885245902,
+          "count": 61
+        },
+        "3": {
+          "mean_settling_step": 71.01639344262296,
+          "mean_settling_pct": 71.01639344262296,
+          "count": 61
+        },
+        "4": {
+          "mean_settling_step": 72.25925925925925,
+          "mean_settling_pct": 72.25925925925925,
+          "count": 27
+        },
+        "5": {
+          "mean_settling_step": 68.4,
+          "mean_settling_pct": 68.4,
+          "count": 15
+        },
+        "6": {
+          "mean_settling_step": 70.0,
+          "mean_settling_pct": 70.0,
+          "count": 12
+        }
+      },
+      "by_name": {
+        "C": {
+          "mean_settling_step": 68.4920634920635,
+          "mean_settling_pct": 68.4920634920635,
+          "count": 63
+        },
+        "CA": {
+          "mean_settling_step": 71.36507936507937,
+          "mean_settling_pct": 71.36507936507937,
+          "count": 63
+        },
+        "CB": {
+          "mean_settling_step": 67.01694915254237,
+          "mean_settling_pct": 67.01694915254237,
+          "count": 59
+        },
+        "CD": {
+          "mean_settling_step": 66.73684210526316,
+          "mean_settling_pct": 66.73684210526316,
+          "count": 19
+        },
+        "CD1": {
+          "mean_settling_step": 71.6,
+          "mean_settling_pct": 71.6,
+          "count": 15
+        },
+        "CD2": {
+          "mean_settling_step": 70.85714285714286,
+          "mean_settling_pct": 70.85714285714286,
+          "count": 14
+        },
+        "CE": {
+          "mean_settling_step": 75.16666666666667,
+          "mean_settling_pct": 75.16666666666667,
+          "count": 6
+        },
+        "CE1": {
+          "mean_settling_step": 66.8,
+          "mean_settling_pct": 66.8,
+          "count": 5
+        },
+        "CE2": {
+          "mean_settling_step": 81.0,
+          "mean_settling_pct": 81.0,
+          "count": 5
+        },
+        "CG": {
+          "mean_settling_step": 70.1,
+          "mean_settling_pct": 70.1,
+          "count": 40
+        },
+        "CG1": {
+          "mean_settling_step": 67.8,
+          "mean_settling_pct": 67.8,
+          "count": 5
+        },
+        "CG2": {
+          "mean_settling_step": 57.142857142857146,
+          "mean_settling_pct": 57.14285714285715,
+          "count": 7
+        },
+        "CZ": {
+          "mean_settling_step": 71.7,
+          "mean_settling_pct": 71.7,
+          "count": 10
+        },
+        "N": {
+          "mean_settling_step": 73.68253968253968,
+          "mean_settling_pct": 73.68253968253968,
+          "count": 63
+        },
+        "ND2": {
+          "mean_settling_step": 74.75,
+          "mean_settling_pct": 74.75,
+          "count": 4
+        },
+        "NE": {
+          "mean_settling_step": 67.2,
+          "mean_settling_pct": 67.2,
+          "count": 5
+        },
+        "NE2": {
+          "mean_settling_step": 53.5,
+          "mean_settling_pct": 53.5,
+          "count": 2
+        },
+        "NH1": {
+          "mean_settling_step": 75.6,
+          "mean_settling_pct": 75.6,
+          "count": 5
+        },
+        "NH2": {
+          "mean_settling_step": 60.4,
+          "mean_settling_pct": 60.4,
+          "count": 5
+        },
+        "NZ": {
+          "mean_settling_step": 61.8,
+          "mean_settling_pct": 61.8,
+          "count": 5
+        },
+        "O": {
+          "mean_settling_step": 69.98412698412699,
+          "mean_settling_pct": 69.98412698412699,
+          "count": 63
+        },
+        "OD1": {
+          "mean_settling_step": 76.5,
+          "mean_settling_pct": 76.5,
+          "count": 6
+        },
+        "OD2": {
+          "mean_settling_step": 96.0,
+          "mean_settling_pct": 96.0,
+          "count": 2
+        },
+        "OE1": {
+          "mean_settling_step": 84.0,
+          "mean_settling_pct": 84.0,
+          "count": 3
+        },
+        "OE2": {
+          "mean_settling_step": 66.0,
+          "mean_settling_pct": 66.0,
+          "count": 1
+        },
+        "OG": {
+          "mean_settling_step": 57.285714285714285,
+          "mean_settling_pct": 57.285714285714285,
+          "count": 7
+        },
+        "OG1": {
+          "mean_settling_step": 81.5,
+          "mean_settling_pct": 81.5,
+          "count": 2
+        },
+        "OH": {
+          "mean_settling_step": 80.0,
+          "mean_settling_pct": 80.0,
+          "count": 2
+        },
+        "SD": {
+          "mean_settling_step": 48.0,
+          "mean_settling_pct": 48.0,
+          "count": 1
+        }
+      }
+    },
+    "wasted_computation": {
+      "contrib_at_warmup": 16.07318105768118,
+      "contrib_at_skip_end": 93.7706541872862,
+      "contrib_in_skip_region": 77.69747312960502
+    }
+  }
+]

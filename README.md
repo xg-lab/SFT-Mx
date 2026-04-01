@@ -1,14 +1,14 @@
 
-<h1 align="center"><strong>TurboFold: Folding Proteins is Faster than You Think</strong></h1>
+<h1 align="center"><strong>SimpleFold-Turbo: Folding Proteins is <i>Way</i> Faster than You Think</strong></h1>
 
 
 <div align="center">
 
-This github repository accompanies the research paper, [*Ramachandran constraints enable extreme caching in a protein structure model*]() (Arxiv 2026).
+This github repository accompanies the research paper [*SimpleFold-Turbo: Adaptive caching yields 14-fold acceleration in flow-matching protein structure generation*]() (bioRxiv 2026).
 
-*Geoffrey Taghon*
+*Geoffrey Taghon, NIST*
 
-[[`Paper`](https://arxiv.org/abs/2509.18480)]  [[`BibTex`](#citation)]
+[[`Paper`](publication/simplefold_turbo_2026.pdf)]  [[`BibTex`](#citation)]
 
 <img src="assets/intro.png" width="750">
 
@@ -17,22 +17,22 @@ This github repository accompanies the research paper, [*Ramachandran constraint
 
 ## Introduction
 
-We introduce TurboFold, an efficient adaptive caching fork of [SimpleFold](https://github.com/apple/ml-simplefold). SimpleFold does not rely on expensive modules like triangle attention or pair representation biases, and is trained via a generative flow-matching objective. In search of further speed optimization, we apply adaptive timestep caching following the example of [TeaCache]() video diffusion acceleration to achieve an order-of-magnitude speedup over original SimpleFold, and a significant speedup over CUDA-based AlphaFold3. TurboFold is fully open source, requires no internet connection for operation, and is highly suitable for ensemble predictions, as individual structures are produced in milliseconds to seconds on consumer hardware (Apple M2 Max).
+We introduce SimpleFold-Turbo, an efficient adaptive caching fork of [SimpleFold](https://github.com/apple/ml-simplefold). SimpleFold does not rely on expensive modules like triangle attention or pair representation biases, and is trained via a generative flow-matching objective. In search of further speed optimization, we apply adaptive timestep caching following the example of [TeaCache](https://github.com/ali-vilab/TeaCache) video diffusion acceleration to achieve an order-of-magnitude speedup over original SimpleFold, and a significant speedup over CUDA-based AlphaFold3. SimpleFold-Turbo is fully open source, requires no internet connection for operation, and is highly suitable for ensemble predictions, as individual structures are produced in milliseconds to seconds on consumer hardware (Apple M2 Max). Caching and relative speedup is only dependent on input sequence length, **not** biophysical or geometric properties of the determined fold.
 
 </div>
 
 
 ## Installation
 
-To install `turbofold` package from github repository, run
+To install `simplefold-turbo` package from github repository, run
 ```
-git clone https://github.com/usnistgov/turbofold.git
-cd turbofold
-conda create -n turbofold python=3.10
-conda activate turbofold
+git clone https://github.com/usnistgov/simplefold-turbo.git
+cd simplefold-turbo
+conda create -n sft python=3.10
+conda activate sft
 python -m pip install -U pip build; pip install -e .
 ```
-If you want to use the MLX backend on Apple silicon (**Recommended**): 
+If you want to use the MLX backend on Apple silicon (**Highly Recommended**): 
 ```
 pip install -U mlx
 pip install git+https://github.com/facebookresearch/esm.git
@@ -44,38 +44,31 @@ We provide a jupyter notebook [`sample.ipynb`](sample.ipynb) to predict protein 
 
 ## Inference
 
-Once you have the `turbofold` package installed, you can predict protein structures from target fasta file(s) via the following command line invocation. We provide support for both [PyTorch](https://pytorch.org/) and [MLX](https://mlx-framework.org/) (recommended for Apple hardware) backends in inference. 
+Once you have the `simplefold-turbo` package installed, you can predict protein structures from target fasta file(s) via the following command line invocation. We provide support for both [PyTorch](https://pytorch.org/) and [MLX](https://mlx-framework.org/) (recommended for Apple hardware) backends in inference. 
 ```
-simplefold \
-    --turbofold_model turbofold_100M \  # specify base folding model in simplefold_100M/360M/700M/1.1B/1.6B/3B
-    --num_steps 500 --tau 0.01 \        # specify inference setting
-    --threshold 0.1                     # TeaCache step similarity threshold: ↑threshold = ↑speed, ↓accuracy
-    --nsample_per_protein 1 \           # number of generated conformers per target
-    --plddt \                           # output pLDDT
-    --fasta_path [FASTA_PATH] \         # path to the target fasta directory or file
-    --output_dir [OUTPUT_DIR] \         # path to the output directory
-    --backend [mlx, torch]              # choose from MLX and PyTorch for inference backend 
-```
-
-## Evaluation
-
-We provide predicted structures from SimpleFold of different model sizes:
-```
-zenodo link
+sft \
+    --simplefold_model simplefold_100M \  # specify base folding model in simplefold_100M/360M/700M/1.1B/1.6B/3B
+    --num_steps 500 --tau 0.01 \          # specify inference setting
+    --nsample_per_protein 1 \             # number of generated conformers per target
+    --plddt \                             # output pLDDT
+    --fasta_path [FASTA_PATH] \           # path to the target fasta directory or file
+    --output_dir [OUTPUT_DIR] \           # path to the output directory
+    --backend [mlx, torch] \              # choose from MLX and PyTorch for inference backend
+    --teacache 0.1                        # TeaCache threshold (0.0 = off, 0.1 = default)
 ```
 
 ## Train
 
-You can also train or tune TurboFold on your end. Instructions are the same as for [SimpleFold](https://github.com/apple/ml-simplefold?tab=readme-ov-file#train). 
+You can also train or tune SimpleFold-Turbo on your end. Instructions are the same as for [SimpleFold](https://github.com/apple/ml-simplefold?tab=readme-ov-file#train). 
 
 
 ## Citation
 If you found this code useful, please cite the following papers:
 ```
-@article{turbofold,
-  title={Ramachandran constraints enable extreme caching in a protein structure model},
+@article{simplefold-turbo,
+  title={SimpleFold-Turbo: Adaptive caching yields 14x acceleration in flow-matching protein structure generation},
   author={Taghon, Geoffrey},
-  journal={arXiv preprint arXiv:TBD},
+  journal={bioRxiv preprint bioRxiv:TBD},
   year={2026}
 }
 @article{simplefold,

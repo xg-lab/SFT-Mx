@@ -13,8 +13,8 @@ from simplefold.inference import predict_structures_from_fastas
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="simplefold",
-        description="Folding proteins with SimpleFold."
+        prog="sft",
+        description="Folding proteins with SF-T (SimpleFold-Turbo)."
     )
     parser.add_argument("--simplefold_model", type=str, default="simplefold_100M", help="Name of the model to load.")
     parser.add_argument("--ckpt_dir", type=str, default="artifacts", help="Directory to save the checkpoint.")
@@ -27,6 +27,7 @@ def main():
     parser.add_argument("--plddt", action="store_true", help="Enable pLDDT prediction.")
     parser.add_argument("--output_format", type=str, default="mmcif", choices=["pdb", "mmcif"], help="Output file format.")
     parser.add_argument("--backend", type=str, default='torch', choices=['torch', 'mlx'], help="Backend to run inference either torch or mlx")
+    parser.add_argument("--teacache", type=float, default=0.1, help="Enable TeaCache with threshold (0.0 to 1.0)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility.")
     parser.add_argument(
         "--version",
@@ -35,5 +36,5 @@ def main():
     )
     args = parser.parse_args()
 
-    print(f"Running protein folding with SimpleFold ...")
+    print(f"Running protein folding with SF-T ...")
     predict_structures_from_fastas(args)

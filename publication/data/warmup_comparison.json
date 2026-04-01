@@ -1,0 +1,2115 @@
+{
+  "n_proteins": 300,
+  "n_warmup_steps": 11,
+  "n_full_steps": 500,
+  "summary": {
+    "warmup_vs_full_rmsd": {
+      "mean": 2.71769380569458,
+      "std": 0.21487529575824738,
+      "median": 2.6952261924743652
+    },
+    "size_correlation": 0.3607305690870711
+  },
+  "proteins": [
+    {
+      "name": "5c5sB00",
+      "num_residues": 202,
+      "rmsd_warmup_vs_full": 3.0571727752685547,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2doqD00",
+      "num_residues": 81,
+      "rmsd_warmup_vs_full": 2.8108654022216797,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1uunA02",
+      "num_residues": 52,
+      "rmsd_warmup_vs_full": 2.289367437362671,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3f3fD01",
+      "num_residues": 51,
+      "rmsd_warmup_vs_full": 2.454240560531616,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3fvcA02",
+      "num_residues": 100,
+      "rmsd_warmup_vs_full": 2.553126811981201,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2jn0A00",
+      "num_residues": 50,
+      "rmsd_warmup_vs_full": 2.7440004348754883,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2efkA01",
+      "num_residues": 256,
+      "rmsd_warmup_vs_full": 3.4836814403533936,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4uf1A00",
+      "num_residues": 135,
+      "rmsd_warmup_vs_full": 2.789461851119995,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1q0vA00",
+      "num_residues": 81,
+      "rmsd_warmup_vs_full": 2.5430662631988525,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1u3oA01",
+      "num_residues": 62,
+      "rmsd_warmup_vs_full": 2.332381010055542,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1yc9A02",
+      "num_residues": 83,
+      "rmsd_warmup_vs_full": 2.6449429988861084,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3rsiB01",
+      "num_residues": 64,
+      "rmsd_warmup_vs_full": 2.4925928115844727,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1x6fA00",
+      "num_residues": 88,
+      "rmsd_warmup_vs_full": 3.0782902240753174,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ibtC00",
+      "num_residues": 76,
+      "rmsd_warmup_vs_full": 2.492748975753784,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1an2A00",
+      "num_residues": 86,
+      "rmsd_warmup_vs_full": 3.084963798522949,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vq8B01",
+      "num_residues": 89,
+      "rmsd_warmup_vs_full": 2.6105663776397705,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2odmA00",
+      "num_residues": 76,
+      "rmsd_warmup_vs_full": 2.7187814712524414,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2zpnC00",
+      "num_residues": 108,
+      "rmsd_warmup_vs_full": 2.5452194213867188,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3fcgB00",
+      "num_residues": 71,
+      "rmsd_warmup_vs_full": 2.54659366607666,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2pffB01",
+      "num_residues": 63,
+      "rmsd_warmup_vs_full": 2.734384536743164,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "6hu9c01",
+      "num_residues": 78,
+      "rmsd_warmup_vs_full": 2.5412538051605225,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1c6vX00",
+      "num_residues": 55,
+      "rmsd_warmup_vs_full": 2.520345687866211,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4b0nA01",
+      "num_residues": 227,
+      "rmsd_warmup_vs_full": 2.906855583190918,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4ojdH01",
+      "num_residues": 164,
+      "rmsd_warmup_vs_full": 2.7193825244903564,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2zuoA01",
+      "num_residues": 56,
+      "rmsd_warmup_vs_full": 2.5540695190429688,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2rprA00",
+      "num_residues": 87,
+      "rmsd_warmup_vs_full": 2.804131269454956,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3fjsA00",
+      "num_residues": 103,
+      "rmsd_warmup_vs_full": 2.5192062854766846,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2gysA02",
+      "num_residues": 102,
+      "rmsd_warmup_vs_full": 2.7356410026550293,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4iupA02",
+      "num_residues": 70,
+      "rmsd_warmup_vs_full": 2.7684144973754883,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3c8eB01",
+      "num_residues": 126,
+      "rmsd_warmup_vs_full": 2.7856881618499756,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1t3oA01",
+      "num_residues": 68,
+      "rmsd_warmup_vs_full": 2.6705222129821777,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2yucA01",
+      "num_residues": 66,
+      "rmsd_warmup_vs_full": 3.057317018508911,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1lciA03",
+      "num_residues": 77,
+      "rmsd_warmup_vs_full": 2.3535687923431396,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1hcnB00",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.695305347442627,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2ecjA00",
+      "num_residues": 58,
+      "rmsd_warmup_vs_full": 2.623643398284912,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3a98B01",
+      "num_residues": 78,
+      "rmsd_warmup_vs_full": 2.4312424659729004,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1qoyA00",
+      "num_residues": 303,
+      "rmsd_warmup_vs_full": 3.1323370933532715,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4wksC02",
+      "num_residues": 75,
+      "rmsd_warmup_vs_full": 2.598116874694824,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1pm6A00",
+      "num_residues": 72,
+      "rmsd_warmup_vs_full": 2.6528544425964355,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2co9A00",
+      "num_residues": 102,
+      "rmsd_warmup_vs_full": 2.5933210849761963,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2m4vA00",
+      "num_residues": 80,
+      "rmsd_warmup_vs_full": 2.559034824371338,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3hn5A02",
+      "num_residues": 112,
+      "rmsd_warmup_vs_full": 2.754577159881592,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5fmnA00",
+      "num_residues": 86,
+      "rmsd_warmup_vs_full": 2.5597193241119385,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1aq3A00",
+      "num_residues": 129,
+      "rmsd_warmup_vs_full": 2.5977723598480225,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2hvgA02",
+      "num_residues": 269,
+      "rmsd_warmup_vs_full": 3.7281031608581543,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4ae5C00",
+      "num_residues": 158,
+      "rmsd_warmup_vs_full": 2.7512426376342773,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5lnkA00",
+      "num_residues": 115,
+      "rmsd_warmup_vs_full": 3.2828972339630127,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1pxfA00",
+      "num_residues": 111,
+      "rmsd_warmup_vs_full": 2.854398727416992,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3t5oA01",
+      "num_residues": 58,
+      "rmsd_warmup_vs_full": 2.946502923965454,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3djlA02",
+      "num_residues": 54,
+      "rmsd_warmup_vs_full": 2.750188112258911,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2a2cA02",
+      "num_residues": 84,
+      "rmsd_warmup_vs_full": 2.640148878097534,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3gldA01",
+      "num_residues": 143,
+      "rmsd_warmup_vs_full": 2.6050326824188232,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4xomB00",
+      "num_residues": 205,
+      "rmsd_warmup_vs_full": 3.094721794128418,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2xzn800",
+      "num_residues": 93,
+      "rmsd_warmup_vs_full": 2.48927903175354,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1uunA01",
+      "num_residues": 132,
+      "rmsd_warmup_vs_full": 2.521416664123535,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1hr6A01",
+      "num_residues": 214,
+      "rmsd_warmup_vs_full": 3.083085775375366,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3a8pA02",
+      "num_residues": 114,
+      "rmsd_warmup_vs_full": 2.429386854171753,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ay9A00",
+      "num_residues": 108,
+      "rmsd_warmup_vs_full": 2.8243184089660645,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ndbA01",
+      "num_residues": 270,
+      "rmsd_warmup_vs_full": 2.536285400390625,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ek9A00",
+      "num_residues": 423,
+      "rmsd_warmup_vs_full": 2.610863208770752,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2jmoA01",
+      "num_residues": 55,
+      "rmsd_warmup_vs_full": 2.5068910121917725,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3bsoA02",
+      "num_residues": 57,
+      "rmsd_warmup_vs_full": 2.3291051387786865,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3qauA03",
+      "num_residues": 51,
+      "rmsd_warmup_vs_full": 2.4047534465789795,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4qq1C03",
+      "num_residues": 88,
+      "rmsd_warmup_vs_full": 2.4945192337036133,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1qu3A04",
+      "num_residues": 150,
+      "rmsd_warmup_vs_full": 2.822718381881714,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1upqA00",
+      "num_residues": 107,
+      "rmsd_warmup_vs_full": 2.8167364597320557,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3kbgA03",
+      "num_residues": 55,
+      "rmsd_warmup_vs_full": 2.4048800468444824,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vw4200",
+      "num_residues": 113,
+      "rmsd_warmup_vs_full": 3.7123656272888184,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3f1jA00",
+      "num_residues": 138,
+      "rmsd_warmup_vs_full": 2.6297261714935303,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5sviB00",
+      "num_residues": 53,
+      "rmsd_warmup_vs_full": 2.5684194564819336,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vw4700",
+      "num_residues": 106,
+      "rmsd_warmup_vs_full": 2.872251510620117,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1whnA01",
+      "num_residues": 101,
+      "rmsd_warmup_vs_full": 2.771764039993286,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2ww8A04",
+      "num_residues": 74,
+      "rmsd_warmup_vs_full": 2.6524767875671387,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4dn9A00",
+      "num_residues": 95,
+      "rmsd_warmup_vs_full": 2.9694008827209473,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3cmbA00",
+      "num_residues": 258,
+      "rmsd_warmup_vs_full": 3.0007824897766113,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2ensA01",
+      "num_residues": 94,
+      "rmsd_warmup_vs_full": 2.7695584297180176,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4myzC00",
+      "num_residues": 51,
+      "rmsd_warmup_vs_full": 2.6610541343688965,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2lexA00",
+      "num_residues": 63,
+      "rmsd_warmup_vs_full": 2.6554641723632812,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3bwnD01",
+      "num_residues": 144,
+      "rmsd_warmup_vs_full": 2.8373212814331055,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4jtmA00",
+      "num_residues": 81,
+      "rmsd_warmup_vs_full": 2.7024033069610596,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4e1pA00",
+      "num_residues": 55,
+      "rmsd_warmup_vs_full": 2.5907416343688965,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1q3eA01",
+      "num_residues": 66,
+      "rmsd_warmup_vs_full": 2.50970196723938,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1z5hA03",
+      "num_residues": 73,
+      "rmsd_warmup_vs_full": 2.2888598442077637,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2ox5A00",
+      "num_residues": 107,
+      "rmsd_warmup_vs_full": 2.6481919288635254,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1wibA00",
+      "num_residues": 92,
+      "rmsd_warmup_vs_full": 2.579165458679199,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2djaA00",
+      "num_residues": 84,
+      "rmsd_warmup_vs_full": 2.856980800628662,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1g5gA02",
+      "num_residues": 170,
+      "rmsd_warmup_vs_full": 2.8137426376342773,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3cnvA01",
+      "num_residues": 151,
+      "rmsd_warmup_vs_full": 2.6879279613494873,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3hnwA00",
+      "num_residues": 124,
+      "rmsd_warmup_vs_full": 2.9521372318267822,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5xyiU00",
+      "num_residues": 97,
+      "rmsd_warmup_vs_full": 2.88201642036438,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4j31A00",
+      "num_residues": 366,
+      "rmsd_warmup_vs_full": 2.570814609527588,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3cjrB01",
+      "num_residues": 70,
+      "rmsd_warmup_vs_full": 2.709303855895996,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1z6oM00",
+      "num_residues": 191,
+      "rmsd_warmup_vs_full": 2.827550172805786,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2bayE00",
+      "num_residues": 59,
+      "rmsd_warmup_vs_full": 2.8785481452941895,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1afb100",
+      "num_residues": 154,
+      "rmsd_warmup_vs_full": 2.8025240898132324,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1k3sA00",
+      "num_residues": 106,
+      "rmsd_warmup_vs_full": 2.7401010990142822,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1rmvA00",
+      "num_residues": 156,
+      "rmsd_warmup_vs_full": 2.8460376262664795,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2kkeA00",
+      "num_residues": 53,
+      "rmsd_warmup_vs_full": 2.3292675018310547,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2ekhA00",
+      "num_residues": 80,
+      "rmsd_warmup_vs_full": 2.7371835708618164,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2icsA01",
+      "num_residues": 100,
+      "rmsd_warmup_vs_full": 2.5851593017578125,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "6d6tA01",
+      "num_residues": 210,
+      "rmsd_warmup_vs_full": 3.04178524017334,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1jeyB02",
+      "num_residues": 201,
+      "rmsd_warmup_vs_full": 2.5640602111816406,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1novA00",
+      "num_residues": 309,
+      "rmsd_warmup_vs_full": 3.119819164276123,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4agsA01",
+      "num_residues": 82,
+      "rmsd_warmup_vs_full": 2.555452585220337,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5t3eB01",
+      "num_residues": 182,
+      "rmsd_warmup_vs_full": 2.818345308303833,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2vqxA01",
+      "num_residues": 155,
+      "rmsd_warmup_vs_full": 2.9120829105377197,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1l5jA03",
+      "num_residues": 173,
+      "rmsd_warmup_vs_full": 2.458444356918335,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2i4rA00",
+      "num_residues": 76,
+      "rmsd_warmup_vs_full": 2.6175739765167236,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3aonA00",
+      "num_residues": 180,
+      "rmsd_warmup_vs_full": 3.418294668197632,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "6d7cA01",
+      "num_residues": 100,
+      "rmsd_warmup_vs_full": 2.8313615322113037,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1m6uA00",
+      "num_residues": 265,
+      "rmsd_warmup_vs_full": 2.59002947807312,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1a10I00",
+      "num_residues": 63,
+      "rmsd_warmup_vs_full": 2.6823415756225586,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3jc6D01",
+      "num_residues": 157,
+      "rmsd_warmup_vs_full": 2.936429023742676,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4b9kE00",
+      "num_residues": 86,
+      "rmsd_warmup_vs_full": 2.750521183013916,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3o2zF00",
+      "num_residues": 77,
+      "rmsd_warmup_vs_full": 2.7541449069976807,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4ohvA01",
+      "num_residues": 80,
+      "rmsd_warmup_vs_full": 2.5097320079803467,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4l68A01",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.5788934230804443,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1t16A00",
+      "num_residues": 427,
+      "rmsd_warmup_vs_full": 2.6490962505340576,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1chuA01",
+      "num_residues": 243,
+      "rmsd_warmup_vs_full": 3.0816378593444824,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2hv2A01",
+      "num_residues": 90,
+      "rmsd_warmup_vs_full": 2.8294172286987305,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3ek3A01",
+      "num_residues": 165,
+      "rmsd_warmup_vs_full": 2.7240588665008545,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2fn0B00",
+      "num_residues": 412,
+      "rmsd_warmup_vs_full": 3.0883588790893555,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2g5xA02",
+      "num_residues": 62,
+      "rmsd_warmup_vs_full": 2.560966730117798,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3fidA00",
+      "num_residues": 296,
+      "rmsd_warmup_vs_full": 2.6666760444641113,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2r7eB01",
+      "num_residues": 183,
+      "rmsd_warmup_vs_full": 2.883297920227051,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3it8D02",
+      "num_residues": 119,
+      "rmsd_warmup_vs_full": 2.6946544647216797,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1i3pA00",
+      "num_residues": 274,
+      "rmsd_warmup_vs_full": 2.606273651123047,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1jq4A00",
+      "num_residues": 98,
+      "rmsd_warmup_vs_full": 2.6619813442230225,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1f3lA02",
+      "num_residues": 170,
+      "rmsd_warmup_vs_full": 2.3874104022979736,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2mqcA00",
+      "num_residues": 105,
+      "rmsd_warmup_vs_full": 2.9024417400360107,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1i94H02",
+      "num_residues": 58,
+      "rmsd_warmup_vs_full": 2.717463731765747,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3qwwA01",
+      "num_residues": 95,
+      "rmsd_warmup_vs_full": 2.7095327377319336,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3lnnA03",
+      "num_residues": 73,
+      "rmsd_warmup_vs_full": 2.420840263366699,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1du2A00",
+      "num_residues": 76,
+      "rmsd_warmup_vs_full": 2.472609281539917,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2jugA01",
+      "num_residues": 55,
+      "rmsd_warmup_vs_full": 2.57997989654541,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4lj0A00",
+      "num_residues": 65,
+      "rmsd_warmup_vs_full": 2.610262870788574,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2e5wA01",
+      "num_residues": 56,
+      "rmsd_warmup_vs_full": 2.634753704071045,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1rerA01",
+      "num_residues": 126,
+      "rmsd_warmup_vs_full": 2.5391926765441895,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2vzsA01",
+      "num_residues": 184,
+      "rmsd_warmup_vs_full": 2.8892931938171387,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5d1kB01",
+      "num_residues": 77,
+      "rmsd_warmup_vs_full": 2.690354108810425,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1cscA01",
+      "num_residues": 307,
+      "rmsd_warmup_vs_full": 2.455919027328491,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2cfmA02",
+      "num_residues": 195,
+      "rmsd_warmup_vs_full": 2.9681835174560547,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2heyT02",
+      "num_residues": 78,
+      "rmsd_warmup_vs_full": 2.77937650680542,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4hgzA02",
+      "num_residues": 60,
+      "rmsd_warmup_vs_full": 2.6309468746185303,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2zc0A01",
+      "num_residues": 179,
+      "rmsd_warmup_vs_full": 2.602602958679199,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3p26A01",
+      "num_residues": 222,
+      "rmsd_warmup_vs_full": 2.9302964210510254,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1yzyA02",
+      "num_residues": 178,
+      "rmsd_warmup_vs_full": 3.0007801055908203,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2wyoD02",
+      "num_residues": 124,
+      "rmsd_warmup_vs_full": 2.584596872329712,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1yhqH00",
+      "num_residues": 160,
+      "rmsd_warmup_vs_full": 2.654203176498413,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2hpuA02",
+      "num_residues": 63,
+      "rmsd_warmup_vs_full": 2.6815884113311768,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1o4sA01",
+      "num_residues": 151,
+      "rmsd_warmup_vs_full": 2.543095588684082,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2ds2D01",
+      "num_residues": 57,
+      "rmsd_warmup_vs_full": 2.518094778060913,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3u4qB03",
+      "num_residues": 218,
+      "rmsd_warmup_vs_full": 2.7058961391448975,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4k3bA06",
+      "num_residues": 369,
+      "rmsd_warmup_vs_full": 3.1423819065093994,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4p78C00",
+      "num_residues": 66,
+      "rmsd_warmup_vs_full": 2.6601290702819824,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5h8yD02",
+      "num_residues": 203,
+      "rmsd_warmup_vs_full": 2.567995548248291,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1n9pA00",
+      "num_residues": 189,
+      "rmsd_warmup_vs_full": 2.5517663955688477,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1owqA02",
+      "num_residues": 68,
+      "rmsd_warmup_vs_full": 2.79160737991333,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4dczA00",
+      "num_residues": 55,
+      "rmsd_warmup_vs_full": 2.693878412246704,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3havB02",
+      "num_residues": 208,
+      "rmsd_warmup_vs_full": 3.045767307281494,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2vveA01",
+      "num_residues": 93,
+      "rmsd_warmup_vs_full": 2.736391305923462,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2vpzB02",
+      "num_residues": 52,
+      "rmsd_warmup_vs_full": 2.743363618850708,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1p2zA02",
+      "num_residues": 152,
+      "rmsd_warmup_vs_full": 2.459164619445801,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1jg8A01",
+      "num_residues": 245,
+      "rmsd_warmup_vs_full": 3.0283164978027344,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1gtdA00",
+      "num_residues": 76,
+      "rmsd_warmup_vs_full": 2.647052049636841,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3kalB05",
+      "num_residues": 59,
+      "rmsd_warmup_vs_full": 2.61676287651062,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2r7rA07",
+      "num_residues": 120,
+      "rmsd_warmup_vs_full": 2.7258145809173584,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ug1A00",
+      "num_residues": 92,
+      "rmsd_warmup_vs_full": 2.654773473739624,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2kkqA00",
+      "num_residues": 116,
+      "rmsd_warmup_vs_full": 2.780646562576294,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4hwnA00",
+      "num_residues": 85,
+      "rmsd_warmup_vs_full": 2.541363000869751,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1rzhL01",
+      "num_residues": 163,
+      "rmsd_warmup_vs_full": 3.076972246170044,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5jv4A00",
+      "num_residues": 142,
+      "rmsd_warmup_vs_full": 2.6995866298675537,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1x7fA02",
+      "num_residues": 119,
+      "rmsd_warmup_vs_full": 2.9855806827545166,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1hkgA03",
+      "num_residues": 215,
+      "rmsd_warmup_vs_full": 2.975921154022217,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1e8uA00",
+      "num_residues": 446,
+      "rmsd_warmup_vs_full": 2.650934934616089,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3ozqA01",
+      "num_residues": 165,
+      "rmsd_warmup_vs_full": 2.8678665161132812,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1uzxA00",
+      "num_residues": 134,
+      "rmsd_warmup_vs_full": 2.6951472759246826,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vq8E02",
+      "num_residues": 93,
+      "rmsd_warmup_vs_full": 2.6093838214874268,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2npiA03",
+      "num_residues": 102,
+      "rmsd_warmup_vs_full": 2.5937857627868652,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1f45B00",
+      "num_residues": 133,
+      "rmsd_warmup_vs_full": 2.4914278984069824,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3skvA01",
+      "num_residues": 154,
+      "rmsd_warmup_vs_full": 2.822655439376831,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3o2zP00",
+      "num_residues": 116,
+      "rmsd_warmup_vs_full": 2.6076784133911133,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2wzvA01",
+      "num_residues": 212,
+      "rmsd_warmup_vs_full": 2.9071505069732666,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1bcpD00",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.802628755569458,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vq8300",
+      "num_residues": 92,
+      "rmsd_warmup_vs_full": 3.189345121383667,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4dixA02",
+      "num_residues": 125,
+      "rmsd_warmup_vs_full": 2.7115345001220703,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3ukmA01",
+      "num_residues": 252,
+      "rmsd_warmup_vs_full": 2.7321550846099854,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3zlaD01",
+      "num_residues": 126,
+      "rmsd_warmup_vs_full": 2.743853807449341,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3htkC02",
+      "num_residues": 54,
+      "rmsd_warmup_vs_full": 2.407890796661377,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1u97A00",
+      "num_residues": 69,
+      "rmsd_warmup_vs_full": 2.561753034591675,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3jqoA01",
+      "num_residues": 137,
+      "rmsd_warmup_vs_full": 2.5421206951141357,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vw3B01",
+      "num_residues": 93,
+      "rmsd_warmup_vs_full": 2.9274942874908447,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2uv8G08",
+      "num_residues": 289,
+      "rmsd_warmup_vs_full": 2.808342933654785,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2okqB00",
+      "num_residues": 118,
+      "rmsd_warmup_vs_full": 2.931910991668701,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2ar5A00",
+      "num_residues": 117,
+      "rmsd_warmup_vs_full": 2.661433458328247,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1z8fA01",
+      "num_residues": 121,
+      "rmsd_warmup_vs_full": 2.9491159915924072,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5d8dD03",
+      "num_residues": 66,
+      "rmsd_warmup_vs_full": 2.458319902420044,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4mtnA02",
+      "num_residues": 61,
+      "rmsd_warmup_vs_full": 2.802839756011963,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2r7kA02",
+      "num_residues": 186,
+      "rmsd_warmup_vs_full": 2.6266963481903076,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3vg8A00",
+      "num_residues": 103,
+      "rmsd_warmup_vs_full": 2.4695825576782227,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2jh3A04",
+      "num_residues": 78,
+      "rmsd_warmup_vs_full": 2.766063690185547,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3g3oA00",
+      "num_residues": 278,
+      "rmsd_warmup_vs_full": 3.10071063041687,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3p3cA02",
+      "num_residues": 151,
+      "rmsd_warmup_vs_full": 2.599053382873535,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3dm4A00",
+      "num_residues": 95,
+      "rmsd_warmup_vs_full": 2.7334930896759033,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2a38A02",
+      "num_residues": 96,
+      "rmsd_warmup_vs_full": 2.7448620796203613,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3zs6A01",
+      "num_residues": 167,
+      "rmsd_warmup_vs_full": 3.070295810699463,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3lvtA03",
+      "num_residues": 127,
+      "rmsd_warmup_vs_full": 2.9006452560424805,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4pqxA01",
+      "num_residues": 72,
+      "rmsd_warmup_vs_full": 2.641228675842285,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3ujzA03",
+      "num_residues": 98,
+      "rmsd_warmup_vs_full": 2.408356189727783,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1wgbA00",
+      "num_residues": 156,
+      "rmsd_warmup_vs_full": 2.5409631729125977,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1j26A01",
+      "num_residues": 87,
+      "rmsd_warmup_vs_full": 2.7900266647338867,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3ke3A02",
+      "num_residues": 251,
+      "rmsd_warmup_vs_full": 2.898602247238159,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ii2B01",
+      "num_residues": 178,
+      "rmsd_warmup_vs_full": 2.847890853881836,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1di2A00",
+      "num_residues": 69,
+      "rmsd_warmup_vs_full": 2.8635706901550293,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1zboA01",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.4178555011749268,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4d4rB01",
+      "num_residues": 90,
+      "rmsd_warmup_vs_full": 2.6640543937683105,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1dzfA02",
+      "num_residues": 73,
+      "rmsd_warmup_vs_full": 2.7123374938964844,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3m6aA01",
+      "num_residues": 50,
+      "rmsd_warmup_vs_full": 2.737866163253784,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3hoiA00",
+      "num_residues": 184,
+      "rmsd_warmup_vs_full": 2.77761173248291,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4fe9A03",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.7395989894866943,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2yu1A02",
+      "num_residues": 106,
+      "rmsd_warmup_vs_full": 2.7033963203430176,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4fb9A02",
+      "num_residues": 102,
+      "rmsd_warmup_vs_full": 2.6905484199523926,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1k5dB00",
+      "num_residues": 146,
+      "rmsd_warmup_vs_full": 2.3822402954101562,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3mcaA03",
+      "num_residues": 102,
+      "rmsd_warmup_vs_full": 2.4191219806671143,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3hhjB00",
+      "num_residues": 131,
+      "rmsd_warmup_vs_full": 2.7563040256500244,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1u3eM02",
+      "num_residues": 68,
+      "rmsd_warmup_vs_full": 2.83010196685791,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4rs4B02",
+      "num_residues": 125,
+      "rmsd_warmup_vs_full": 2.489450693130493,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5ejwA00",
+      "num_residues": 80,
+      "rmsd_warmup_vs_full": 3.046353578567505,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4flnA02",
+      "num_residues": 152,
+      "rmsd_warmup_vs_full": 2.728301763534546,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "6j5cA02",
+      "num_residues": 83,
+      "rmsd_warmup_vs_full": 2.407383441925049,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3qq2B00",
+      "num_residues": 250,
+      "rmsd_warmup_vs_full": 2.641310214996338,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1gs0A02",
+      "num_residues": 215,
+      "rmsd_warmup_vs_full": 3.0807924270629883,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2odhA02",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.603679895401001,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3deeA02",
+      "num_residues": 109,
+      "rmsd_warmup_vs_full": 2.705698251724243,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2rbbA00",
+      "num_residues": 126,
+      "rmsd_warmup_vs_full": 2.4452123641967773,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1s4kA00",
+      "num_residues": 115,
+      "rmsd_warmup_vs_full": 2.7913341522216797,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4igbB02",
+      "num_residues": 143,
+      "rmsd_warmup_vs_full": 2.917367935180664,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2x98A02",
+      "num_residues": 73,
+      "rmsd_warmup_vs_full": 2.601806879043579,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2v6eA04",
+      "num_residues": 93,
+      "rmsd_warmup_vs_full": 2.435558319091797,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4aqsA03",
+      "num_residues": 103,
+      "rmsd_warmup_vs_full": 2.9212703704833984,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2yxzD01",
+      "num_residues": 142,
+      "rmsd_warmup_vs_full": 3.013530969619751,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4qunA00",
+      "num_residues": 283,
+      "rmsd_warmup_vs_full": 2.7670981884002686,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2lcuA01",
+      "num_residues": 185,
+      "rmsd_warmup_vs_full": 2.8636367321014404,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2yk0A03",
+      "num_residues": 227,
+      "rmsd_warmup_vs_full": 2.6958425045013428,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4qenA03",
+      "num_residues": 258,
+      "rmsd_warmup_vs_full": 2.7145681381225586,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1p9oA00",
+      "num_residues": 269,
+      "rmsd_warmup_vs_full": 2.626058340072632,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ehiA02",
+      "num_residues": 144,
+      "rmsd_warmup_vs_full": 2.8540477752685547,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1tolA01",
+      "num_residues": 82,
+      "rmsd_warmup_vs_full": 2.5024023056030273,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1k85A00",
+      "num_residues": 88,
+      "rmsd_warmup_vs_full": 2.637324333190918,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2yilA02",
+      "num_residues": 51,
+      "rmsd_warmup_vs_full": 2.4484288692474365,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4o5fA02",
+      "num_residues": 127,
+      "rmsd_warmup_vs_full": 2.758085250854492,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4cckA03",
+      "num_residues": 146,
+      "rmsd_warmup_vs_full": 2.538483142852783,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2qvsB02",
+      "num_residues": 131,
+      "rmsd_warmup_vs_full": 2.9314708709716797,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3gqqA00",
+      "num_residues": 163,
+      "rmsd_warmup_vs_full": 2.8516135215759277,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1luiA00",
+      "num_residues": 108,
+      "rmsd_warmup_vs_full": 2.6946401596069336,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4fkeA03",
+      "num_residues": 87,
+      "rmsd_warmup_vs_full": 2.610205888748169,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1y9lA00",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.7068324089050293,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3d3oA00",
+      "num_residues": 167,
+      "rmsd_warmup_vs_full": 2.6727612018585205,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3thdC02",
+      "num_residues": 188,
+      "rmsd_warmup_vs_full": 2.8999626636505127,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3v0dA02",
+      "num_residues": 143,
+      "rmsd_warmup_vs_full": 2.439751148223877,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2hb0B02",
+      "num_residues": 178,
+      "rmsd_warmup_vs_full": 2.664778709411621,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1jj2A03",
+      "num_residues": 78,
+      "rmsd_warmup_vs_full": 2.538783550262451,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2bhgA02",
+      "num_residues": 98,
+      "rmsd_warmup_vs_full": 2.519320011138916,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4pw3A01",
+      "num_residues": 252,
+      "rmsd_warmup_vs_full": 2.6941347122192383,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2hqrA02",
+      "num_residues": 106,
+      "rmsd_warmup_vs_full": 2.789369583129883,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3qdnA01",
+      "num_residues": 110,
+      "rmsd_warmup_vs_full": 2.6542227268218994,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2r0cA02",
+      "num_residues": 138,
+      "rmsd_warmup_vs_full": 2.756002902984619,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2wakA00",
+      "num_residues": 156,
+      "rmsd_warmup_vs_full": 2.677786111831665,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3arxA01",
+      "num_residues": 111,
+      "rmsd_warmup_vs_full": 2.774557590484619,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4mlzA02",
+      "num_residues": 170,
+      "rmsd_warmup_vs_full": 3.0039491653442383,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1ei5A02",
+      "num_residues": 82,
+      "rmsd_warmup_vs_full": 2.426844596862793,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2hv2A02",
+      "num_residues": 118,
+      "rmsd_warmup_vs_full": 2.6753017902374268,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3jamZ00",
+      "num_residues": 70,
+      "rmsd_warmup_vs_full": 2.7513015270233154,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3wy7D01",
+      "num_residues": 120,
+      "rmsd_warmup_vs_full": 2.4757094383239746,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5eokA02",
+      "num_residues": 90,
+      "rmsd_warmup_vs_full": 2.515568733215332,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5suhB01",
+      "num_residues": 99,
+      "rmsd_warmup_vs_full": 2.575680732727051,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3w0fA01",
+      "num_residues": 119,
+      "rmsd_warmup_vs_full": 2.704690456390381,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2jbvA02",
+      "num_residues": 71,
+      "rmsd_warmup_vs_full": 2.3981168270111084,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1n7oA03",
+      "num_residues": 85,
+      "rmsd_warmup_vs_full": 2.471252679824829,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "5mu3B00",
+      "num_residues": 163,
+      "rmsd_warmup_vs_full": 2.960366725921631,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2o7rA00",
+      "num_residues": 307,
+      "rmsd_warmup_vs_full": 2.720919132232666,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vwxY00",
+      "num_residues": 134,
+      "rmsd_warmup_vs_full": 2.787997007369995,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3jb9a02",
+      "num_residues": 63,
+      "rmsd_warmup_vs_full": 2.543278932571411,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3h7oA02",
+      "num_residues": 112,
+      "rmsd_warmup_vs_full": 2.6132781505584717,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1mwrA04",
+      "num_residues": 318,
+      "rmsd_warmup_vs_full": 3.009047746658325,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1c0aA03",
+      "num_residues": 150,
+      "rmsd_warmup_vs_full": 2.779224157333374,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4gb7A00",
+      "num_residues": 378,
+      "rmsd_warmup_vs_full": 3.2275946140289307,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4f55A01",
+      "num_residues": 80,
+      "rmsd_warmup_vs_full": 2.589355707168579,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1vq8T00",
+      "num_residues": 119,
+      "rmsd_warmup_vs_full": 2.768903970718384,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1e8cA01",
+      "num_residues": 99,
+      "rmsd_warmup_vs_full": 2.488198757171631,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4hppA02",
+      "num_residues": 325,
+      "rmsd_warmup_vs_full": 3.0231192111968994,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3mlfA00",
+      "num_residues": 92,
+      "rmsd_warmup_vs_full": 2.7778851985931396,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4yonA01",
+      "num_residues": 216,
+      "rmsd_warmup_vs_full": 2.5308995246887207,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4le7A02",
+      "num_residues": 82,
+      "rmsd_warmup_vs_full": 2.6684341430664062,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3qsjA00",
+      "num_residues": 216,
+      "rmsd_warmup_vs_full": 2.6358869075775146,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "1qcsA01",
+      "num_residues": 81,
+      "rmsd_warmup_vs_full": 2.7493691444396973,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "3c4nA02",
+      "num_residues": 124,
+      "rmsd_warmup_vs_full": 2.699237823486328,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "4jj0B00",
+      "num_residues": 180,
+      "rmsd_warmup_vs_full": 3.009229898452759,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2rcfA00",
+      "num_residues": 82,
+      "rmsd_warmup_vs_full": 2.584683895111084,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    },
+    {
+      "name": "2xs1A01",
+      "num_residues": 357,
+      "rmsd_warmup_vs_full": 2.693894863128662,
+      "rmsd_warmup_vs_gt": null,
+      "rmsd_full_vs_gt": null
+    }
+  ]
+}

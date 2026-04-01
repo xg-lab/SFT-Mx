@@ -1,0 +1,86 @@
+{
+  "config": {
+    "n_steps": 500,
+    "threshold": 0.1,
+    "warmup_steps": 10,
+    "n_trials": 100,
+    "dims_per_residue": 111
+  },
+  "synthetic": [
+    {
+      "chain_length": 50,
+      "dimensionality": 5550,
+      "mean_hit_rate": 0.9359800000000004,
+      "std_hit_rate": 0.0001989974874213241,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 75,
+      "dimensionality": 8325,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 100,
+      "dimensionality": 11100,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 150,
+      "dimensionality": 16650,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 200,
+      "dimensionality": 22200,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 250,
+      "dimensionality": 27750,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 300,
+      "dimensionality": 33300,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 350,
+      "dimensionality": 38850,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 400,
+      "dimensionality": 44400,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    },
+    {
+      "chain_length": 446,
+      "dimensionality": 49506,
+      "mean_hit_rate": 0.9360000000000004,
+      "std_hit_rate": 3.3306690738754696e-16,
+      "n_trials": 100
+    }
+  ],
+  "actual": {
+    "r_pearson": 0.7847362834408622,
+    "n_proteins": 300
+  },
+  "synthetic_r_pearson": 0.4577556166638694
+}

@@ -1,4 +1,12 @@
 *__pycache__/
 *.DS_Store
 *.egg-info
+*.fasta
+
 artifacts/
+.venv/
+.claude/
+
+# Large data (hosted on Zenodo/HuggingFace)
+publication/data/structures/
+publication/data/structures.zip
