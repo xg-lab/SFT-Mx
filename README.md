@@ -79,6 +79,9 @@ If you found this code useful, please cite the following papers:
 }
 ```
 
+## Dataset
+Complete raw data, including structural models generated during this work, is published at [Zenodo](TBD).
+
 ## Acknowledgements
 This codebase was built using multiple opensource contributions, please see [ACKNOWLEDGEMENTS](ACKNOWLEDGEMENTS) for more details. 
 
