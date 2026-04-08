@@ -4,7 +4,7 @@
 
 <div align="center">
 
-This github repository accompanies the research paper [*SimpleFold-Turbo: Adaptive caching yields 14-fold acceleration in flow-matching protein structure generation*]() (bioRxiv 2026).
+This github repository accompanies the research paper [*SimpleFold-Turbo: Adaptive caching yields 14-fold acceleration in flow-matching protein structure generation*]() (pending, bioRxiv 2026).
 
 *Geoffrey Taghon, NIST*
 
@@ -68,7 +68,7 @@ If you found this code useful, please cite the following papers:
 @article{simplefold-turbo,
   title={SimpleFold-Turbo: Adaptive caching yields 14x acceleration in flow-matching protein structure generation},
   author={Taghon, Geoffrey},
-  journal={bioRxiv preprint bioRxiv:TBD},
+  journal={bioRxiv preprint bioRxiv:pending},
   year={2026}
 }
 @article{simplefold,
