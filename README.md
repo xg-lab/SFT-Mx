@@ -4,11 +4,11 @@
 
 <div align="center">
 
-This github repository accompanies the research paper [*SimpleFold-Turbo: Adaptive caching yields 14-fold acceleration in flow-matching protein structure generation*]() (pending, bioRxiv 2026).
+This github repository accompanies the research paper [*SimpleFold-Turbo: Adaptive caching yields 14-fold acceleration in flow-matching protein structure generation*](https://www.biorxiv.org/content/10.64898/2026.04.07.714835v1) (bioRxiv 2026).
 
 *Geoffrey Taghon, NIST*
 
-[[`Paper`](publication/simplefold_turbo_2026.pdf)]  [[`BibTex`](#citation)]
+[[`Paper`](https://www.biorxiv.org/content/10.64898/2026.04.07.714835v1)]  [[`BibTex`](#citation)]
 
 <img src="assets/intro.png" width="750">
 
@@ -66,21 +66,27 @@ You can also train or tune SimpleFold-Turbo on your end. Instructions are the sa
 If you found this code useful, please cite the following papers:
 ```
 @article{simplefold-turbo,
-  title={SimpleFold-Turbo: Adaptive caching yields 14x acceleration in flow-matching protein structure generation},
-  author={Taghon, Geoffrey},
-  journal={bioRxiv preprint bioRxiv:pending},
-  year={2026}
+    author = {Taghon, Geoffrey},
+    title = {SimpleFold-Turbo: Adaptive Inference Caching Yields 14-fold Acceleration of Flow-Matching Protein Structure Prediction},
+    elocation-id = {2026.04.07.714835},
+    year = {2026},
+    doi = {10.64898/2026.04.07.714835},
+    URL = {https://www.biorxiv.org/content/early/2026/04/10/2026.04.07.714835},
+    eprint = {https://www.biorxiv.org/content/early/2026/04/10/2026.04.07.714835.full.pdf},
+    journal = {bioRxiv}
+}
+
 }
 @article{simplefold,
-  title={SimpleFold: Folding Proteins is Simpler than You Think},
-  author={Wang, Yuyang and Lu, Jiarui and Jaitly, Navdeep and Susskind, Josh and Bautista, Miguel Angel},
-  journal={arXiv preprint arXiv:2509.18480},
-  year={2025}
+    title={SimpleFold: Folding Proteins is Simpler than You Think},
+    author={Wang, Yuyang and Lu, Jiarui and Jaitly, Navdeep and Susskind, Josh and Bautista, Miguel Angel},
+    journal={arXiv preprint arXiv:2509.18480},
+    year={2025}
 }
 ```
 
 ## Dataset
-Complete raw data, including structural models generated during this work, is published at [Zenodo](TBD).
+Complete raw data, including structural models generated during this work, is published at [Zenodo](https://zenodo.org/records/19455758).
 
 ## Acknowledgements
 This codebase was built using multiple opensource contributions, please see [ACKNOWLEDGEMENTS](ACKNOWLEDGEMENTS) for more details. 
