@@ -17,7 +17,7 @@ from processor.protein_processor import ProteinDataProcessor
 from utils.datamodule_utils import process_one_inference_structure
 from utils.esm_utils import _af2_to_esm, esm_registry
 from utils.boltz_utils import process_structure, save_structure
-from utils.fasta_utils import process_fastas, download_fasta_utilities
+from utils.fasta_utils import process_fastas, download_fasta_utilities, resolve_cache_dir
 from boltz_data_pipeline.feature.featurizer import BoltzFeaturizer
 from boltz_data_pipeline.tokenize.boltz_protein import BoltzTokenizer
 
@@ -209,7 +209,7 @@ class InferenceWrapper:
         backend,
         teacache: bool = False,
         teacache_threshold: float = 0.15,
-        artifacts_dir: str = None,
+        cache_dir: str = None,
     ):
         """
         Initialize inference wrapper.
@@ -218,9 +218,9 @@ class InferenceWrapper:
             teacache: Enable TeaCache acceleration (MLX only). Provides ~10x speedup
                       with minimal quality loss.
             teacache_threshold: Cache threshold (0.1=quality, 0.2=speed). Default 0.15.
-            artifacts_dir: Path to existing artifacts directory containing ccd.pkl and
-                           cache/boltz1_conf.ckpt. If provided, symlinks these into the
-                           local cache to avoid redundant downloads.
+            cache_dir: Shared cache directory for ccd.pkl / boltz1_conf.ckpt.
+                       Defaults to ``artifacts/cache`` so these heavy downloads are
+                       fetched once and reused across runs.
         """
         self.num_steps = num_steps
         self.nsample_per_protein = nsample_per_protein
@@ -242,9 +242,12 @@ class InferenceWrapper:
         output_dir = Path(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        # create cache directory
-        cache = output_dir / "cache"
-        cache.mkdir(parents=True, exist_ok=True)
+        # shared cache for ccd.pkl / boltz1_conf.ckpt (default: artifacts/cache)
+        cache = resolve_cache_dir(cache_dir)
+
+        # per-run working dir for input.fasta, structures/, records/
+        work_dir = output_dir / "tmp"
+        work_dir.mkdir(parents=True, exist_ok=True)
 
         # create prediction directory
         prediction_dir = output_dir / prediction_dir
@@ -252,19 +255,8 @@ class InferenceWrapper:
 
         self.output_dir = output_dir
         self.cache = cache
+        self.work_dir = work_dir
         self.prediction_dir = prediction_dir
-
-        # Symlink heavy cache files from artifacts to avoid redundant downloads
-        if artifacts_dir is not None:
-            artifacts_dir = Path(artifacts_dir)
-            artifacts_cache = artifacts_dir / "cache"
-            for fname in ["ccd.pkl", "boltz1_conf.ckpt"]:
-                src = artifacts_cache / fname
-                if not src.exists():
-                    src = artifacts_dir / fname  # Also check artifacts root
-                dst = cache / fname
-                if src.exists() and not dst.exists():
-                    os.symlink(src, dst)
 
         self.initialize_esm_model()
         self.initialize_others()
@@ -339,21 +331,21 @@ class InferenceWrapper:
                 )
 
     def process_input(self, aa_seq):
-        # process fasta files to input format
+        # download shared utilities into the cache dir if missing
         download_fasta_utilities(self.cache)
-        # save the input sequence to a fasta file
-        with open(self.cache / "input.fasta", "w") as f:
+        # save the input sequence to a fasta file in the per-run work dir
+        with open(self.work_dir / "input.fasta", "w") as f:
             f.write(f">A|Protein\n{aa_seq}\n")
-        data = [self.cache / "input.fasta"]
+        data = [self.work_dir / "input.fasta"]
         process_fastas(
             data=data,
-            out_dir=self.cache,
+            out_dir=self.work_dir,
             ccd_path=self.cache / "ccd.pkl",
         )
 
         # prepare the target protein data for inference
-        struct_file = self.cache / "structures" / "input.npz"
-        record_file = self.cache / "records" / "input.json"
+        struct_file = self.work_dir / "structures" / "input.npz"
+        record_file = self.work_dir / "records" / "input.json"
         batch, structure, record = process_one_inference_structure(
             struct_file,
             record_file,

@@ -113,21 +113,38 @@ def check_fasta_inputs(data: Path) -> list[Path]:
     return data
 
 
+DEFAULT_CACHE_DIR = Path("artifacts/cache")
+
+
+def resolve_cache_dir(cache_dir: Path | str | None = None) -> Path:
+    """Resolve the shared cache directory for Boltz utility downloads.
+
+    Defaults to ``artifacts/cache`` (relative to CWD) so ccd.pkl and
+    boltz1_conf.ckpt are downloaded once and reused across runs.
+    """
+    cache = Path(cache_dir) if cache_dir is not None else DEFAULT_CACHE_DIR
+    cache.mkdir(parents=True, exist_ok=True)
+    return cache
+
+
 def download_fasta_utilities(cache: Path) -> None:
-    """Download all the required data.
+    """Download ccd.pkl and boltz1_conf.ckpt into the shared cache directory.
 
     Parameters
     ----------
     cache : Path
-        The cache directory.
+        The shared cache directory (typically ``artifacts/cache``).
 
     """
+    cache = Path(cache)
+    cache.mkdir(parents=True, exist_ok=True)
+
     # Download CCD
     ccd = cache / "ccd.pkl"
     if not ccd.exists():
         click.echo(
             f"Downloading the CCD dictionary to {ccd}. You may "
-            "change the cache directory with the --cache flag."
+            "change the cache directory with the --cache_dir flag."
         )
         urllib.request.urlretrieve(CCD_URL, str(ccd))
 
@@ -136,7 +153,7 @@ def download_fasta_utilities(cache: Path) -> None:
     if not model.exists():
         click.echo(
             f"Downloading the model weights to {model}. You may "
-            "change the cache directory with the --cache flag."
+            "change the cache directory with the --cache_dir flag."
         )
         urllib.request.urlretrieve(MODEL_URL, str(model))
 

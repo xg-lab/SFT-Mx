@@ -18,6 +18,7 @@ def main():
     )
     parser.add_argument("--simplefold_model", type=str, default="simplefold_100M", help="Name of the model to load.")
     parser.add_argument("--ckpt_dir", type=str, default="artifacts", help="Directory to save the checkpoint.")
+    parser.add_argument("--cache_dir", type=str, default="artifacts/cache", help="Shared cache directory for ccd.pkl and boltz1_conf.ckpt (downloaded once, reused across runs).")
     parser.add_argument("--output_dir", type=str, default="artifacts/debug_samples", help="Directory to save the output structure.")
     parser.add_argument("--num_steps", type=int, default=500, help="Number of steps in inference.")
     parser.add_argument("--tau", type=float, default=0.1, help="Diffusion coefficient scaling factor.")

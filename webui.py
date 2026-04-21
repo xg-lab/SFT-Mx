@@ -8,7 +8,6 @@ G Taghon
 2026
 """
 
-import os
 import sys
 import time
 import logging
@@ -111,17 +110,6 @@ def fold_sequence(
         output_dir = tmpdir / "output"
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        # Create cache directory and symlink existing cache files to avoid re-download
-        cache_dir = output_dir / "cache"
-        cache_dir.mkdir(parents=True, exist_ok=True)
-
-        # Symlink ccd.pkl and boltz1_conf.ckpt from artifacts/cache
-        for cache_file in ["ccd.pkl", "boltz1_conf.ckpt"]:
-            src = CACHE_DIR / cache_file
-            dst = cache_dir / cache_file
-            if src.exists() and not dst.exists():
-                os.symlink(src, dst)
-
         # Write sequence to FASTA file
         fasta_path = tmpdir / "input.fasta"
         with open(fasta_path, 'w') as f:
@@ -131,6 +119,7 @@ def fold_sequence(
         args = Namespace(
             simplefold_model=get_model_name(model_size),
             ckpt_dir=str(ARTIFACTS_DIR),  # Use local artifacts for model checkpoints
+            cache_dir=str(CACHE_DIR),
             output_dir=str(output_dir),
             num_steps=500,
             tau=0.1,

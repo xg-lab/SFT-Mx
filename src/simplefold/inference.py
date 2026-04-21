@@ -22,7 +22,7 @@ from processor.protein_processor import ProteinDataProcessor
 from utils.datamodule_utils import process_one_inference_structure
 from utils.esm_utils import _af2_to_esm, esm_registry
 from utils.boltz_utils import process_structure, save_structure
-from utils.fasta_utils import process_fastas, download_fasta_utilities, check_fasta_inputs
+from utils.fasta_utils import process_fastas, download_fasta_utilities, check_fasta_inputs, resolve_cache_dir
 from boltz_data_pipeline.feature.featurizer import BoltzFeaturizer
 from boltz_data_pipeline.tokenize.boltz_protein import BoltzTokenizer
 
@@ -414,8 +414,7 @@ def predict_structures_from_fastas(args):
     output_dir.mkdir(parents=True, exist_ok=True)
     prediction_dir = output_dir / f"predictions_{args.simplefold_model}"
     prediction_dir.mkdir(parents=True, exist_ok=True)
-    cache = output_dir / "cache"
-    cache.mkdir(parents=True, exist_ok=True)
+    cache = resolve_cache_dir(getattr(args, "cache_dir", None))
 
     # set random seed for reproducibility
     pl.seed_everything(args.seed, workers=True)

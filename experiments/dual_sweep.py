@@ -359,7 +359,6 @@ def main():
             tau=0.1,
             device='cpu',
             backend='mlx',
-            artifacts_dir=str(PROJECT_ROOT / 'artifacts'),
         )
 
         model = model_wrapper.from_pretrained_folding_model()
