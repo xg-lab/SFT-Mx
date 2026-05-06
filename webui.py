@@ -8,11 +8,17 @@ G Taghon
 2026
 """
 
+import csv
+import io
+import re
 import sys
 import time
+import zipfile
 import logging
 import tempfile
+import threading
 from pathlib import Path
+from typing import Tuple
 
 # Get artifacts directory (contains model checkpoints and cache)
 ARTIFACTS_DIR = Path(__file__).resolve().parent / "artifacts"
@@ -73,8 +79,8 @@ def validate_protein_sequence(seq: str) -> tuple[bool, str]:
     # Length check
     if len(seq) < 10:
         return False, "Sequence too short (minimum 10 residues)."
-    if len(seq) > 512:
-        return False, "Sequence too long (maximum 512 residues for web interface)."
+    if len(seq) > 1024:
+        return False, "Sequence too long (maximum 1024 residues for web interface)."
 
     return True, seq
 
@@ -352,6 +358,360 @@ def create_single_viewer(pdb_data: str, height: int = 500) -> str:
     </script>
     """
 
+def parse_fasta_text(text: str) -> List[Tuple[str, str]]:
+    """Parse FASTA text into [(id, sequence), ...]. ID is the first whitespace token of the header."""
+    entries = []
+    current_id = None
+    current_seq: List[str] = []
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        if line.startswith(">"):
+            if current_id is not None:
+                entries.append((current_id, "".join(current_seq)))
+            header = line[1:].strip()
+            # Take first whitespace- or pipe-separated token as the id
+            token = re.split(r"[\s|]", header, maxsplit=1)[0] if header else ""
+            current_id = token or f"seq_{len(entries)+1:04d}"
+            current_seq = []
+        else:
+            current_seq.append(line)
+    if current_id is not None:
+        entries.append((current_id, "".join(current_seq)))
+    return entries
+
+
+def parse_csv_bytes(data: bytes) -> List[Tuple[str, str]]:
+    """Parse a CSV file. Auto-detect 'sequence'/'seq'/'protein' and 'id'/'name' columns."""
+    text = data.decode("utf-8", errors="replace")
+    reader = csv.DictReader(io.StringIO(text))
+    if not reader.fieldnames:
+        return []
+
+    def find_col(candidates):
+        for cand in candidates:
+            for col in reader.fieldnames:
+                if col.lower().strip() == cand:
+                    return col
+        return None
+
+    seq_col = find_col(("sequence", "seq", "protein", "aa"))
+    id_col = find_col(("id", "name", "header", "label", "uniprot"))
+
+    rows = list(reader)
+
+    # Heuristic fallback: pick the column whose values look most like amino-acid sequences
+    if seq_col is None and rows:
+        valid_aa = set("ACDEFGHIKLMNPQRSTVWY")
+        best_col, best_score = None, 0.0
+        for col in reader.fieldnames:
+            scores = []
+            for r in rows[:25]:
+                v = (r.get(col) or "").strip().upper()
+                if len(v) < 10:
+                    continue
+                ratio = sum(1 for c in v if c in valid_aa) / len(v)
+                scores.append(ratio)
+            if scores:
+                avg = sum(scores) / len(scores)
+                if avg > best_score:
+                    best_col, best_score = col, avg
+        if best_col and best_score >= 0.85:
+            seq_col = best_col
+
+    if seq_col is None:
+        return []
+
+    entries = []
+    for i, row in enumerate(rows):
+        seq = (row.get(seq_col) or "").strip()
+        if not seq:
+            continue
+        sid = (row.get(id_col).strip() if id_col and row.get(id_col) else "") or f"seq_{i+1:04d}"
+        entries.append((sid, seq))
+    return entries
+
+
+def parse_plain_text(text: str) -> List[Tuple[str, str]]:
+    """One sequence per non-empty, non-comment line."""
+    entries = []
+    for i, raw in enumerate(text.splitlines()):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        entries.append((f"seq_{i+1:04d}", line))
+    return entries
+
+
+def sanitize_id(s: str) -> str:
+    """Sanitize a sequence id into a safe filename stem."""
+    safe = "".join(c if c.isalnum() or c in "-_." else "_" for c in s)
+    safe = safe.strip("._")
+    return safe or "seq"
+
+
+def fold_batch(
+    sequences: List[Tuple[str, str]],
+    model_size: str,
+    ensemble_size: int,
+    use_teacache: bool,
+    threshold: float,
+    progress_callback=None,
+) -> tuple:
+    """
+    Fold a batch of (id, sequence) pairs in a single model-load.
+
+    Returns: (results_dict, zip_bytes, elapsed_seconds)
+        results_dict: {input_id: [pdb_string, ...]}
+    """
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmpdir = Path(tmpdir)
+        input_dir = tmpdir / "fastas"
+        input_dir.mkdir(parents=True, exist_ok=True)
+        output_dir = tmpdir / "output"
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Write each sequence to its own FASTA so the inference loop treats them as
+        # independent targets (a multi-record FASTA would be parsed as one multimer).
+        stem_to_id = {}
+        seen_stems = set()
+        for sid, seq in sequences:
+            stem = sanitize_id(sid)
+            base, n = stem, 2
+            while stem in seen_stems:
+                stem = f"{base}_{n}"
+                n += 1
+            seen_stems.add(stem)
+            stem_to_id[stem] = sid
+            (input_dir / f"{stem}.fasta").write_text(f">{stem}|protein\n{seq}\n")
+
+        args = Namespace(
+            simplefold_model=get_model_name(model_size),
+            ckpt_dir=str(ARTIFACTS_DIR),
+            cache_dir=str(CACHE_DIR),
+            output_dir=str(output_dir),
+            num_steps=500,
+            tau=0.1,
+            no_log_timesteps=False,
+            fasta_path=str(input_dir),
+            nsample_per_protein=ensemble_size,
+            plddt=False,
+            output_format="pdb",
+            backend="torch",
+            teacache=threshold if use_teacache else 0.0,
+            seed=42,
+        )
+
+        prediction_dir = output_dir / f"predictions_{args.simplefold_model}"
+        total = len(sequences)
+
+        state = {"error": None, "done": False}
+
+        def runner():
+            try:
+                predict_structures_from_fastas(args)
+            except Exception as e:
+                state["error"] = e
+            finally:
+                state["done"] = True
+
+        t = threading.Thread(target=runner, daemon=True)
+        start = time.time()
+        t.start()
+
+        last_n = -1
+        while not state["done"]:
+            if prediction_dir.exists():
+                completed = {
+                    p.name.rsplit("_sampled_", 1)[0]
+                    for p in prediction_dir.glob("*_sampled_0.pdb")
+                }
+                n = len(completed)
+            else:
+                n = 0
+            if n != last_n and progress_callback:
+                progress_callback(n, total)
+                last_n = n
+            time.sleep(0.5)
+
+        t.join(timeout=2.0)
+        if state["error"]:
+            raise state["error"]
+        if progress_callback:
+            progress_callback(total, total)
+
+        results = {}
+        for stem, sid in stem_to_id.items():
+            pdbs = []
+            for i in range(ensemble_size):
+                p = prediction_dir / f"{stem}_sampled_{i}.pdb"
+                if p.exists():
+                    content = p.read_text()
+                    if content.strip():
+                        pdbs.append(content)
+            results[sid] = pdbs
+
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+            for sid, pdbs in results.items():
+                stem = sanitize_id(sid)
+                for i, pdb in enumerate(pdbs):
+                    zf.writestr(f"{stem}/sample_{i}.pdb", pdb)
+
+        elapsed = time.time() - start
+        return results, buf.getvalue(), elapsed
+
+
+def render_batch_tab(model_size: str, ensemble_size: int, use_teacache: bool, threshold: float):
+    """Drag-and-drop batch folding: FASTA / CSV / TXT → ZIP of PDBs."""
+    st.subheader("📁 Batch Input")
+    st.caption(
+        "Upload a multi-record **FASTA**, a **CSV** (with a `sequence` column "
+        "and optional `id`), or a plain **TXT** file (one sequence per line). "
+        "All sequences are folded in a single model-load for maximum throughput."
+    )
+
+    in_col, prev_col = st.columns([1, 1])
+
+    with in_col:
+        uploaded = st.file_uploader(
+            "Drop a file here",
+            type=["fasta", "fa", "fas", "csv", "txt"],
+            accept_multiple_files=False,
+            key="batch_upload",
+        )
+        paste_text = st.text_area(
+            "…or paste FASTA text",
+            height=140,
+            placeholder=">my_protein\nMKFLILLFNI...\n>another\nMQIFVKTLT...",
+            key="batch_paste",
+        )
+
+    sequences: List[Tuple[str, str]] = []
+    parse_error = None
+    source = None
+    if uploaded is not None:
+        source = uploaded.name
+        try:
+            data = uploaded.getvalue()
+            lower = uploaded.name.lower()
+            if lower.endswith(".csv"):
+                sequences = parse_csv_bytes(data)
+            elif lower.endswith(".txt"):
+                sequences = parse_plain_text(data.decode("utf-8", errors="replace"))
+            else:
+                sequences = parse_fasta_text(data.decode("utf-8", errors="replace"))
+        except Exception as e:
+            parse_error = str(e)
+    elif paste_text.strip():
+        source = "pasted text"
+        sequences = parse_fasta_text(paste_text)
+
+    if parse_error:
+        st.error(f"Parse error: {parse_error}")
+
+    with prev_col:
+        st.subheader("🧾 Sequences")
+        if not sequences:
+            st.info("No sequences yet. Upload a file or paste FASTA text.")
+        else:
+            rows = []
+            valid_seqs: List[Tuple[str, str]] = []
+            for sid, seq in sequences:
+                ok, cleaned = validate_protein_sequence(seq)
+                rows.append({
+                    "ID": sid,
+                    "Length": len(seq.strip()),
+                    "Status": "✓ valid" if ok else f"✗ {cleaned}",
+                })
+                if ok:
+                    valid_seqs.append((sid, cleaned))
+
+            try:
+                import pandas as pd
+                st.dataframe(pd.DataFrame(rows), use_container_width=True, height=240)
+            except ImportError:
+                st.table(rows)
+
+            n_valid = len(valid_seqs)
+            n_total = len(sequences)
+            st.markdown(
+                f"**{n_valid} valid** / {n_total} parsed from `{source}` "
+                f"→ {n_valid * ensemble_size} structures will be generated."
+            )
+
+            if use_teacache:
+                est = n_valid * ensemble_size * 1.0
+            else:
+                est = n_valid * ensemble_size * 10.0
+            st.caption(f"Estimated time: ~{est:.0f}s ({ensemble_size} per sequence)")
+
+            run = st.button(
+                f"🔬 Fold {n_valid} sequence(s)",
+                type="primary",
+                use_container_width=True,
+                disabled=n_valid == 0,
+                key="batch_run_btn",
+            )
+
+            if run and n_valid > 0:
+                progress_bar = st.progress(0.0)
+                status_text = st.empty()
+                status_text.text("Loading model and processing inputs…")
+
+                def cb(done, total):
+                    progress_bar.progress(min(done / max(total, 1), 1.0))
+                    status_text.text(f"Folded {done}/{total} sequences…")
+
+                try:
+                    results, zip_bytes, elapsed = fold_batch(
+                        valid_seqs,
+                        model_size=model_size,
+                        ensemble_size=ensemble_size,
+                        use_teacache=use_teacache,
+                        threshold=threshold,
+                        progress_callback=cb,
+                    )
+                    progress_bar.progress(1.0)
+                    n_struct = sum(len(v) for v in results.values())
+                    status_text.text(
+                        f"✅ {n_struct} structures across {len(results)} sequences "
+                        f"in {elapsed:.1f}s ({elapsed/max(n_struct,1):.2f}s/structure)"
+                    )
+                    st.session_state.batch_zip = zip_bytes
+                    st.session_state.batch_results = results
+                    st.session_state.batch_elapsed = elapsed
+                except Exception as e:
+                    st.error(f"Batch folding failed: {e}")
+                    logger.exception("Batch folding error")
+
+    if st.session_state.get("batch_zip"):
+        st.divider()
+        results = st.session_state.batch_results
+        n_seqs = len(results)
+        n_struct = sum(len(v) for v in results.values())
+        elapsed = st.session_state.get("batch_elapsed", 0.0)
+
+        st.success(
+            f"📦 {n_seqs} sequence(s), {n_struct} structure(s) ready — "
+            f"{elapsed:.1f}s total"
+        )
+        st.download_button(
+            f"⬇️ Download all results (sft_batch_{n_seqs}seq.zip)",
+            st.session_state.batch_zip,
+            f"sft_batch_{n_seqs}seq.zip",
+            mime="application/zip",
+            use_container_width=True,
+            key="batch_download_btn",
+        )
+
+        with st.expander("Per-sequence breakdown"):
+            for sid, pdbs in results.items():
+                marker = "✓" if pdbs else "✗"
+                st.markdown(f"{marker} **{sid}** — {len(pdbs)} structure(s)")
+
+
 def main():
     """Main Streamlit application."""
 
@@ -421,171 +781,174 @@ def main():
             est_time = ensemble_size * 10.0  # ~10s per structure without
             st.caption(f"**Est. time:** ~{est_time:.0f}s for {ensemble_size} structures")
 
-    # Main content area
-    col1, col2 = st.columns([1, 1])
+    # Tabs: single-sequence (interactive viewer) vs batch folding
+    tab_single, tab_batch = st.tabs(["🧬 Single Sequence", "📁 Batch Folding"])
 
-    with col1:
-        st.subheader("📝 Input Sequence")
+    with tab_single:
+        col1, col2 = st.columns([1, 1])
 
-        # Sequence input
-        sequence_input = st.text_area(
-            "Protein Sequence",
-            height=150,
-            placeholder="Enter amino acid sequence (e.g., MKFLILLFNILCLFPVLAADNHGVGPQGASGVDPITFDINSNQTGVQLTLQ...)",
-            help="Standard single-letter amino acid codes. Max 512 residues for web interface."
-        )
+        with col1:
+            st.subheader("📝 Input Sequence")
 
-        # Example sequences
-        with st.expander("📋 Example Sequences"):
-            examples = {
-                "Insulin (51 aa)": "GIVEQCCTSICSLYQLENYCNFVNQHLCGSHLVEALYLVCGERGFFYTPKT",
-                "Ubiquitin (76 aa)": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
-                "GFP (238 aa)": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
-            }
+            # Sequence input
+            sequence_input = st.text_area(
+                "Protein Sequence",
+                height=150,
+                placeholder="Enter amino acid sequence (e.g., MKFLILLFNILCLFPVLAADNHGVGPQGASGVDPITFDINSNQTGVQLTLQ...)",
+                help="Standard single-letter amino acid codes. Max 512 residues for web interface."
+            )
 
-            for name, seq in examples.items():
-                if st.button(f"Use {name}", key=f"ex_{name}"):
-                    st.session_state.sequence = seq
-                    st.rerun()
+            # Example sequences
+            with st.expander("📋 Example Sequences"):
+                examples = {
+                    "Insulin (51 aa)": "GIVEQCCTSICSLYQLENYCNFVNQHLCGSHLVEALYLVCGERGFFYTPKT",
+                    "Ubiquitin (76 aa)": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+                    "GFP (238 aa)": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+                }
 
-        # Use session state for sequence
-        if 'sequence' in st.session_state:
-            sequence_input = st.session_state.sequence
+                for name, seq in examples.items():
+                    if st.button(f"Use {name}", key=f"ex_{name}"):
+                        st.session_state.sequence = seq
+                        st.rerun()
 
-        # Fold button
-        fold_button = st.button("🔬 Fold Sequence", type="primary", use_container_width=True)
+            # Use session state for sequence
+            if 'sequence' in st.session_state:
+                sequence_input = st.session_state.sequence
 
-    with col2:
-        st.subheader("🧬 Results")
+            # Fold button
+            fold_button = st.button("🔬 Fold Sequence", type="primary", use_container_width=True)
 
-        if fold_button and sequence_input:
-            # Validate sequence
-            is_valid, result = validate_protein_sequence(sequence_input)
+        with col2:
+            st.subheader("🧬 Results")
 
-            if not is_valid:
-                st.error(result)
-            else:
-                sequence = result
-                st.info(f"Folding {len(sequence)}-residue sequence ({ensemble_size} structures)...")
+            if fold_button and sequence_input:
+                # Validate sequence
+                is_valid, result = validate_protein_sequence(sequence_input)
 
-                # Progress tracking
-                progress_bar = st.progress(0)
-                status_text = st.empty()
+                if not is_valid:
+                    st.error(result)
+                else:
+                    sequence = result
+                    st.info(f"Folding {len(sequence)}-residue sequence ({ensemble_size} structures)...")
 
-                try:
-                    start_time = time.time()
+                    # Progress tracking
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
 
-                    def update_progress(current, total):
-                        # current is already 1-indexed from fold_sequence
-                        progress = min(current / total, 1.0)  # Clamp to avoid overflow
-                        progress_bar.progress(progress)
-                        status_text.text(f"Generating structure {current}/{total}...")
+                    try:
+                        start_time = time.time()
 
-                    # Fold
-                    pdb_strings = fold_sequence(
-                        sequence=sequence,
-                        model_size=model_size,
-                        ensemble_size=ensemble_size,
-                        use_teacache=use_teacache,
-                        threshold=threshold,
-                        progress_callback=update_progress
-                    )
+                        def update_progress(current, total):
+                            # current is already 1-indexed from fold_sequence
+                            progress = min(current / total, 1.0)  # Clamp to avoid overflow
+                            progress_bar.progress(progress)
+                            status_text.text(f"Generating structure {current}/{total}...")
 
-                    elapsed = time.time() - start_time
-                    progress_bar.progress(1.0)
-                    status_text.text(f"✅ Generated {ensemble_size} structures in {elapsed:.1f}s ({elapsed/ensemble_size:.2f}s/structure)")
-
-                    # Store results
-                    st.session_state.pdb_results = pdb_strings
-                    st.session_state.fold_time = elapsed
-
-                except Exception as e:
-                    st.error(f"Folding failed: {str(e)}")
-                    logger.exception("Folding error")
-
-        # Display results
-        if 'pdb_results' in st.session_state and st.session_state.pdb_results:
-            pdb_strings = st.session_state.pdb_results
-
-            # View mode selection
-            if len(pdb_strings) > 1:
-                view_col1, view_col2 = st.columns([1, 2])
-                with view_col1:
-                    view_mode = st.radio(
-                        "View Mode",
-                        ["Ensemble", "Single"],
-                        horizontal=True,
-                        help="Ensemble shows all structures aligned (NMR-style). Single shows one at a time."
-                    )
-                with view_col2:
-                    if view_mode == "Single":
-                        model_idx = st.selectbox(
-                            "Select Model",
-                            options=range(len(pdb_strings)),
-                            format_func=lambda x: f"Model {x + 1}",
-                            key="model_viewer_select"
+                        # Fold
+                        pdb_strings = fold_sequence(
+                            sequence=sequence,
+                            model_size=model_size,
+                            ensemble_size=ensemble_size,
+                            use_teacache=use_teacache,
+                            threshold=threshold,
+                            progress_callback=update_progress
                         )
-                    else:
-                        st.caption(f"Showing {len(pdb_strings)} aligned structures")
-            else:
-                view_mode = "Single"
-                model_idx = 0
 
-            # 3D viewer
-            if view_mode == "Ensemble" and len(pdb_strings) > 1:
-                # Align structures by C-alpha atoms before displaying
-                aligned_pdbs = align_ensemble(pdb_strings)
-                components.html(
-                    create_ensemble_viewer(aligned_pdbs),
-                    height=520
-                )
-            else:
-                components.html(
-                    create_single_viewer(pdb_strings[model_idx]),
-                    height=520
-                )
+                        elapsed = time.time() - start_time
+                        progress_bar.progress(1.0)
+                        status_text.text(f"✅ Generated {ensemble_size} structures in {elapsed:.1f}s ({elapsed/ensemble_size:.2f}s/structure)")
 
-            # Download buttons
-            st.divider()
+                        # Store results
+                        st.session_state.pdb_results = pdb_strings
+                        st.session_state.fold_time = elapsed
 
-            if len(pdb_strings) > 1:
-                # Multiple structures - show zip download prominently
-                import io
-                import zipfile
+                    except Exception as e:
+                        st.error(f"Folding failed: {str(e)}")
+                        logger.exception("Folding error")
 
-                zip_buffer = io.BytesIO()
-                with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zf:
-                    for i, pdb in enumerate(pdb_strings):
-                        zf.writestr(f"sft_model_{i+1}.pdb", pdb)
+            # Display results
+            if 'pdb_results' in st.session_state and st.session_state.pdb_results:
+                pdb_strings = st.session_state.pdb_results
 
-                dl_col1, dl_col2 = st.columns(2)
-                with dl_col1:
-                    st.download_button(
-                        f"📦 Download Ensemble ({len(pdb_strings)} structures)",
-                        zip_buffer.getvalue(),
-                        "sft_ensemble.zip",
-                        mime="application/zip",
-                        use_container_width=True
+                # View mode selection
+                if len(pdb_strings) > 1:
+                    view_col1, view_col2 = st.columns([1, 2])
+                    with view_col1:
+                        view_mode = st.radio(
+                            "View Mode",
+                            ["Ensemble", "Single"],
+                            horizontal=True,
+                            help="Ensemble shows all structures aligned (NMR-style). Single shows one at a time."
+                        )
+                    with view_col2:
+                        if view_mode == "Single":
+                            model_idx = st.selectbox(
+                                "Select Model",
+                                options=range(len(pdb_strings)),
+                                format_func=lambda x: f"Model {x + 1}",
+                                key="model_viewer_select"
+                            )
+                        else:
+                            st.caption(f"Showing {len(pdb_strings)} aligned structures")
+                else:
+                    view_mode = "Single"
+                    model_idx = 0
+
+                # 3D viewer
+                if view_mode == "Ensemble" and len(pdb_strings) > 1:
+                    # Align structures by C-alpha atoms before displaying
+                    aligned_pdbs = align_ensemble(pdb_strings)
+                    components.html(
+                        create_ensemble_viewer(aligned_pdbs),
+                        height=520
                     )
-                with dl_col2:
-                    # Individual model download (default to first if in ensemble mode)
-                    selected_idx = model_idx if view_mode == "Single" else 0
+                else:
+                    components.html(
+                        create_single_viewer(pdb_strings[model_idx]),
+                        height=520
+                    )
+
+                # Download buttons
+                st.divider()
+
+                if len(pdb_strings) > 1:
+                    # Multiple structures - show zip download prominently
+                    zip_buffer = io.BytesIO()
+                    with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zf:
+                        for i, pdb in enumerate(pdb_strings):
+                            zf.writestr(f"sft_model_{i+1}.pdb", pdb)
+
+                    dl_col1, dl_col2 = st.columns(2)
+                    with dl_col1:
+                        st.download_button(
+                            f"📦 Download Ensemble ({len(pdb_strings)} structures)",
+                            zip_buffer.getvalue(),
+                            "sft_ensemble.zip",
+                            mime="application/zip",
+                            use_container_width=True
+                        )
+                    with dl_col2:
+                        # Individual model download (default to first if in ensemble mode)
+                        selected_idx = model_idx if view_mode == "Single" else 0
+                        st.download_button(
+                            f"📥 Download Model {selected_idx + 1}",
+                            pdb_strings[selected_idx],
+                            f"sft_model_{selected_idx + 1}.pdb",
+                            mime="chemical/x-pdb",
+                            use_container_width=True
+                        )
+                else:
+                    # Single structure
                     st.download_button(
-                        f"📥 Download Model {selected_idx + 1}",
-                        pdb_strings[selected_idx],
-                        f"sft_model_{selected_idx + 1}.pdb",
+                        "📥 Download Structure",
+                        pdb_strings[0],
+                        "sft_prediction.pdb",
                         mime="chemical/x-pdb",
                         use_container_width=True
                     )
-            else:
-                # Single structure
-                st.download_button(
-                    "📥 Download Structure",
-                    pdb_strings[0],
-                    "sft_prediction.pdb",
-                    mime="chemical/x-pdb",
-                    use_container_width=True
-                )
+
+    with tab_batch:
+        render_batch_tab(model_size, ensemble_size, use_teacache, threshold)
 
     # Footer
     st.divider()
