@@ -4,6 +4,8 @@
 #
 
 import os
+import gc
+import numpy as np
 import torch
 import hydra
 import omegaconf
@@ -89,7 +91,6 @@ class ModelWrapper:
                         mlx_state_dict[k_mlx] = mx.array(v_np)
             mx.save_safetensors(safetensors_path, mlx_state_dict)
             del checkpoint, mlx_state_dict
-            import gc
             gc.collect()
 
         cfg_path = os.path.join(
@@ -108,7 +109,6 @@ class ModelWrapper:
         del weights
         mx.clear_cache()
             
-        import gc
         gc.collect()
         print(f"Folding model {simplefold_model} loaded natively on MLX.")
 
@@ -143,7 +143,6 @@ class ModelWrapper:
                         mlx_state_dict[k_mlx] = mx.array(v_np)
             mx.save_safetensors(plddt_safetensors, mlx_state_dict)
             del plddt_checkpoint, mlx_state_dict
-            import gc
             gc.collect()
 
         plddt_module_path = "configs/model/architecture/plddt_module.yaml"
@@ -185,7 +184,6 @@ class ModelWrapper:
                         mlx_state_dict[k_mlx] = mx.array(v_np)
             mx.save_safetensors(plddt_latent_safetensors, mlx_state_dict)
             del plddt_latent_checkpoint, mlx_state_dict
-            import gc
             gc.collect()
 
         plddt_latent_config_path = "configs/model/architecture/foldingdit_1.6B.yaml"
@@ -269,7 +267,6 @@ class InferenceWrapper:
         self.initialize_others()
 
     def initialize_esm_model(self):
-        import gc
         from inference import _quantize_esm_int8
 
         quantized_weights_path = self.cache / "esm2_t36_3B_UR50D_quantized_8bit.safetensors"
@@ -383,7 +380,6 @@ class InferenceWrapper:
         if hasattr(self, "af2_to_esm") and self.af2_to_esm is not None:
             del self.af2_to_esm
             self.af2_to_esm = None
-        import gc
         gc.collect()
         import mlx.core as mx
         if hasattr(mx, "clear_cache"):

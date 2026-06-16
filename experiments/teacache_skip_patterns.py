@@ -570,6 +570,15 @@ def main():
             hit_rate=tracking['hit_rate'],
         ))
 
+        # Free memory and clear cache
+        del batch, structure, record, noise, denoised
+        import gc
+        gc.collect()
+        if hasattr(mx, "clear_cache"):
+            mx.clear_cache()
+        elif hasattr(mx.metal, "clear_cache"):
+            mx.metal.clear_cache()
+
     if not patterns:
         print("No patterns collected!")
         return

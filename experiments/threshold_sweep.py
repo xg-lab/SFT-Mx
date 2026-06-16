@@ -428,6 +428,20 @@ def main():
                   f"{rmsd_gt_str} | {tm_str}"
                   + (f" | ΔRMSD={rmsd_vs_baseline:.2f}Å" if rmsd_vs_baseline else ""))
 
+            # Free inner memory and clear cache
+            del noise, sampler, final_coords, out_dict_tc
+            import gc
+            gc.collect()
+            if hasattr(mx, "clear_cache"):
+                mx.clear_cache()
+            elif hasattr(mx.metal, "clear_cache"):
+                mx.metal.clear_cache()
+
+        # Free outer loop variables
+        del batch, structure, record, gt_coords
+        import gc
+        gc.collect()
+
     total_time = time.time() - start_time
     print(f"\n{'='*70}")
     print(f"SWEEP COMPLETE in {total_time/60:.1f} minutes")

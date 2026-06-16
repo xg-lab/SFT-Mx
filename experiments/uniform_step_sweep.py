@@ -310,6 +310,20 @@ def main():
             tm_str = f"{tm_score_vs_gt:.3f}" if tm_score_vs_gt is not None else "N/A"
             print(f"  {n_steps:4d} steps: {elapsed:5.2f}s  RMSD_gt={rmsd_str:>8}  TM={tm_str:>6}")
 
+            # Free inner memory and clear cache
+            del noise, sampler, out_dict
+            import gc
+            gc.collect()
+            if hasattr(mx, "clear_cache"):
+                mx.clear_cache()
+            elif hasattr(mx.metal, "clear_cache"):
+                mx.metal.clear_cache()
+
+        # Free outer loop variables
+        del batch, structure, record, gt_coords
+        import gc
+        gc.collect()
+
     total_elapsed = time.time() - total_start
     print(f"\n{'='*70}")
     print(f"Total sweep time: {total_elapsed:.1f}s ({total_elapsed/60:.1f}min)")

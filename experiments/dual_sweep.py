@@ -450,6 +450,15 @@ def main():
                 tm_str = f"{tm_score_vs_gt:.3f}" if tm_score_vs_gt is not None else "N/A"
                 print(f"  uniform {n_steps:4d}: {elapsed:5.1f}s  RMSD={rmsd_str:>7}  TM={tm_str:>6}")
 
+                # Free inner memory and clear cache
+                del noise, sampler, out_dict
+                import gc
+                gc.collect()
+                if hasattr(mx, "clear_cache"):
+                    mx.clear_cache()
+                elif hasattr(mx.metal, "clear_cache"):
+                    mx.metal.clear_cache()
+
             # =================================================================
             # Adaptive caching (threshold sweep)
             # =================================================================
@@ -534,6 +543,20 @@ def main():
                 print(f"  adaptive τ={threshold:.2f}: {sampler.n_computed:3d} steps | "
                       f"hit={sampler.cache_hit_rate:.1%} | {elapsed:5.1f}s | "
                       f"RMSD={rmsd_str:>7}  TM={tm_str:>6}")
+
+                # Free inner memory and clear cache
+                del noise, sampler, final_coords, out_dict_adaptive
+                import gc
+                gc.collect()
+                if hasattr(mx, "clear_cache"):
+                    mx.clear_cache()
+                elif hasattr(mx.metal, "clear_cache"):
+                    mx.metal.clear_cache()
+
+            # Free outer protein loop variables
+            del batch, structure, record, gt_coords
+            import gc
+            gc.collect()
 
         model_elapsed = time.time() - model_start
         print(f"\n{model_name} complete: {model_elapsed/60:.1f} min, {len(model_results)} results")
