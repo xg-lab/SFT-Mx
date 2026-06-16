@@ -105,7 +105,6 @@ class ProteinDataProcessor:
 
     def batch_to_device(self, batch, multiplicity=1):
         for k, v in batch.items():
-            # if isinstance(v, torch.Tensor) and k in key2cuda:
             if isinstance(v, torch.Tensor):
                 if multiplicity > 1:
                     v = v.repeat_interleave(multiplicity, dim=0)

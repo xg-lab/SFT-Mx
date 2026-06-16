@@ -1,0 +1,54 @@
+[workspace]
+channels = ["conda-forge"]
+name = "SFT-Mx"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+pip = "*"
+
+[pypi-dependencies]
+mlx = "*"
+lightning = "==2.5.2"
+biopython = "==1.85"
+hydra-colorlog = "==1.2.0"
+ipykernel = "*"
+pytest = "*"
+ipyvtklink = "==0.2.3"
+gemmi = "==0.7.3"
+biotite = "==1.2.0"
+rdkit = "==2025.3.5"
+p-tqdm = "==1.4.2"
+einops = "==0.8.1"
+mashumaro = "==3.20"
+ihm = "==2.7"
+modelcif = "==1.4"
+dm-tree = "*"
+click = "==8.2.1"
+timm = "==1.0.19"
+py3Dmol = "==2.5.2"
+scikit-learn = "*"
+pandas = "==2.3.1"
+seaborn = "==0.13.2"
+SFT-Mx = { path = ".", editable = true }
+mediapy = "*"
+fair-esm = { git = "https://github.com/facebookresearch/esm.git" }
+
+# Explicitly declared core and workspace dependencies (excluding purged webui/server libraries)
+numpy = "*"
+scipy = "*"
+torch = "*"
+matplotlib = "*"
+tqdm = "*"
+pyyaml = "*"
+hydra-core = "*"
+omegaconf = "*"
+requests = "*"
+pillow = "*"
+rich = "*"
+blobfile = "*"
+fairscale = "*"
+redis = "*"

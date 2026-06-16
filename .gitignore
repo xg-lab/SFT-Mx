@@ -9,4 +9,6 @@ artifacts/
 
 # Large data (hosted on Zenodo/HuggingFace)
 publication/data/structures/
-publication/data/structures.zip
+publication/data/structures.zip# pixi environments
+.pixi/*
+!.pixi/config.toml

@@ -14,9 +14,6 @@ import lightning.pytorch as pl
 from importlib import resources
 
 from model.flow import LinearPath
-from model.torch.sampler import EMSampler
-from model.torch.teacache import TeaCacheSampler as TeaCacheSamplerTorch
-from model.torch.teacache import TeaCacheConfig as TeaCacheConfigTorch
 
 from processor.protein_processor import ProteinDataProcessor
 from utils.datamodule_utils import process_one_inference_structure
@@ -26,17 +23,13 @@ from utils.fasta_utils import process_fastas, download_fasta_utilities, check_fa
 from boltz_data_pipeline.feature.featurizer import BoltzFeaturizer
 from boltz_data_pipeline.tokenize.boltz_protein import BoltzTokenizer
 
-try:
-    import mlx.core as mx
-    from mlx.utils import tree_unflatten, tree_flatten
-    from model.mlx.sampler import EMSampler as EMSamplerMLX
-    from model.mlx.teacache import TeaCacheSampler, TeaCacheConfig
-    from model.mlx.esm_network import ESM2 as ESM2MLX
-    from utils.mlx_utils import map_torch_to_mlx, map_plddt_torch_to_mlx
-    MLX_AVAILABLE = True
-except:
-    MLX_AVAILABLE = False
-    print("MLX not installed, skip importing MLX related packages.")
+import mlx.core as mx
+from mlx.utils import tree_unflatten, tree_flatten
+from model.mlx.sampler import EMSampler as EMSamplerMLX
+from model.mlx.teacache import TeaCacheSampler, TeaCacheConfig
+from model.mlx.esm_network import ESM2 as ESM2MLX
+from utils.mlx_utils import map_torch_to_mlx, map_plddt_torch_to_mlx
+MLX_AVAILABLE = True
 
 
 ckpt_url_dict = {
@@ -164,106 +157,142 @@ def initialize_folding_model(args):
 
     # create checkpoint directory
     ckpt_dir = Path(args.ckpt_dir)
-    ckpt_path = os.path.join(ckpt_dir, f"{simplefold_model}.ckpt")
+    safetensors_path = os.path.join(ckpt_dir, f"{simplefold_model}.safetensors")
 
-    # create folding model
-    ckpt_path = os.path.join(ckpt_dir, f"{simplefold_model}.ckpt")
-    if not os.path.exists(ckpt_path):
-        os.makedirs(ckpt_dir, exist_ok=True)
-        os.system(f"curl -L {ckpt_url_dict[simplefold_model]} -o {ckpt_path}")
+    if not os.path.exists(safetensors_path):
+        # Fallback to download and convert on the fly
+        ckpt_path = os.path.join(ckpt_dir, f"{simplefold_model}.ckpt")
+        if not os.path.exists(ckpt_path):
+            os.makedirs(ckpt_dir, exist_ok=True)
+            print(f"Downloading folding checkpoint {simplefold_model}...")
+            os.system(f"curl -L {ckpt_url_dict[simplefold_model]} -o {ckpt_path}")
+        
+        print(f"Converting {ckpt_path} to MLX safetensors format...")
+        checkpoint = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+        mlx_state_dict = {}
+        for k, v in checkpoint.items():
+            k_mlx, v_np = map_torch_to_mlx(k, v)
+            if k_mlx is not None:
+                if v_np.dtype in (np.float32, np.float16):
+                    mlx_state_dict[k_mlx] = mx.array(v_np).astype(mx.float16)
+                else:
+                    mlx_state_dict[k_mlx] = mx.array(v_np)
+        mx.save_safetensors(safetensors_path, mlx_state_dict)
+        del checkpoint, mlx_state_dict
+        import gc
+        gc.collect()
+
     cfg_path = get_config_path(f"configs/model/architecture/foldingdit_{simplefold_model[11:]}.yaml")
 
-    checkpoint = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+    # replace torch implementations with mlx
+    with open(cfg_path, "r") as f:
+        yaml_str = f.read()
+    yaml_str = yaml_str.replace('torch', 'mlx')
 
-    # load model checkpoint
-    if args.backend == 'torch':
-        if torch.cuda.is_available():
-            device = torch.device("cuda")
-        elif torch.backends.mps.is_available():
-            device = torch.device("mps")
-        else:
-            device = torch.device("cpu")
-        model_config = omegaconf.OmegaConf.load(cfg_path)
-        model = hydra.utils.instantiate(model_config)
-        model.load_state_dict(checkpoint, strict=True)
-        model = model.to(device)
-    elif args.backend == 'mlx':
-        device = "cpu"
-        # replace torch implementations with mlx
-        with open(cfg_path, "r") as f:
-            yaml_str = f.read()
-        yaml_str = yaml_str.replace('torch', 'mlx')
-
-        model_config = omegaconf.OmegaConf.create(yaml_str)
-        model = hydra.utils.instantiate(model_config)
-        mlx_state_dict = {k: mx.array(v) for k, v in starmap(map_torch_to_mlx, checkpoint.items()) if k is not None}
-        model.update(tree_unflatten(list(mlx_state_dict.items())))
-    print(f"Folding model {simplefold_model} loaded.")
-    print(f"Using device: {device}.")
+    model_config = omegaconf.OmegaConf.create(yaml_str)
+    model = hydra.utils.instantiate(model_config)
+    
+    # Load native safetensors
+    weights = mx.load(safetensors_path)
+    model.update(tree_unflatten(list(weights.items())))
+    del weights
+    mx.clear_cache()
+    
+    import gc
+    gc.collect()
+    print(f"Folding model {simplefold_model} loaded natively on MLX.")
 
     model.eval()
-    return model, device
+    return model, "cpu"
 
 
 def initialize_plddt_module(args, device):
     if not args.plddt:
         return None, None
 
-    # load pLDDT module if specified
-    plddt_ckpt_path = os.path.join(args.ckpt_dir, "plddt.ckpt")
-    if not os.path.exists(plddt_ckpt_path):
-        os.makedirs(args.ckpt_dir, exist_ok=True)
-        os.system(f"curl -L {plddt_ckpt_url} -o {plddt_ckpt_path}")
+    ckpt_dir = Path(args.ckpt_dir)
+    plddt_safetensors = os.path.join(ckpt_dir, "plddt.safetensors")
+    if not os.path.exists(plddt_safetensors):
+        plddt_ckpt_path = os.path.join(ckpt_dir, "plddt.ckpt")
+        if not os.path.exists(plddt_ckpt_path):
+            os.makedirs(ckpt_dir, exist_ok=True)
+            print("Downloading pLDDT checkpoint...")
+            os.system(f"curl -L {plddt_ckpt_url} -o {plddt_ckpt_path}")
+        
+        print(f"Converting {plddt_ckpt_path} to MLX safetensors format...")
+        plddt_checkpoint = torch.load(plddt_ckpt_path, map_location="cpu", weights_only=False)
+        mlx_state_dict = {}
+        for k, v in plddt_checkpoint.items():
+            k_mlx, v_np = map_plddt_torch_to_mlx(k, v)
+            if k_mlx is not None:
+                if v_np.dtype in (np.float32, np.float16):
+                    mlx_state_dict[k_mlx] = mx.array(v_np).astype(mx.float16)
+                else:
+                    mlx_state_dict[k_mlx] = mx.array(v_np)
+        mx.save_safetensors(plddt_safetensors, mlx_state_dict)
+        del plddt_checkpoint, mlx_state_dict
+        import gc
+        gc.collect()
 
     plddt_module_path = get_config_path("configs/model/architecture/plddt_module.yaml")
-    plddt_checkpoint = torch.load(plddt_ckpt_path, map_location="cpu", weights_only=False)
+    with open(plddt_module_path, "r") as f:
+        yaml_str = f.read()
+    yaml_str = yaml_str.replace('torch', 'mlx')
 
-    if args.backend == "torch":
-        plddt_config = omegaconf.OmegaConf.load(plddt_module_path)
-        plddt_out_module = hydra.utils.instantiate(plddt_config)
-        plddt_out_module.load_state_dict(plddt_checkpoint, strict=True)
-        plddt_out_module = plddt_out_module.to(device)
-    elif args.backend == "mlx":
-        # replace torch implementations with mlx
-        with open(plddt_module_path, "r") as f:
-            yaml_str = f.read()
-        yaml_str = yaml_str.replace('torch', 'mlx')
+    plddt_config = omegaconf.OmegaConf.create(yaml_str)
+    plddt_out_module = hydra.utils.instantiate(plddt_config)
+    
+    weights = mx.load(plddt_safetensors)
+    plddt_out_module.update(tree_unflatten(list(weights.items())))
+    del weights
+    mx.clear_cache()
 
-        plddt_config = omegaconf.OmegaConf.create(yaml_str)
-        plddt_out_module = hydra.utils.instantiate(plddt_config)
-
-        mlx_state_dict = {k: mx.array(v) for k, v in starmap(map_plddt_torch_to_mlx, plddt_checkpoint.items()) if k is not None}
-        plddt_out_module.update(tree_unflatten(list(mlx_state_dict.items())))
-
+    import gc
+    gc.collect()
     plddt_out_module.eval()
-    print(f"pLDDT output module loaded with {args.backend} backend.")
+    print("pLDDT output module loaded natively on MLX.")
 
-    plddt_latent_ckpt_path = os.path.join(args.ckpt_dir, "simplefold_1.6B.ckpt")
-    if not os.path.exists(plddt_latent_ckpt_path):
-        os.makedirs(args.ckpt_dir, exist_ok=True)
-        os.system(f"curl -L {ckpt_url_dict['simplefold_1.6B']} -o {plddt_latent_ckpt_path}")
+    # Latent module
+    plddt_latent_safetensors = os.path.join(ckpt_dir, "simplefold_1.6B.safetensors")
+    if not os.path.exists(plddt_latent_safetensors):
+        plddt_latent_ckpt_path = os.path.join(ckpt_dir, "simplefold_1.6B.ckpt")
+        if not os.path.exists(plddt_latent_ckpt_path):
+            os.makedirs(ckpt_dir, exist_ok=True)
+            print("Downloading simplefold_1.6B checkpoint for pLDDT...")
+            os.system(f"curl -L {ckpt_url_dict['simplefold_1.6B']} -o {plddt_latent_ckpt_path}")
+            
+        print(f"Converting {plddt_latent_ckpt_path} to MLX safetensors format...")
+        plddt_latent_checkpoint = torch.load(plddt_latent_ckpt_path, map_location="cpu", weights_only=False)
+        mlx_state_dict = {}
+        for k, v in plddt_latent_checkpoint.items():
+            k_mlx, v_np = map_torch_to_mlx(k, v)
+            if k_mlx is not None:
+                if v_np.dtype in (np.float32, np.float16):
+                    mlx_state_dict[k_mlx] = mx.array(v_np).astype(mx.float16)
+                else:
+                    mlx_state_dict[k_mlx] = mx.array(v_np)
+        mx.save_safetensors(plddt_latent_safetensors, mlx_state_dict)
+        del plddt_latent_checkpoint, mlx_state_dict
+        import gc
+        gc.collect()
 
     plddt_latent_config_path = get_config_path("configs/model/architecture/foldingdit_1.6B.yaml")
-    plddt_latent_checkpoint = torch.load(plddt_latent_ckpt_path, map_location="cpu", weights_only=False)
+    with open(plddt_latent_config_path, "r") as f:
+        yaml_str = f.read()
+    yaml_str = yaml_str.replace('torch', 'mlx')
 
-    if args.backend == "torch":
-        plddt_latent_config = omegaconf.OmegaConf.load(plddt_latent_config_path)
-        plddt_latent_module = hydra.utils.instantiate(plddt_latent_config)
-        plddt_latent_module.load_state_dict(plddt_latent_checkpoint, strict=True)
-        plddt_latent_module = plddt_latent_module.to(device)
-    elif args.backend == "mlx":
-        # replace torch implementations with mlx
-        with open(plddt_latent_config_path, "r") as f:
-            yaml_str = f.read()
-        yaml_str = yaml_str.replace('torch', 'mlx')
+    plddt_config = omegaconf.OmegaConf.create(yaml_str)
+    plddt_latent_module = hydra.utils.instantiate(plddt_config)
+    
+    weights = mx.load(plddt_latent_safetensors)
+    plddt_latent_module.update(tree_unflatten(list(weights.items())))
+    del weights
+    mx.clear_cache()
 
-        plddt_latent_config = omegaconf.OmegaConf.create(yaml_str)
-        plddt_latent_module = hydra.utils.instantiate(plddt_latent_config)
-        mlx_state_dict = {k: mx.array(v) for k, v in starmap(map_torch_to_mlx, plddt_latent_checkpoint.items()) if k is not None}
-        plddt_latent_module.update(tree_unflatten(list(mlx_state_dict.items())))
-
+    import gc
+    gc.collect()
     plddt_latent_module.eval()
-    print(f"pLDDT latent module loaded with {args.backend} backend.")
+    print("pLDDT latent module loaded natively on MLX.")
 
     return plddt_latent_module, plddt_out_module
 
@@ -271,36 +300,89 @@ def initialize_plddt_module(args, device):
 def initialize_esm_model(args, device, quantize_esm=True):
     """
     Initialize ESM-3B protein language model.
-
-    Args:
-        args: Configuration with backend setting
-        device: Target device
-        quantize_esm: If True (default), apply INT8 quantization for 3.5x memory reduction.
-                      Set to False for full precision (may improve accuracy).
     """
-    # load ESM2 model
-    esm_model, esm_dict = esm_registry["esm2_3B"]()
+    import gc
+    
+    ckpt_dir = Path(args.ckpt_dir)
+    ckpt_dir.mkdir(parents=True, exist_ok=True)
+    quantized_weights_path = ckpt_dir / "esm2_t36_3B_UR50D_quantized_8bit.safetensors"
+    
+    # Load small 8M model to extract alphabet dictionary without loading 3B model weights
+    _, esm_dict = esm_registry["esm2_8M"]()
     af2_to_esm = _af2_to_esm(esm_dict)
 
-    if args.backend == 'torch':
-        esm_model = esm_model.to(device)
-        af2_to_esm = af2_to_esm.to(device)
-    elif args.backend == 'mlx':
-        esm_model_mlx = ESM2MLX(num_layers=36, embed_dim=2560, attention_heads=40)
-        esm_state_dict_torch = esm_model.cpu().state_dict()
+    # Initialize the MLX architecture directly
+    esm_model_mlx = ESM2MLX(num_layers=36, embed_dim=2560, attention_heads=40)
 
-        esm_state_dict_torch = {k: mx.array(v) for k, v in starmap(map_torch_to_mlx, esm_state_dict_torch.items()) if k is not None}
-        esm_model_mlx.update(tree_unflatten(list(esm_state_dict_torch.items())))
+    if quantize_esm and quantized_weights_path.exists():
+        print(f"[MLX Memory Optimizer] Loading pre-quantized 8-bit ESM-3B weights from: {quantized_weights_path.name}")
+        # Quantize the empty model structure first
+        esm_model_mlx = _quantize_esm_int8(esm_model_mlx)
+        
+        # Load quantized weights directly into the model
+        weights = mx.load(str(quantized_weights_path))
+        esm_model_mlx.update(tree_unflatten(list(weights.items())))
+        del weights
+        gc.collect()
+        esm_model = esm_model_mlx
+    else:
+        # Find PyTorch Hub checkpoint path
+        hub_dir = torch.hub.get_dir()
+        checkpoint_path = Path(hub_dir) / "checkpoints" / "esm2_t36_3B_UR50D.pt"
+        if not checkpoint_path.exists():
+            print("ESM-3B checkpoint not found locally, downloading via torch.hub...")
+            # This triggers download and saves it, but we don't keep the PyTorch model
+            temp_model, _ = esm_registry["esm2_3B"]()
+            del temp_model
+            gc.collect()
+
+        # Load weights directly via memory-mapping (mmap=True) to avoid loading the full 11.6GB into CPU memory
+        print(f"[MLX Memory Optimizer] Memory-mapping ESM-3B checkpoint: {checkpoint_path.name}")
+        checkpoint = torch.load(str(checkpoint_path), map_location="cpu", mmap=True, weights_only=False)
+        state_dict = checkpoint["model"]
+
+        # Map state dict keys to MLX arrays on-demand and delete the mapped tensors from CPU memory
+        mlx_state_dict = {}
+        for k in list(state_dict.keys()):
+            v = state_dict[k]
+            
+            # Strip PyTorch Hub model checkpoint prefixes to match state_dict format
+            k_mapped = k
+            if k_mapped.startswith("encoder.sentence_encoder."):
+                k_mapped = k_mapped.replace("encoder.sentence_encoder.", "")
+            elif k_mapped.startswith("encoder."):
+                k_mapped = k_mapped.replace("encoder.", "")
+            
+            k_mlx, v_mlx = map_torch_to_mlx(k_mapped, v)
+            if k_mlx is not None:
+                mlx_state_dict[k_mlx] = mx.array(v_mlx)
+            # Free CPU memory reference immediately
+            del state_dict[k]
+
+        del checkpoint, state_dict
+        esm_model_mlx.update(tree_unflatten(list(mlx_state_dict.items())))
+        del mlx_state_dict
+        gc.collect()
+
         esm_model = esm_model_mlx
 
         if quantize_esm:
             # Apply INT8 quantization to ESM-3B for 3.5x memory reduction (11.4GB → 3.2GB)
             esm_model = _quantize_esm_int8(esm_model)
+            
+            # Save the quantized weights for future runs
+            try:
+                print(f"[MLX Memory Optimizer] Saving 8-bit quantized weights to: {quantized_weights_path.absolute()}")
+                weights_to_save = dict(tree_flatten(esm_model.parameters()))
+                mx.save_safetensors(str(quantized_weights_path), weights_to_save)
+                del weights_to_save
+                gc.collect()
+            except Exception as e:
+                print(f"Warning: Could not save quantized weights: {e}")
         else:
             print("  ESM-3B running at full precision (~11.4GB)")
 
-    print(f"pLM ESM-3B loaded with {args.backend} backend.")
-
+    print("pLM ESM-3B loaded with mlx backend.")
     esm_model.eval()
     return esm_model, esm_dict, af2_to_esm
 
@@ -310,12 +392,12 @@ def initialize_others(args, device):
     tokenizer = BoltzTokenizer()
     featurizer = BoltzFeaturizer()
     processor = ProteinDataProcessor(
-        device=device,
+        device="cpu",
         scale=16.0, 
         ref_scale=5.0, 
         multiplicity=1,
         inference_multiplicity=args.nsample_per_protein,
-        backend=args.backend,
+        backend="mlx",
     )
 
     # define flow process and sampler
@@ -323,42 +405,23 @@ def initialize_others(args, device):
 
     teacache_threshold = getattr(args, 'teacache', 0.0)
 
-    if args.backend == "torch":
-        if teacache_threshold > 0:
-            config = TeaCacheConfigTorch(threshold=teacache_threshold)
-            sampler = TeaCacheSamplerTorch(
-                num_timesteps=args.num_steps,
-                t_start=1e-4,
-                tau=args.tau,
-                config=config,
-            )
-            print(f"TeaCache enabled (threshold={teacache_threshold})")
-        else:
-            sampler = EMSampler(
-                num_timesteps=args.num_steps,
-                t_start=1e-4,
-                tau=args.tau,
-                log_timesteps=True,
-                w_cutoff=0.99,
-            )
-    elif args.backend == "mlx":
-        if teacache_threshold > 0:
-            config = TeaCacheConfig(threshold=teacache_threshold)
-            sampler = TeaCacheSampler(
-                num_timesteps=args.num_steps,
-                t_start=1e-4,
-                tau=args.tau,
-                config=config,
-            )
-            print(f"TeaCache enabled (threshold={teacache_threshold})")
-        else:
-            sampler = EMSamplerMLX(
-                num_timesteps=args.num_steps,
-                t_start=1e-4,
-                tau=args.tau,
-                log_timesteps=True,
-                w_cutoff=0.99,
-            )
+    if teacache_threshold > 0:
+        config = TeaCacheConfig(threshold=teacache_threshold)
+        sampler = TeaCacheSampler(
+            num_timesteps=args.num_steps,
+            t_start=1e-4,
+            tau=args.tau,
+            config=config,
+        )
+        print(f"TeaCache enabled (threshold={teacache_threshold})")
+    else:
+        sampler = EMSamplerMLX(
+            num_timesteps=args.num_steps,
+            t_start=1e-4,
+            tau=args.tau,
+            log_timesteps=True,
+            w_cutoff=0.99,
+        )
     return tokenizer, featurizer, processor, flow, sampler
 
 
@@ -366,44 +429,25 @@ def generate_structure(
     args, batch, sampler, flow, processor,
     model, plddt_latent_module, plddt_out_module, device
 ):
-    # run inference for target protein
-    if args.backend == "torch":
-        noise = torch.randn_like(batch['coords']).to(device)
-    elif args.backend == "mlx":
-        noise = mx.random.normal(batch['coords'].shape)
+    noise = mx.random.normal(batch['coords'].shape)
     out_dict = sampler.sample(model, flow, noise, batch)
 
     if args.plddt:
-        if args.backend == "torch":
-            t = torch.ones(batch['coords'].shape[0], device=device)
-            # use unscaled coords to extract latent for pLDDT prediction
-            out_feat = plddt_latent_module(
-                out_dict["denoised_coords"].detach(), t, batch)
-            plddt_out_dict = plddt_out_module(
-                out_feat["latent"].detach(),
-                batch,
-            )
-        elif args.backend == "mlx":
-            t = mx.ones(batch['coords'].shape[0])
-            # use unscaled coords to extract latent for pLDDT prediction
-            out_feat = plddt_latent_module(
-                out_dict["denoised_coords"], t, batch)
-            plddt_out_dict = plddt_out_module(
-                out_feat["latent"],
-                batch,
-            )
+        t = mx.ones(batch['coords'].shape[0])
+        # use unscaled coords to extract latent for pLDDT prediction
+        out_feat = plddt_latent_module(
+            out_dict["denoised_coords"], t, batch)
+        plddt_out_dict = plddt_out_module(
+            out_feat["latent"],
+            batch,
+        )
         # scale pLDDT to [0, 100]
         plddts = plddt_out_dict["plddt"] * 100.0
     else:
         plddts = None
 
     out_dict = processor.postprocess(out_dict, batch)
-    # sampled_coord = out_dict['denoised_coords'].detach()
-    if args.backend == "torch":
-        sampled_coord = out_dict['denoised_coords'].detach()
-    else:
-        sampled_coord = out_dict['denoised_coords']
-
+    sampled_coord = out_dict['denoised_coords']
     pad_mask = batch['atom_pad_mask']
     return sampled_coord, pad_mask, plddts
 
@@ -419,16 +463,14 @@ def predict_structures_from_fastas(args):
     # set random seed for reproducibility
     pl.seed_everything(args.seed, workers=True)
 
-    if args.backend == "mlx" and not MLX_AVAILABLE:
-        args.backend = "torch"
-        print("MLX not available, switch to torch backend.")
+    # MLX backend ONLY
+    device = "cpu"
 
-    # initialize models
-    model, device = initialize_folding_model(args)
-    plddt_latent_module, plddt_out_module = initialize_plddt_module(args, device)
+    # -------------------------------------------------------------
+    # STEP 1: Feature Extraction using ESM
+    # -------------------------------------------------------------
+    print("\n--- Step 1: Loading ESM model for Feature Extraction ---")
     esm_model, esm_dict, af2_to_esm = initialize_esm_model(args, device)
-
-    # initialize other components
     tokenizer, featurizer, processor, flow, sampler = initialize_others(args, device)
 
     # process fasta files to input format
@@ -442,28 +484,107 @@ def predict_structures_from_fastas(args):
         ccd_path=cache / "ccd.pkl",
     )
 
+    # Pre-extract ESM features for all structures
+    preprocessed_jobs = []
     for struct_file in output_dir.glob("structures/*.npz"):
         record_file = output_dir / "records" / f"{struct_file.stem}.json"
 
-        # prepare the target protein data for inference
+        print(f"Extracting ESM features for: {struct_file.name}")
         batch, structure, record = process_one_inference_structure(
             struct_file, record_file,
             tokenizer, featurizer, processor,
             esm_model, esm_dict, af2_to_esm,
         )
+        preprocessed_jobs.append((batch, structure, record))
 
-        sampled_coord, pad_mask, plddts = generate_structure(
-            args, batch, sampler, flow, processor,
-            model, plddt_latent_module, plddt_out_module, device
-        )
+    # -------------------------------------------------------------
+    # RELEASE RAM: Unload ESM immediately
+    # -------------------------------------------------------------
+    print("\n--- Releasing ESM model RAM/GPU memory ---")
+    del esm_model, af2_to_esm
+    import gc
+    gc.collect()
+    
+    import mlx.core as mx
+    if hasattr(mx, "clear_cache"):
+        mx.clear_cache()
+    elif hasattr(mx.metal, "clear_cache"):
+        mx.metal.clear_cache()
 
+    # -------------------------------------------------------------
+    # STEP 2a: Coordinate Generation using Folding Model
+    # -------------------------------------------------------------
+    print("\n--- Step 2: Loading Folding Model ---")
+    model, device = initialize_folding_model(args)
+
+    raw_coords_jobs = []
+    for batch, structure, record in preprocessed_jobs:
+        print(f"Generating structure coordinates for: {record.id}")
+        
+        noise = mx.random.normal(batch['coords'].shape)
+        out_dict = sampler.sample(model, flow, noise, batch)
+        denoised_coords = out_dict["denoised_coords"]
+            
+        # Run coordinate post-processing
+        post_out = processor.postprocess(out_dict, batch)
+        sampled_coord = post_out['denoised_coords']
+            
+        pad_mask = batch['atom_pad_mask']
+        raw_coords_jobs.append((batch, structure, record, denoised_coords, sampled_coord, pad_mask))
+
+    # Free folding model and clear device memory caches immediately
+    print("\n--- Releasing Folding Model RAM/GPU memory ---")
+    del model
+    gc.collect()
+    
+    import mlx.core as mx
+    if hasattr(mx, "clear_cache"):
+        mx.clear_cache()
+    elif hasattr(mx.metal, "clear_cache"):
+        mx.metal.clear_cache()
+
+    # -------------------------------------------------------------
+    # STEP 2b: pLDDT Confidence Score Prediction
+    # -------------------------------------------------------------
+    plddt_jobs = {}
+    if args.plddt:
+        print("\n--- Step 3: Loading pLDDT Model ---")
+        plddt_latent_module, plddt_out_module = initialize_plddt_module(args, device)
+        
+        for batch, structure, record, denoised_coords, _, _ in raw_coords_jobs:
+            print(f"Predicting confidence (pLDDT) for: {record.id}")
+            t = mx.ones(batch['coords'].shape[0])
+            out_feat = plddt_latent_module(denoised_coords, t, batch)
+            plddt_out_dict = plddt_out_module(out_feat["latent"], batch)
+                
+            plddts = plddt_out_dict["plddt"] * 100.0
+            plddt_jobs[record.id] = plddts
+
+        # Free pLDDT models and clear device memory caches immediately
+        print("\n--- Releasing pLDDT Model RAM/GPU memory ---")
+        del plddt_latent_module, plddt_out_module
+        gc.collect()
+        
+        import mlx.core as mx
+        if hasattr(mx, "clear_cache"):
+            mx.clear_cache()
+        elif hasattr(mx.metal, "clear_cache"):
+            mx.metal.clear_cache()
+
+    # -------------------------------------------------------------
+    # STEP 2c: Post-Processing & Output Generation
+    # -------------------------------------------------------------
+    for batch, structure, record, _, sampled_coord, pad_mask in raw_coords_jobs:
+        print(f"Saving final structure for: {record.id}")
+        plddts = plddt_jobs.get(record.id, None)
+        
         for i in range(args.nsample_per_protein):
             sampled_coord_i = sampled_coord[i]
             pad_mask_i = pad_mask[i]
 
             # save the generated structure
             structure_save = process_structure(
-                deepcopy(structure), sampled_coord_i, pad_mask_i, record, backend=args.backend
+                deepcopy(structure), sampled_coord_i, pad_mask_i, record, backend="mlx"
             )
             outname = f"{record.id}_sampled_{i}"
             save_structure(

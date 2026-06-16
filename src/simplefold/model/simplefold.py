@@ -402,7 +402,8 @@ class SimpleFold(pl.LightningModule):
         align_weights = y_t.new_ones(y_t.shape[:2])
 
         if self.use_rigid_align:
-            with torch.no_grad(), torch.autocast("cuda", enabled=False):
+            device_type = self.device.type if self.device.type in ["cuda", "cpu", "mps"] else "cpu"
+            with torch.no_grad(), torch.amp.autocast(device_type=device_type, enabled=False):
                 v_t = out_dict['predict_velocity'].detach().float()
                 denoised_coords = y_t + v_t * (1.0 - t[:, None, None])
                 coords = batch["coords"].detach().float()
@@ -513,7 +514,8 @@ class SimpleFold(pl.LightningModule):
 
     @torch.no_grad()
     def predict_step(self, batch, batch_idx):
-        with torch.autocast(device_type='cuda', dtype=torch.float32):
+        device_type = self.device.type if self.device.type in ["cuda", "cpu", "mps"] else "cpu"
+        with torch.amp.autocast(device_type=device_type, dtype=torch.float32):
             batch = self.processor.preprocess_inference(
                 batch,
                 esm_model=self.esm_model,
@@ -671,7 +673,7 @@ class SimpleFold(pl.LightningModule):
                 self.af2_to_esm,
             )
             y = batch["coords"]
-            t = torch.zeros((y.shape[0])).cuda()
+            t = torch.zeros((y.shape[0]), device=self.device)
 
     def on_train_batch_end(self, outputs, batch, batch_idx):
         optimizer = self.optimizers()

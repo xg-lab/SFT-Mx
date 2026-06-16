@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "simplefold-turbo"
+name = "SFT-Mx"
 version = "0.1.0"
 description = "Folding proteins faster with SimpleFold."
 readme = "README.md"
@@ -12,14 +12,16 @@ license = { file = "LICENSE" }
 authors = [
     { name = "Geoffrey Taghon", email = "gtaghon1@jh.edu" },
     { name = "Yuyang Wang", email = "yuyangw@apple.com" },
-    { name = "Miguel Angel Bautista Martin", email = "mbautistamartin@apple.com" }
+    { name = "Miguel Angel Bautista Martin", email = "mbautistamartin@apple.com" },
+    { name = "Xiaoguang Xue", email = "sunneyxue@gmail.com"}
 ]
 dependencies = [
     "lightning==2.5.2",
     "biopython==1.85",
     "hydra-colorlog==1.2.0",
     "mediapy==1.0.2",
-    "ipykernel==6.22.0",
+    "ipykernel",
+    "pytest",
     "ipyvtklink==0.2.3",
     "gemmi==0.7.3",
     "biotite==1.2.0",
@@ -37,10 +39,25 @@ dependencies = [
     "scikit-learn",
     "pandas==2.3.1",
     "seaborn==0.13.2",
+    # Core and workspace dependencies (excluding purged webui/server libraries)
+    "numpy",
+    "scipy",
+    "torch",
+    "matplotlib",
+    "tqdm",
+    "pyyaml",
+    "hydra-core",
+    "omegaconf",
+    "requests",
+    "pillow",
+    "rich",
+    "blobfile",
+    "fairscale",
+    "redis",
 ]
 
 [project.urls]
-Homepage = "https://github.com/usnistgov/simplefold-turbo"
+Homepage = "https://github.com/xg-lab/SFT-Mx.git"
 
 # Optional: create a CLI command `sft` that calls simplefold/cli.py:main()
 [project.scripts]

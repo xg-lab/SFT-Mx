@@ -10,6 +10,8 @@ import argparse
 from simplefold import __version__
 from simplefold.inference import predict_structures_from_fastas
 
+MLX_DEFAULT = 'mlx'
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -27,7 +29,7 @@ def main():
     parser.add_argument("--nsample_per_protein", type=int, default=1, help="Number of samples to generate per protein.")
     parser.add_argument("--plddt", action="store_true", help="Enable pLDDT prediction.")
     parser.add_argument("--output_format", type=str, default="mmcif", choices=["pdb", "mmcif"], help="Output file format.")
-    parser.add_argument("--backend", type=str, default='torch', choices=['torch', 'mlx'], help="Backend to run inference either torch or mlx")
+    parser.add_argument("--backend", type=str, default="mlx", choices=['mlx'], help="Backend to run inference (strictly mlx)")
     parser.add_argument("--teacache", type=float, default=0.1, help="Enable TeaCache with threshold (0.0 to 1.0)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility.")
     parser.add_argument(

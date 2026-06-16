@@ -19,21 +19,37 @@ import os
 import sys
 import time
 import json
-import requests
 import numpy as np
+import tempfile
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, asdict
 from typing import Optional, List
 from scipy.spatial.transform import Rotation
+from copy import deepcopy
 
+# Set working directory and append src paths
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src' / 'simplefold'))
+
+# Import SimpleFold-Turbo local inference requirements
+import mlx.core as mx
+from simplefold.inference import (
+    initialize_esm_model,
+    initialize_others,
+    initialize_folding_model,
+    generate_structure,
+)
+from utils.fasta_utils import process_fastas
+from utils.datamodule_utils import process_one_inference_structure
+from model.mlx.teacache import TeaCacheSampler, TeaCacheConfig
 
 # =============================================================================
 # Configuration
 # =============================================================================
 
-SERVER_URL = "http://0.0.0.0:8888"
+SERVER_URL = None
 CATH_BENCHMARK_FILE = Path("cath_benchmark/diverse_cath_300.json")
 OUTPUT_DIR = Path("cath_benchmark")
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -45,7 +61,8 @@ MODELS = ['simplefold_100M', 'simplefold_360M', 'simplefold_700M',
 # TeaCache thresholds: 0 = no caching, 0.1 = aggressive caching
 TEACACHE_THRESHOLDS = [0.0, 0.1]
 
-PARALLEL_JOBS = 4
+# Sequential run is recommended when running MLX locally to prevent GPU memory resource collision
+PARALLEL_JOBS = 1
 
 # =============================================================================
 # Data Classes
@@ -157,55 +174,235 @@ def compute_lddt(P: np.ndarray, Q: np.ndarray, cutoff: float = 15.0) -> float:
 # Server Client
 # =============================================================================
 
+# =============================================================================
+# Local In-Process Inference Runner (Replaces Server Client)
+# =============================================================================
+
+def decode_atom_name(name_field):
+    """Decode atom name from numpy array or string."""
+    if isinstance(name_field, np.ndarray):
+        return ''.join(chr(c + 32) for c in name_field if c != 0)
+    return str(name_field).strip()
+
+def save_cif_helper(coords, residues, atoms_array, job_id, output_path: Path):
+    """Save structure in mmCIF format (AF3-compatible)."""
+    ELEMENT_MAP = {7: 'N', 6: 'C', 8: 'O', 16: 'S', 1: 'H'}
+
+    lines = [
+        "data_simplefold_prediction",
+        "#",
+        f"_entry.id {job_id}",
+        "#",
+        "loop_",
+        "_atom_site.group_PDB",
+        "_atom_site.id",
+        "_atom_site.type_symbol",
+        "_atom_site.label_atom_id",
+        "_atom_site.label_alt_id",
+        "_atom_site.label_comp_id",
+        "_atom_site.label_asym_id",
+        "_atom_site.label_entity_id",
+        "_atom_site.label_seq_id",
+        "_atom_site.pdbx_PDB_ins_code",
+        "_atom_site.Cartn_x",
+        "_atom_site.Cartn_y",
+        "_atom_site.Cartn_z",
+        "_atom_site.occupancy",
+        "_atom_site.B_iso_or_equiv",
+        "_atom_site.pdbx_formal_charge",
+        "_atom_site.auth_seq_id",
+        "_atom_site.auth_comp_id",
+        "_atom_site.auth_asym_id",
+        "_atom_site.auth_atom_id",
+        "_atom_site.pdbx_PDB_model_num",
+    ]
+
+    atom_idx = 0
+    for res in residues:
+        res_name = decode_atom_name(res['name'])[:3]
+        res_num = int(res['res_idx']) + 1
+        start_idx = int(res['atom_idx'])
+        n_atoms = int(res['atom_num'])
+
+        for j in range(n_atoms):
+            if start_idx + j < len(atoms_array) and atom_idx < len(coords):
+                atom = atoms_array[start_idx + j]
+                atom_name = decode_atom_name(atom['name'])
+                element = ELEMENT_MAP.get(int(atom['element']), 'C')
+                coord = coords[atom_idx]
+
+                line = (
+                    f"ATOM {atom_idx+1} {element} {atom_name} . {res_name} A 1 {res_num} ? "
+                    f"{coord[0]:.3f} {coord[1]:.3f} {coord[2]:.3f} 1.00 0.00 ? "
+                    f"{res_num} {res_name} A {atom_name} 1"
+                )
+                lines.append(line)
+                atom_idx += 1
+
+    lines.append("#")
+
+    with open(output_path, 'w') as f:
+        f.write('\n'.join(lines))
+
+
+class LocalInferenceEngine:
+    """Manages the in-memory loading and execution of ESM and SimpleFold models."""
+
+    def __init__(self, backend: str = 'mlx'):
+        self.backend = backend
+        self.device = "cpu"
+        self.esm_model = None
+        self.esm_dict = None
+        self.af2_to_esm = None
+        self.tokenizer = None
+        self.featurizer = None
+        self.processor = None
+        self.flow = None
+        self.sampler = None
+        self.ccd_path = Path("../artifacts/ccd.pkl")
+        self.folding_model = None
+        self.loaded_model_name = None
+
+    def load_esm(self, model_name: str):
+        """Initialize the shared ESM representation model."""
+        import argparse
+        args = argparse.Namespace(
+            simplefold_model=model_name,
+            ckpt_dir='../artifacts',
+            num_steps=500,
+            tau=0.1, no_log_timesteps=False,
+            fasta_path='', nsample_per_protein=1,
+            plddt=False, output_format='mmcif', backend=self.backend, seed=42
+        )
+        print("[LocalInferenceEngine] Loading ESM model (~3GB)...")
+        self.esm_model, self.esm_dict, self.af2_to_esm = initialize_esm_model(args, self.device)
+        self.tokenizer, self.featurizer, self.processor, self.flow, self.sampler = initialize_others(args, self.device)
+
+    def load_folding_model(self, model_name: str):
+        """Initialize the simplefold model weights."""
+        import argparse
+        if self.esm_model is None:
+            self.load_esm(model_name)
+
+        if self.loaded_model_name == model_name:
+            return
+
+        # Unload previous model
+        if self.folding_model is not None:
+            del self.folding_model
+            mx.metal.clear_cache() if hasattr(mx.metal, 'clear_cache') else None
+
+        args = argparse.Namespace(
+            simplefold_model=model_name,
+            ckpt_dir='../artifacts',
+            num_steps=500,
+            tau=0.1, no_log_timesteps=False,
+            fasta_path='', nsample_per_protein=1,
+            plddt=False, output_format='mmcif', backend=self.backend, seed=42
+        )
+        print(f"[LocalInferenceEngine] Loading folding model: {model_name}...")
+        self.folding_model, _ = initialize_folding_model(args)
+        self.loaded_model_name = model_name
+
+    def fold(self, name: str, sequence: str, model_name: str, teacache_threshold: float):
+        """Fold a single sequence in-process and return the coordinates and metadata."""
+        self.load_folding_model(model_name)
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_path = Path(tmp_dir)
+
+            # Write temp FASTA
+            fasta_path = tmp_path / "protein.fasta"
+            with open(fasta_path, 'w') as f:
+                f.write(f">{name}\n{sequence}\n")
+
+            # Run data pipeline using ESM
+            process_fastas([fasta_path], tmp_path, self.ccd_path)
+
+            struct_file = tmp_path / "structures" / "protein.npz"
+            record_file = tmp_path / "records" / "protein.json"
+
+            batch, structure, record = process_one_inference_structure(
+                struct_file, record_file,
+                self.tokenizer,
+                self.featurizer,
+                self.processor,
+                self.esm_model,
+                self.esm_dict,
+                self.af2_to_esm
+            )
+
+            # Random noise initialization
+            mx.random.seed(42)
+            noise = mx.random.normal(batch['coords'].shape)
+
+            # Configure and execute TeaCache sampling
+            config = TeaCacheConfig(threshold=teacache_threshold)
+            tea_sampler = TeaCacheSampler(num_timesteps=500, config=config)
+
+            t0 = time.perf_counter()
+            result = tea_sampler.sample(
+                self.folding_model,
+                self.flow,
+                noise, batch, verbose=False
+            )
+            mx.eval(result['denoised_coords'])
+            inference_time = time.perf_counter() - t0
+
+            cache_stats = result.get('cache_stats', {})
+            cache_hit_rate = cache_stats.get('hit_rate', 0)
+
+            # Convert MLX coords to PDB scale
+            coords = np.array(result['denoised_coords'][0]) * 16.0
+
+            # Read structural array metadata
+            struct_data = np.load(struct_file, allow_pickle=True)
+            residues = struct_data['residues']
+            atoms_array = struct_data['atoms']
+
+            # Write to a temp mmcif file to be read back by parse_cif_ca
+            output_cif_path = tmp_path / "result.cif"
+            save_cif_helper(coords, residues, atoms_array, name, output_cif_path)
+
+            with open(output_cif_path) as f:
+                cif_content = f.read()
+
+            # Clean up intermediate variables and clear cache to free unified RAM
+            del result, noise, tea_sampler, batch, coords, struct_data
+            import gc
+            gc.collect()
+            if hasattr(mx, "clear_cache"):
+                mx.clear_cache()
+            elif hasattr(mx.metal, "clear_cache"):
+                mx.metal.clear_cache()
+
+            return {
+                'status': 'completed',
+                'results': [{
+                    'inference_time_s': inference_time,
+                    'cache_hit_rate': cache_hit_rate
+                }],
+                'cif_content': cif_content
+            }
+
+
+# Single global engine instance for benchmark execution
+local_infer = LocalInferenceEngine(backend='mlx')
+
 def check_server():
-    """Check if server is running."""
-    try:
-        r = requests.get(f"{SERVER_URL}/health", timeout=5)
-        return r.status_code == 200
-    except:
-        return False
-
-def submit_fold_job(name: str, sequence: str, model: str = None, teacache_threshold: float = None):
-    """Submit fold job (async, returns job_id)."""
-    data = {
-        'name': name,
-        'sequences': [{'proteinChain': {'sequence': sequence, 'count': 1}}]
-    }
-    if model:
-        data['model'] = model
-    if teacache_threshold is not None:
-        data['teacache_threshold'] = teacache_threshold
-
-    r = requests.post(f"{SERVER_URL}/v1/fold", json=data, timeout=30)
-    return r.json()
-
-def poll_job(job_id: str, timeout: int = 600, poll_interval: float = 1.0):
-    """Poll for job completion."""
-    start = time.time()
-    while time.time() - start < timeout:
-        try:
-            r = requests.get(f"{SERVER_URL}/v1/job/{job_id}", timeout=30)
-            job = r.json()
-            if job['status'] == 'completed':
-                return job
-            if job['status'] == 'failed':
-                return job
-        except requests.exceptions.Timeout:
-            pass
-        time.sleep(poll_interval)
-    return {'status': 'timeout', 'error': 'Job timed out'}
+    """Dummy check since the server is replaced by in-process local inference."""
+    return True
 
 def fold_protein(name: str, sequence: str, model: str = None, teacache_threshold: float = None):
-    """Fold protein using server API (sync wrapper)."""
-    submit_result = submit_fold_job(name, sequence, model, teacache_threshold)
-    if 'job_id' not in submit_result:
-        return submit_result
-    return poll_job(submit_result['job_id'])
+    """Local, in-process wrapper that mimics the server API response format."""
+    try:
+        return local_infer.fold(name, sequence, model, teacache_threshold)
+    except Exception as e:
+        return {'status': 'failed', 'error': str(e)}
 
 def get_result_cif(job_id: str) -> str:
-    """Download result CIF content."""
-    r = requests.get(f"{SERVER_URL}/v1/job/{job_id}/result", timeout=30)
-    return r.text
+    """Unused now as CIF content is returned directly in the fold_protein result."""
+    return ""
 
 # =============================================================================
 # Benchmark Runner
@@ -235,7 +432,7 @@ def benchmark_one(struct: dict, model: str, teacache_threshold: float) -> Benchm
         cache_hit_rate = res.get('cache_hit_rate', 0)
 
         # Get prediction
-        cif_content = get_result_cif(result['job_id'])
+        cif_content = result.get('cif_content', '')
         pred_coords = parse_cif_ca(cif_content)
         gt_coords = parse_pdb_ca(pdb_path)
 

@@ -25,8 +25,6 @@ from utils.pylogger import RankedLogger
 log = RankedLogger(__name__, rank_zero_only=True)
 
 torch.set_float32_matmul_precision("medium")
-torch.backends.cuda.matmul.allow_tf32 = True # This flag defaults to False
-torch.backends.cudnn.allow_tf32 = True       # This flag defaults to True
 
 
 @task_wrapper
