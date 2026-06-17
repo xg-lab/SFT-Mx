@@ -11,8 +11,7 @@ Creates publication-quality figures showing:
 - TeaCache speedup analysis
 
 Prerequisites:
-    1. Run: python select_diverse_cath.py  (creates diverse_cath_300.json)
-    2. Run: python server.py --port 8888
+    1. Ensure diverse_cath_300.json is placed in cath_benchmark/
 """
 
 import os
@@ -49,7 +48,6 @@ from model.mlx.teacache import TeaCacheSampler, TeaCacheConfig
 # Configuration
 # =============================================================================
 
-SERVER_URL = None
 CATH_BENCHMARK_FILE = Path("cath_benchmark/diverse_cath_300.json")
 OUTPUT_DIR = Path("cath_benchmark")
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -170,14 +168,6 @@ def compute_lddt(P: np.ndarray, Q: np.ndarray, cutoff: float = 15.0) -> float:
 
     return np.mean(scores)
 
-# =============================================================================
-# Server Client
-# =============================================================================
-
-# =============================================================================
-# Local In-Process Inference Runner (Replaces Server Client)
-# =============================================================================
-
 def decode_atom_name(name_field):
     """Decode atom name from numpy array or string."""
     if isinstance(name_field, np.ndarray):
@@ -259,7 +249,7 @@ class LocalInferenceEngine:
         self.processor = None
         self.flow = None
         self.sampler = None
-        self.ccd_path = Path("../artifacts/ccd.pkl")
+        self.ccd_path = Path("../artifacts/cache/ccd.pkl")
         self.folding_model = None
         self.loaded_model_name = None
 
@@ -389,36 +379,56 @@ class LocalInferenceEngine:
 # Single global engine instance for benchmark execution
 local_infer = LocalInferenceEngine(backend='mlx')
 
-def check_server():
-    """Dummy check since the server is replaced by in-process local inference."""
-    return True
-
-def fold_protein(name: str, sequence: str, model: str = None, teacache_threshold: float = None):
-    """Local, in-process wrapper that mimics the server API response format."""
-    try:
-        return local_infer.fold(name, sequence, model, teacache_threshold)
-    except Exception as e:
-        return {'status': 'failed', 'error': str(e)}
-
-def get_result_cif(job_id: str) -> str:
-    """Unused now as CIF content is returned directly in the fold_protein result."""
-    return ""
-
 # =============================================================================
 # Benchmark Runner
 # =============================================================================
+
+import urllib.request
+import urllib.error
+
+def ensure_pdb_downloaded(name: str) -> Path:
+    """Ensure the PDB file for the CATH domain is downloaded and cached locally."""
+    local_dir = Path("cath_benchmark/dompdb")
+    local_dir.mkdir(exist_ok=True, parents=True)
+    local_path = local_dir / f"{name}.pdb"
+    if not local_path.exists():
+        url = f"https://www.cathdb.info/version/v4_3_0/api/rest/id/{name}.pdb"
+        print(f"Downloading ground truth PDB for {name} from {url}...")
+        try:
+            with urllib.request.urlopen(url, timeout=15) as response:
+                content = response.read()
+                if b"ATOM" in content or b"HEADER" in content:
+                    local_path.write_bytes(content)
+                else:
+                    raise ValueError(f"Downloaded content for {name} does not look like a PDB file.")
+        except Exception as e:
+            print(f"Error downloading {name} from CATH v4.3.0 API: {e}. Trying latest...")
+            try:
+                alt_url = f"https://www.cathdb.info/version/latest/api/rest/id/{name}.pdb"
+                with urllib.request.urlopen(alt_url, timeout=15) as response:
+                    content = response.read()
+                    if b"ATOM" in content or b"HEADER" in content:
+                        local_path.write_bytes(content)
+                    else:
+                        raise ValueError(f"Downloaded content for {name} does not look like a PDB file.")
+            except Exception as e2:
+                print(f"Failed to download PDB for {name}: {e2}")
+                raise e2
+    return local_path
 
 def benchmark_one(struct: dict, model: str, teacache_threshold: float) -> BenchmarkResult:
     """Benchmark a single structure with specific model and cache setting."""
     name = struct['name']
     sequence = struct['sequence']
-    pdb_path = Path(struct['path'])
     length = struct['length']
 
     try:
+        # Ensure ground truth PDB is downloaded
+        pdb_path = ensure_pdb_downloaded(name)
+
         # Fold
         cache_str = f"tc{teacache_threshold}"
-        result = fold_protein(f"{name}_{model}_{cache_str}", sequence, model, teacache_threshold)
+        result = local_infer.fold(f"{name}_{model}_{cache_str}", sequence, model, teacache_threshold)
 
         if result.get('status') != 'completed':
             return BenchmarkResult(
@@ -482,14 +492,6 @@ def main():
     print("CATH S40 BENCHMARK: SimpleFold + TeaCache Ablation")
     print("=" * 70)
 
-    # Check server
-    print("\nChecking server...")
-    if not check_server():
-        print(f"ERROR: Server not running at {SERVER_URL}")
-        print("Start with: python server.py --port 8888")
-        sys.exit(1)
-    print("Server OK!")
-
     # Load structures
     print(f"\nLoading diverse CATH set from {CATH_BENCHMARK_FILE}...")
     if not CATH_BENCHMARK_FILE.exists():
@@ -499,9 +501,31 @@ def main():
     with open(CATH_BENCHMARK_FILE) as f:
         structures = json.load(f)
 
-    print(f"Loaded {len(structures)} structures")
+    # Allow limiting structures for testing/debugging
+    limit = os.environ.get("BENCHMARK_LIMIT")
+    if limit:
+        structures = structures[:int(limit)]
+        print(f"Limiting to first {len(structures)} structures for quick run")
+    else:
+        print(f"Loaded {len(structures)} structures")
     lengths = [s['length'] for s in structures]
     print(f"Length range: {min(lengths)}-{max(lengths)} aa")
+
+    # Dynamically select only models that have checkpoints available locally
+    ckpt_dir = Path("../artifacts")
+    available_models = []
+    for model in MODELS:
+        ckpt_path = ckpt_dir / f"{model}.ckpt"
+        sf_path = ckpt_dir / f"{model}.safetensors"
+        if ckpt_path.exists() or sf_path.exists():
+            available_models.append(model)
+    
+    if not available_models:
+        print(f"WARNING: No local checkpoints found in {ckpt_dir}. Defaults to all models.")
+        run_models = MODELS
+    else:
+        print(f"Found checkpoints for: {available_models}. Only benchmarking these.")
+        run_models = available_models
 
     # ==========================================================================
     # Run Benchmark
@@ -509,7 +533,7 @@ def main():
 
     all_results: List[BenchmarkResult] = []
 
-    for model in MODELS:
+    for model in run_models:
         for threshold in TEACACHE_THRESHOLDS:
             cache_label = "NO_CACHE" if threshold == 0 else f"CACHE_{threshold}"
 
@@ -539,6 +563,10 @@ def main():
     # ==========================================================================
     # Save Results
     # ==========================================================================
+
+    if not all_results:
+        print("\nERROR: No benchmark results were successfully generated (all predictions failed).")
+        sys.exit(1)
 
     print("\n" + "=" * 70)
     print("SAVING RESULTS")
